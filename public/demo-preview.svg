@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#f4db87" stroke-opacity=".35" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#392b00" flood-opacity=".14"/>
+    </filter>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #392b00; }
+      .muted { fill: #806728; font-size: 18px; }
+      .small { fill: #806728; font-size: 15px; }
+      .title { font-weight: 800; font-size: 40px; }
+      .h2 { font-weight: 800; font-size: 22px; }
+      .h3 { font-weight: 800; font-size: 18px; }
+      .body { font-size: 18px; }
+      .btn { font-weight: 800; font-size: 17px; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="1120" fill="#fff8ec"/>
+  <rect width="1440" height="1120" fill="url(#grid)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="32" y="26" width="1376" height="94" rx="8" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <rect x="59" y="43" width="64" height="58" rx="8" fill="#fff3a6" stroke="#392b00" stroke-width="2" transform="rotate(-4 91 72)"/>
+    <circle cx="82" cy="71" r="4" fill="#392b00"/>
+    <circle cx="102" cy="71" r="4" fill="#392b00"/>
+    <path d="M84 84 Q92 92 101 84" fill="none" stroke="#392b00" stroke-width="2"/>
+    <text x="142" y="67" class="title">家务便利贴</text>
+    <text x="142" y="97" class="muted">不是让唐宁做得更快，是让全家一起把看不见的家务接住。</text>
+    <rect x="1042" y="50" width="122" height="42" rx="8" fill="#dff3de" stroke="#392b00" stroke-width="2"/>
+    <text x="1060" y="77" class="btn">走一遍路演</text>
+    <rect x="1178" y="50" width="114" height="42" rx="8" fill="#fffdf5" stroke="#392b00" stroke-width="2"/>
+    <text x="1196" y="77" class="btn">灌 demo 数据</text>
+    <rect x="1304" y="50" width="72" height="42" rx="8" fill="#fff8ec" stroke="#392b00" stroke-width="2"/>
+    <text x="1322" y="77" class="btn">重置</text>
+  </g>
+
+  <rect x="32" y="142" width="1376" height="52" rx="8" fill="#2f4058" stroke="#f6d87a" stroke-width="2"/>
+  <text x="54" y="175" fill="#fff4b8" font-size="18">睡眠护栏已开：23:00-07:00 期间，唐宁这边静默。新的便利贴会先传给弟弟、丈夫和爸爸。</text>
+
+  <rect x="32" y="212" width="1376" height="58" rx="8" fill="#fffdf5" stroke="#dbcda8"/>
+  <rect x="54" y="234" width="1120" height="12" rx="6" fill="#f1e7cd" stroke="#d2bc80"/>
+  <rect x="54" y="234" width="260" height="12" rx="6" fill="#7bc47f"/>
+  <text x="54" y="263" class="small">准备好了。按“走一遍路演”，30 秒看完整条故事链。</text>
+  <rect x="1264" y="224" width="104" height="34" rx="8" fill="#fffdf5" stroke="#392b00" stroke-width="2"/>
+  <text x="1288" y="247" class="btn">下一步</text>
+
+  <g filter="url(#shadow)">
+    <rect x="32" y="292" width="1376" height="250" rx="8" fill="#fffdf5" stroke="#e9e2d3" stroke-width="2"/>
+    <rect x="66" y="326" width="86" height="98" rx="8" fill="#ffd86b" stroke="#392b00" stroke-width="2" transform="rotate(-2 109 375)"/>
+    <text x="87" y="363" font-size="30" font-weight="800">1:23</text>
+    <text x="88" y="393" class="small">凌晨</text>
+    <text x="80" y="416" class="small">群消息</text>
+    <text x="182" y="355" font-size="38" font-weight="800">妈妈说“降压药快见底了”，但唐宁今晚不用醒。</text>
+    <text x="184" y="397" class="body">贴贴先把这句话变成一张便利贴，再用睡眠护栏、历史记忆和家庭天平，</text>
+    <text x="184" y="426" class="body">自动推荐给最合适的人接棒。</text>
+    <rect x="184" y="456" width="520" height="54" rx="8" fill="#fff1a7" stroke="#392b00" stroke-width="2" transform="rotate(1 444 483)"/>
+    <text x="204" y="491" font-size="19" font-weight="800">贴贴：弟弟，妈妈那边降压药快见底啦，明早顺手下单好不好？</text>
+
+    <rect x="980" y="320" width="350" height="190" rx="8" fill="#2f4058" stroke="#392b00" stroke-width="3"/>
+    <text x="1002" y="350" fill="#fff8cf" font-size="15">Seeed 单屏 · 客厅常驻</text>
+    <text x="1230" y="350" fill="#fff8cf" font-size="15">睡眠护栏中</text>
+    <rect x="1012" y="374" width="285" height="80" rx="8" fill="#ffec94"/>
+    <text x="1030" y="407" font-size="20" font-weight="800">妈妈降压药快见底了</text>
+    <text x="1030" y="436" class="small">推荐：弟弟 · ETA 明早 9 点前</text>
+    <rect x="1012" y="474" width="62" height="28" rx="14" fill="#3c506c" stroke="#ffd86b"/>
+    <text x="1028" y="494" fill="#fff8cf" font-size="14">弟弟</text>
+    <text x="1084" y="494" fill="#fff8cf" font-size="18">→</text>
+    <rect x="1108" y="474" width="62" height="28" rx="14" fill="#3c506c"/>
+    <text x="1125" y="494" fill="#fff8cf" font-size="14">爸爸</text>
+    <text x="1180" y="494" fill="#fff8cf" font-size="18">→</text>
+    <rect x="1204" y="474" width="62" height="28" rx="14" fill="#3c506c"/>
+    <text x="1220" y="494" fill="#fff8cf" font-size="14">丈夫</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="32" y="566" width="400" height="318" rx="8" fill="#fffdf5" stroke="#e9e2d3" stroke-width="2"/>
+    <text x="54" y="605" class="h2">零打字录入</text>
+    <text x="54" y="630" class="small">语音、群截图、视频、OCR 都能变成便利贴</text>
+    <rect x="54" y="654" width="160" height="72" rx="8" fill="#fff" stroke="#ead79c" stroke-width="2"/>
+    <text x="73" y="684" class="h3">语音口述</text>
+    <text x="73" y="708" class="small">妈妈药快没了</text>
+    <rect x="232" y="654" width="160" height="72" rx="8" fill="#fff" stroke="#ead79c" stroke-width="2"/>
+    <text x="253" y="684" class="h3">群截图</text>
+    <text x="253" y="708" class="small">还原“收到”黑洞</text>
+    <rect x="54" y="744" width="338" height="72" rx="8" fill="#fff" stroke="#e9e2d3" stroke-width="2"/>
+    <text x="72" y="786" class="small">妈妈降压药快见底了，明早需要有人下单。</text>
+    <rect x="54" y="834" width="132" height="36" rx="8" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <text x="75" y="858" class="btn">让贴贴解析</text>
+
+    <rect x="456" y="566" width="560" height="318" rx="8" fill="#fffdf5" stroke="#e9e2d3" stroke-width="2"/>
+    <text x="478" y="605" class="h2">便利贴墙</text>
+    <text x="478" y="630" class="small">3 张便利贴 · 1 张已揭</text>
+    <rect x="486" y="662" width="152" height="158" rx="8" fill="#dff3de" stroke="#392b00" stroke-width="2" transform="rotate(-2 562 741)"/>
+    <text x="502" y="696" class="h3">妈妈降压药快见底了</text>
+    <text x="502" y="730" class="small">群截图 · 执行 · 给弟弟</text>
+    <text x="502" y="772" class="small">memAura 找到上次购药记录</text>
+    <rect x="674" y="662" width="152" height="158" rx="8" fill="#d8e9ff" stroke="#392b00" stroke-width="2" transform="rotate(1 750 741)"/>
+    <text x="692" y="696" class="h3">妈妈周三复诊</text>
+    <text x="692" y="730" class="small">OCR · 协调 · 给爸爸</text>
+    <text x="692" y="772" class="small">拆成 6 个复诊节点</text>
+    <rect x="862" y="662" width="152" height="158" rx="8" fill="#ffe3e3" stroke="#392b00" stroke-width="2" transform="rotate(-1 938 741)"/>
+    <text x="880" y="696" class="h3">燃气年检通知</text>
+    <text x="880" y="730" class="small">OCR · 协调 · 给丈夫</text>
+    <text x="880" y="772" class="small">去年由丈夫联系物业</text>
+
+    <rect x="1040" y="566" width="368" height="318" rx="8" fill="#fffdf5" stroke="#e9e2d3" stroke-width="2"/>
+    <text x="1062" y="605" class="h2">家庭天平</text>
+    <text x="1062" y="630" class="small">看见分布，不贴标签，不审判</text>
+    <line x1="1074" y1="798" x2="1374" y2="798" stroke="#392b00" stroke-width="2"/>
+    <rect x="1092" y="680" width="28" height="118" rx="7" fill="#ffb3b3" stroke="#392b00" stroke-width="2"/>
+    <rect x="1152" y="735" width="28" height="63" rx="7" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <rect x="1212" y="728" width="28" height="70" rx="7" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <rect x="1272" y="705" width="28" height="93" rx="7" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <rect x="1332" y="788" width="28" height="10" rx="5" fill="#ffd86b" stroke="#392b00" stroke-width="2"/>
+    <text x="1080" y="836" class="small">唐宁</text>
+    <text x="1144" y="836" class="small">弟弟</text>
+    <text x="1204" y="836" class="small">丈夫</text>
+    <text x="1268" y="836" class="small">爸爸</text>
+    <text x="1328" y="836" class="small">妈妈</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="32" y="908" width="1376" height="158" rx="8" fill="#fffdf5" stroke="#e9e2d3" stroke-width="2"/>
+    <text x="54" y="947" class="h2">复诊流水线</text>
+    <text x="54" y="972" class="small">一个“大任务”拆成 6 个节点，每个人接一小段</text>
+    <g transform="translate(54 994)">
+      <rect width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="16" y="31" class="h3">[1] 前夜准备 · 丈夫</text>
+      <rect x="210" width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="226" y="31" class="h3">[2] 材料整理 · 丈夫</text>
+      <rect x="420" width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="436" y="31" class="h3">[3] 早晨陪同 · 爸爸</text>
+      <rect x="630" width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="646" y="31" class="h3">[4] 医院全程 · 爸爸</text>
+      <rect x="840" width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="856" y="31" class="h3">[5] 取药记录 · 弟弟</text>
+      <rect x="1050" width="192" height="50" rx="8" fill="#f1f9ef" stroke="#7bc47f" stroke-width="2"/><text x="1066" y="31" class="h3">[6] 报销提交 · 弟弟</text>
+    </g>
+  </g>
+</svg>

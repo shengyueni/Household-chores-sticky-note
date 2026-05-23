@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家务便利贴 | 产品工作台 Demo</title>
+<style>
+:root{--note:#ffd86b;--cream:#fff8ec;--paper:#fffdf5;--rice:#e9e2d3;--ink:#392b00;--muted:#806728;--green:#7bc47f;--mint:#dff3de;--pink:#ffb3b3;--pink2:#ffe3e3;--blue:#d8e9ff;--night:#2f4058;--line:#eadfbd}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(90deg,rgba(255,216,107,.16) 1px,transparent 1px),linear-gradient(0deg,rgba(255,216,107,.12) 1px,transparent 1px),linear-gradient(135deg,#fff8ec,#fff2d8 58%,#fffdf5);background-size:28px 28px,28px 28px,100% 100%}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}.product-sidebar{position:sticky;top:0;height:100vh;padding:16px 14px;border-right:2px solid #dfcf9d;background:#fff9e8;overflow:auto}.brand{display:flex;gap:11px;align-items:center;padding:10px 8px 16px}.mascot{position:relative;width:48px;height:44px;flex:0 0 auto;border:2px solid var(--ink);border-radius:8px 8px 4px 8px;background:#fff3a6;transform:rotate(-4deg);box-shadow:2px 2px 0 var(--ink)}.mascot:before,.mascot:after{content:"";position:absolute;top:16px;width:6px;height:6px;border-radius:50%;background:var(--ink)}.mascot:before{left:13px}.mascot:after{right:13px}.mascot span{position:absolute;left:16px;top:27px;width:15px;height:8px;border-bottom:2px solid var(--ink);border-radius:0 0 20px 20px}.brand h1{margin:0;font-size:22px;line-height:1.05}.brand p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.nav{display:grid;gap:7px}.nav-item{width:100%;min-height:40px;padding:9px 10px;border:1px solid transparent;border-radius:8px;background:transparent;color:#5b470c;text-align:left;font-weight:800}.nav-item:hover{background:#fff3c4}.nav-item.active{border:2px solid var(--ink);background:var(--note);box-shadow:2px 2px 0 var(--ink);color:var(--ink)}.sidebar-footer{display:grid;gap:8px;margin-top:16px;padding-top:14px;border-top:1px dashed #d7c48b}.workspace{min-width:0;padding:18px 22px 28px}.workspace-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;margin-bottom:16px}.crumb{color:var(--muted);font-size:13px;font-weight:800}.workspace h2{margin:6px 0 7px;font-size:clamp(26px,3vw,40px);line-height:1.12}.workspace-desc{margin:0;color:#5c4913;font-size:15px;line-height:1.6}.status-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.badge{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:5px 10px;border:1px solid #dfc977;border-radius:999px;background:#fffdf5;color:#60480a;font-size:12px;font-weight:800}.btn{min-height:38px;padding:9px 13px;border:2px solid var(--ink);border-radius:8px;background:#fffdf5;color:var(--ink);font-weight:800;box-shadow:2px 2px 0 var(--ink);transition:.15s;white-space:nowrap}.btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}.primary{background:var(--mint)}.note{background:var(--note)}.soft{background:var(--cream)}.small{min-height:32px;padding:6px 10px;font-size:12px}.content-section{display:none}.content-section.section-active{display:block}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.panel{border:2px solid var(--rice);border-radius:8px;background:rgba(255,253,245,.95);box-shadow:0 4px 0 rgba(233,226,211,.9),0 12px 26px rgba(57,43,0,.08)}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:1/-1}.hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 11px;border-bottom:2px dashed rgba(255,216,107,.85)}.hd h3{margin:0;font-size:16px}.kicker{color:var(--muted);font-size:12px;line-height:1.45}.body{padding:15px 16px 16px}.callout{padding:14px 16px;border:2px solid var(--ink);border-radius:8px;background:var(--note);box-shadow:3px 3px 0 var(--ink);font-weight:900;line-height:1.65}.sleep-card{background:var(--night);color:#fff4b8;border-color:#ffd86b}.sleep-card .kicker,.sleep-card text{color:#fff4b8}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:12px;border:1px solid var(--line);border-radius:8px;background:#fffaf0}.metric b{display:block;font-size:24px}.metric span{color:var(--muted);font-size:12px}.device{border:3px solid var(--ink);border-radius:8px;background:#2f4058;box-shadow:6px 7px 0 rgba(57,43,0,.22);color:#fff8cf;overflow:hidden}.devtop{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:2px solid rgba(255,248,207,.22);font-size:12px}.screen{padding:16px}.devnote{min-height:104px;padding:12px;border-radius:8px;background:#ffec94;color:var(--ink);transform:rotate(-1.2deg);box-shadow:3px 4px 0 rgba(0,0,0,.22)}.devnote b{display:block;margin-bottom:8px;font-size:16px}.route{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;align-items:center}.chip{padding:6px 9px;border:1px solid rgba(57,43,0,.2);border-radius:999px;background:#fff;color:#5c4608;font-size:12px;font-weight:800}.device .chip{border-color:rgba(255,248,207,.55);background:#3c506c;color:#fff8cf}.chip.on{border-color:var(--note);background:rgba(255,216,107,.22)}.capture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.capbtn{min-height:86px;padding:12px;border:2px solid #ead79c;border-radius:8px;background:#fff;color:var(--ink);text-align:left}.capbtn:hover{background:var(--cream);border-color:var(--note)}.capbtn strong{display:block;margin-bottom:6px;font-size:15px}.capbtn span{display:block;color:var(--muted);font-size:12px;line-height:1.45}textarea{width:100%;min-height:90px;resize:vertical;padding:11px 12px;border:2px solid var(--rice);border-radius:8px;background:#fff;color:var(--ink);line-height:1.6}.agents,.list{display:grid;gap:8px}.agent,.list-item{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fffaf0;font-size:12px}.dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(123,196,127,.18)}.walltools{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.wall{display:grid;grid-template-columns:repeat(3,minmax(160px,1fr));gap:14px;min-height:260px}.sticky{position:relative;min-height:178px;padding:14px 13px 12px;border:2px solid rgba(57,43,0,.8);border-radius:8px;background:#ffe98f;box-shadow:3px 5px 0 rgba(57,43,0,.18);transform:rotate(var(--rot));display:flex;flex-direction:column;gap:9px}.sticky.done{background:var(--mint)}.sticky.focus{background:var(--pink2)}.sticky.route-note{background:var(--blue)}.stitle{font-weight:900;line-height:1.35}.meta{color:#684f08;font-size:12px;line-height:1.55}.memory{margin-top:auto;padding:8px 9px;border-radius:8px;background:rgba(255,255,255,.68);color:#5a460d;font-size:12px;line-height:1.45}.pill{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border:1px solid rgba(57,43,0,.2);border-radius:999px;background:rgba(255,255,255,.74);color:#5c4608;font-size:12px;font-weight:700}.empty{grid-column:1/-1;display:grid;place-items:center;min-height:220px;border:2px dashed #ddca91;border-radius:8px;color:var(--muted);text-align:center;line-height:1.7}.bars{display:grid;grid-template-columns:repeat(5,minmax(44px,1fr));gap:8px;height:260px;padding:16px 10px 8px;align-items:end;border:1px dashed #d8c58c;border-radius:8px;background:linear-gradient(0deg,rgba(233,226,211,.65) 1px,transparent 1px),#fffaf0;background-size:100% 46px}.person{display:grid;justify-items:center;align-items:end;gap:7px;min-width:0}.barwrap{display:grid;align-items:end;width:32px;height:150px}.bar{width:100%;min-height:8px;border:2px solid var(--ink);border-bottom:0;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#fff1a8,var(--note));transition:.45s}.person.tangning .bar{background:linear-gradient(180deg,var(--pink2),var(--pink))}.avatar{width:50px;height:50px;border:2px solid var(--ink);border-radius:50%;background:#ffe9a2;position:relative;box-shadow:2px 2px 0 var(--ink)}.avatar:before,.avatar:after{content:"";position:absolute;top:18px;width:5px;height:5px;border-radius:50%;background:var(--ink)}.avatar:before{left:15px}.avatar:after{right:15px}.avatar span{position:absolute;left:14px;top:29px;width:20px;height:8px;border-bottom:2px solid var(--ink);border-radius:0 0 20px 20px}.sleepface{background:var(--pink2)}.sleepface:before,.sleepface:after{width:9px;height:2px;border-radius:0;top:20px}.pname{font-size:12px;font-weight:900;white-space:nowrap}.score{color:var(--muted);font-size:12px}.meter{margin-top:14px;padding:12px;border:2px solid rgba(255,216,107,.75);border-radius:8px;background:var(--cream)}.mline{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px}.track{height:16px;border:1px solid #c8b57e;border-radius:999px;background:var(--rice);overflow:hidden}.fill{width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--note),var(--pink));transition:.45s}.ledger{display:grid;gap:8px;margin-top:13px}.ledger div{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fffaf0;color:#5f4b12;font-size:12px}.pipeline{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px}.node{min-height:132px;padding:12px;border:2px dashed #d9bd67;border-radius:8px;background:#fffaf0;display:grid;align-content:start;gap:9px}.node.claimed{border-style:solid;border-color:var(--green);background:#f1f9ef}.node strong{line-height:1.35;font-size:13px}.node small{color:var(--muted);line-height:1.45}.owner{align-self:end;width:max-content;max-width:100%;padding:5px 8px;border-radius:999px;background:var(--note);font-size:12px;font-weight:900}.log{max-height:360px;overflow:auto;display:grid;gap:8px}.logitem{padding:9px 10px;border-left:4px solid var(--note);border-radius:8px;background:#fffaf0;color:#58440d;font-size:13px;line-height:1.5}.time{display:inline-block;margin-right:8px;color:#9a8350;font-variant-numeric:tabular-nums;font-weight:800}.review{display:grid;gap:10px;line-height:1.7;color:#5c4913}.demo-card{display:grid;gap:10px}.progress{height:12px;border:1px solid #d2bc80;border-radius:999px;background:#f1e7cd;overflow:hidden}.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--note));transition:.35s}.caption{color:var(--muted);font-size:13px}.modalbg{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:20px;background:rgba(57,43,0,.48)}.modalbg.show{display:grid}.modal{width:min(520px,100%);border:3px solid var(--ink);border-radius:8px;background:var(--paper);box-shadow:7px 8px 0 rgba(57,43,0,.24)}.modal header{padding:15px 16px 11px;border-bottom:2px dashed var(--note)}.modal h3{margin:0;font-size:18px}.mbody{padding:15px 16px 16px}.field{display:grid;gap:6px;margin-bottom:12px}.field label{color:var(--muted);font-size:12px;font-weight:800}.field input,.field select{width:100%;min-height:38px;padding:8px 10px;border:2px solid var(--rice);border-radius:8px;background:#fff;color:var(--ink)}.mactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:14px}.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:1180px){.workspace-header{grid-template-columns:1fr}.status-row{justify-content:flex-start}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:1/-1}.pipeline{grid-template-columns:repeat(3,minmax(150px,1fr))}.wall{grid-template-columns:repeat(2,minmax(150px,1fr))}}@media(max-width:720px){.shell{grid-template-columns:1fr}.product-sidebar{position:relative;height:auto;border-right:0;border-bottom:2px solid #dfcf9d}.workspace{padding:14px 12px 24px}.nav,.capture,.wall,.pipeline,.metric-grid{grid-template-columns:1fr}.bars{overflow-x:auto;grid-template-columns:repeat(5,70px)}}
+.upload-zone{display:grid;gap:8px;margin-top:14px;padding:12px;border:2px dashed #ddca91;border-radius:8px;background:#fffaf0;color:#5f4b12;font-size:13px;line-height:1.55}.upload-zone b{font-size:15px}.upload-preview{max-width:100%;max-height:190px;border:2px solid var(--rice);border-radius:8px;background:#fff;object-fit:contain}.recognized-text{width:100%;min-height:90px;margin-top:0}.capture-actions{display:flex;gap:8px;flex-wrap:wrap}.recording{border-color:var(--pink)!important;background:var(--pink2)!important}
+.protocol-person{width:100%;text-align:left;cursor:grab}.protocol-person:active{cursor:grabbing}.protocol-person.dragging{opacity:.58}.protocol-person b{display:block}.protocol-person small{color:var(--muted);line-height:1.35}.handle{font-size:18px;font-weight:900;color:#9a7300}
+
+/* Pixel town skin: visual-only overrides. Layout and interaction hooks stay unchanged. */
+:root{
+  --note:#ffd86b;
+  --cream:#fff7d8;
+  --paper:#fffbe9;
+  --rice:#e7d39b;
+  --ink:#4f3518;
+  --muted:#7f6337;
+  --green:#79c86f;
+  --mint:#d9f2c9;
+  --pink:#ffb6c4;
+  --pink2:#ffe1e9;
+  --blue:#9fd5ff;
+  --sky:#c8ecff;
+  --wood:#b77b43;
+  --wood-dark:#7a4c28;
+  --grass:#8fcd65;
+  --night:#34435f;
+  --line:#d7b777;
+  --pixel:3px;
+  --shadow:#6d4825;
+  --ui-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+
+*{image-rendering:pixelated}
+body{
+  color:var(--ink);
+  font-family:var(--ui-font);
+  background:
+    linear-gradient(180deg,rgba(200,236,255,.9) 0 30%,transparent 30%),
+    linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(255,255,255,.22) 1px,transparent 1px),
+    linear-gradient(180deg,#fff2b7 0%,#fff8df 52%,#dff3b8 52%,#b9e681 100%);
+  background-size:100% 100%,24px 24px,24px 24px,100% 100%;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 0 16px,rgba(122,76,40,.08) 16px 18px,transparent 18px 48px),
+    linear-gradient(0deg,transparent 0 16px,rgba(122,76,40,.06) 16px 18px,transparent 18px 48px);
+  opacity:.55;
+  z-index:-1;
+}
+
+.product-sidebar{
+  border-right:var(--pixel) solid var(--wood-dark);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(80,44,18,.12) 1px,transparent 1px),
+    linear-gradient(180deg,#ffd987,#f7c772);
+  background-size:14px 14px,14px 14px,100% 100%;
+  box-shadow:6px 0 0 rgba(122,76,40,.18);
+}
+.brand{
+  margin-bottom:8px;
+  border:var(--pixel) solid var(--wood-dark);
+  background:#fff4bc;
+  box-shadow:4px 4px 0 var(--shadow);
+}
+.brand h1,.workspace h2,.hd h3{
+  letter-spacing:0;
+  text-shadow:1px 1px 0 rgba(255,255,255,.65);
+}
+.mascot{
+  border:var(--pixel) solid var(--ink);
+  border-radius:0;
+  background:var(--note);
+  box-shadow:4px 4px 0 var(--shadow);
+}
+.mascot:before,.mascot:after,.avatar:before,.avatar:after{border-radius:0}
+.mascot span,.avatar span{border-radius:0}
+
+.nav{gap:9px}
+.nav-item,.btn,.capbtn,.chip,.pill,.badge,.owner,.field input,.field select,textarea{
+  border-radius:0;
+}
+.nav-item{
+  position:relative;
+  min-height:42px;
+  padding-left:34px;
+  border:var(--pixel) solid var(--wood-dark);
+  background:#fff2b3;
+  color:var(--ink);
+  box-shadow:3px 3px 0 rgba(122,76,40,.5);
+}
+.nav-item:before{
+  content:"▣";
+  position:absolute;
+  left:11px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--green);
+  text-shadow:1px 1px 0 #fff;
+}
+.nav-item:hover{
+  transform:translate(-1px,-1px);
+  background:#ffe58d;
+  box-shadow:5px 5px 0 rgba(122,76,40,.55);
+}
+.nav-item.active{
+  background:var(--note);
+  border:var(--pixel) solid var(--ink);
+  box-shadow:5px 5px 0 var(--shadow);
+}
+.sidebar-footer{
+  border-top:var(--pixel) dotted rgba(122,76,40,.6);
+}
+
+.workspace{
+  background:
+    radial-gradient(circle at 24px 24px,rgba(255,255,255,.5) 0 3px,transparent 4px),
+    linear-gradient(180deg,rgba(255,251,233,.45),rgba(255,247,216,.18));
+  background-size:48px 48px,100% 100%;
+}
+.workspace-header{
+  padding:13px 14px;
+  border:var(--pixel) solid var(--wood-dark);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.13) 1px,transparent 1px),
+    linear-gradient(180deg,#ffc77b,#eaa25d);
+  background-size:16px 16px,16px 16px,100% 100%;
+  box-shadow:5px 5px 0 var(--shadow);
+}
+.crumb{
+  color:#fffbe9;
+  text-shadow:2px 2px 0 var(--wood-dark);
+  display:none;
+}
+.workspace h2{
+  color:#fffbe9;
+  text-shadow:3px 3px 0 var(--wood-dark);
+}
+.workspace-desc{
+  color:#5b371a;
+  font-weight:800;
+}
+.badge{
+  border:var(--pixel) solid var(--wood-dark);
+  background:#fff9d6;
+  color:var(--ink);
+  box-shadow:3px 3px 0 rgba(122,76,40,.45);
+}
+.badge:before{content:"◆";color:var(--green)}
+
+.panel,.modal{
+  border:var(--pixel) solid var(--wood-dark);
+  border-radius:0;
+  background:
+    linear-gradient(90deg,rgba(122,76,40,.05) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.05) 1px,transparent 1px),
+    var(--paper);
+  background-size:12px 12px,12px 12px,100% 100%;
+  box-shadow:6px 6px 0 var(--shadow),10px 10px 0 rgba(122,76,40,.16);
+}
+.hd{
+  border-bottom:var(--pixel) solid var(--wood-dark);
+  background:#ffe39b;
+}
+.hd h3:before{
+  content:"✦ ";
+  color:var(--green);
+  text-shadow:1px 1px 0 #fff;
+}
+.body{background:rgba(255,251,233,.62)}
+.kicker,.caption,.score,.meta,.field label{color:var(--muted)}
+
+.btn{
+  border:var(--pixel) solid var(--ink);
+  background:#fff2b3;
+  color:var(--ink);
+  box-shadow:4px 4px 0 var(--shadow);
+  transition:transform .08s steps(1),box-shadow .08s steps(1),background .08s steps(1);
+}
+.btn:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 var(--shadow);
+}
+.btn:active{
+  transform:translate(2px,2px);
+  box-shadow:2px 2px 0 var(--shadow);
+}
+.primary{background:#b7e88d}
+.note{background:var(--note)}
+.soft{background:#fffbe9}
+.recording{border-color:var(--ink)!important;background:var(--pink)!important}
+
+.callout{
+  border:var(--pixel) solid var(--ink);
+  border-radius:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.1) 1px,transparent 1px),
+    var(--note);
+  background-size:10px 10px,10px 10px,100% 100%;
+  box-shadow:5px 5px 0 var(--shadow);
+}
+.sleep-card{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(255,255,255,.05) 1px,transparent 1px),
+    #00509D;
+  background-size:14px 14px,14px 14px,100% 100%;
+  color:#fff7b8;
+  border-color:#003f7c;
+}
+.sleep-card .hd{
+  background:#00509D;
+  border-bottom-color:#003f7c;
+}
+.sleep-card .metric{
+  background:#fff7bd;
+  color:var(--ink);
+}
+.sleep-family{
+  display:block;
+  width:min(100%,360px);
+  margin:14px auto 0;
+  object-fit:contain;
+  image-rendering:auto;
+  filter:drop-shadow(4px 4px 0 rgba(0,0,0,.22));
+}
+.today-tip-panel,
+.today-sleep-card{
+  display:flex;
+  flex-direction:column;
+}
+.today-tip-panel>.body,
+.today-sleep-card>.body{
+  flex:1;
+}
+.today-tip-panel>.body{
+  display:flex;
+  flex-direction:column;
+}
+.today-tip-panel .device{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:220px;
+}
+.today-tip-panel .screen{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.today-tip-panel .devnote{
+  flex:1;
+}
+
+.metric,.agent,.list-item,.ledger div,.upload-zone,.logitem,.node,.empty,.meter{
+  border:var(--pixel) solid var(--line);
+  border-radius:0;
+  background:#fff8d9;
+  box-shadow:3px 3px 0 rgba(122,76,40,.2);
+}
+.metric b{
+  color:#4d8f40;
+  font-variant-numeric:tabular-nums;
+  text-shadow:1px 1px 0 #fff;
+}
+.metric span:before{content:"◈ ";color:var(--blue)}
+
+.device{
+  border:var(--pixel) solid #003f7c;
+  border-radius:0;
+  background:#00509D;
+  box-shadow:7px 7px 0 var(--shadow);
+}
+.devtop{
+  background:#00509D;
+  border-bottom:var(--pixel) solid #003f7c;
+}
+.devnote{
+  border:var(--pixel) solid var(--ink);
+  border-radius:0;
+  background:var(--note);
+  box-shadow:5px 5px 0 rgba(0,0,0,.28);
+}
+
+.capture{gap:12px}
+.capbtn{
+  position:relative;
+  padding-left:52px;
+  border:var(--pixel) solid var(--wood-dark);
+  background:#fff8d9;
+  box-shadow:4px 4px 0 rgba(122,76,40,.42);
+  transition:transform .08s steps(1),box-shadow .08s steps(1),background .08s steps(1);
+}
+.capbtn:before{
+  position:absolute;
+  left:14px;
+  top:14px;
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border:var(--pixel) solid var(--ink);
+  background:var(--sky);
+  box-shadow:3px 3px 0 rgba(122,76,40,.35);
+  font-size:15px;
+}
+.capbtn[data-cap="voice"]:before{content:"♪"}
+.capbtn[data-cap="chat"]:before{content:"□"}
+.capbtn[data-cap="video"]:before{content:"▶"}
+.capbtn[data-cap="ocr"]:before{content:"文"}
+.capbtn:hover{
+  transform:translate(-2px,-2px);
+  background:#ffefad;
+  border-color:var(--ink);
+  box-shadow:6px 6px 0 rgba(122,76,40,.48);
+}
+
+textarea,.field input,.field select{
+  border:var(--pixel) solid var(--wood-dark);
+  background:#fffdf0;
+  box-shadow:inset 3px 3px 0 rgba(122,76,40,.12);
+}
+.upload-preview{
+  border:var(--pixel) solid var(--wood-dark);
+  border-radius:0;
+  background:#fffdf0;
+}
+
+.chip,.pill,.owner{
+  border:2px solid var(--wood-dark);
+  background:#fff0aa;
+  color:var(--ink);
+  box-shadow:2px 2px 0 rgba(122,76,40,.22);
+}
+.chip.on,.node.claimed .owner{
+  background:#b7e88d;
+}
+.dot{
+  width:14px;
+  height:14px;
+  border:2px solid var(--ink);
+  border-radius:0;
+  background:var(--green);
+  box-shadow:2px 2px 0 rgba(122,76,40,.35);
+}
+
+.wall{
+  padding:8px;
+  border:var(--pixel) solid var(--wood-dark);
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(80,44,18,.12) 1px,transparent 1px),
+    linear-gradient(180deg,#c89556,#ab7139);
+  background-size:18px 18px,18px 18px,100% 100%;
+}
+.sticky{
+  border:var(--pixel) solid var(--ink);
+  border-radius:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.1) 1px,transparent 1px),
+    #ffe474;
+  background-size:10px 10px,10px 10px,100% 100%;
+  box-shadow:5px 5px 0 rgba(79,53,24,.72);
+}
+.sticky:before{
+  content:"";
+  position:absolute;
+  top:7px;
+  left:50%;
+  width:34px;
+  height:8px;
+  transform:translateX(-50%);
+  border:2px solid rgba(79,53,24,.55);
+  background:#fff5bd;
+}
+.sticky.done{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.08) 1px,transparent 1px),
+    var(--mint);
+}
+.sticky.done .stitle:before{content:"✓ ";color:#4d8f40}
+.sticky.focus{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.08) 1px,transparent 1px),
+    var(--pink2);
+}
+.sticky.route-note{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(122,76,40,.08) 1px,transparent 1px),
+    #d7efff;
+}
+.memory{
+  border:2px solid rgba(122,76,40,.25);
+  border-radius:0;
+  background:rgba(255,253,240,.78);
+}
+
+.bars{
+  border:var(--pixel) solid var(--wood-dark);
+  border-radius:0;
+  background:
+    linear-gradient(0deg,rgba(122,76,40,.18) 2px,transparent 2px),
+    linear-gradient(180deg,#dff7ff,#f5ffe1);
+  background-size:100% 42px,100% 100%;
+  box-shadow:inset 0 -12px 0 rgba(143,205,101,.35);
+}
+.barwrap{
+  width:34px;
+  border-left:2px solid rgba(122,76,40,.18);
+  border-right:2px solid rgba(122,76,40,.18);
+}
+.bar{
+  border:var(--pixel) solid var(--ink);
+  border-bottom:0;
+  border-radius:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.24) 0 35%,transparent 35%),
+    var(--note);
+  box-shadow:3px 0 0 rgba(122,76,40,.25);
+}
+.person.tangning .bar{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.24) 0 35%,transparent 35%),
+    var(--pink);
+}
+.avatar{
+  border:var(--pixel) solid var(--ink);
+  border-radius:0;
+  background:#ffdca5;
+  box-shadow:4px 4px 0 var(--shadow);
+}
+.avatar.photo{
+  background:#fff8d9;
+  overflow:hidden;
+}
+.avatar.photo:before,
+.avatar.photo:after,
+.avatar.photo span{
+  display:none;
+}
+.avatar.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  image-rendering:auto;
+}
+.sleepface{background:#ffd7e3}
+.pname{
+  color:var(--ink);
+  text-shadow:1px 1px 0 #fff8d9;
+}
+.track,.progress{
+  height:18px;
+  border:var(--pixel) solid var(--wood-dark);
+  border-radius:0;
+  background:#d4bc76;
+}
+.fill,.progress span{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.25) 0 25%,transparent 25% 50%,rgba(255,255,255,.16) 50% 75%,transparent 75%),
+    linear-gradient(90deg,var(--green),var(--note),var(--pink));
+  background-size:16px 100%,100% 100%;
+}
+
+.pipeline{
+  gap:12px;
+}
+.node{
+  border-style:solid;
+  background:#fff4c2;
+}
+.node:before{
+  content:"";
+  width:18px;
+  height:18px;
+  border:var(--pixel) solid var(--ink);
+  background:var(--sky);
+  box-shadow:3px 3px 0 rgba(122,76,40,.3);
+}
+.node.claimed{
+  border-color:#4d8f40;
+  background:#e0f7c5;
+}
+.logitem{
+  border-left:var(--pixel) solid var(--green);
+}
+.time{
+  color:#4d8f40;
+}
+
+.modalbg{
+  background:rgba(79,53,24,.52);
+}
+.modal header{
+  border-bottom:var(--pixel) solid var(--wood-dark);
+  background:#ffe39b;
+}
+.empty{
+  border-style:dashed;
+  background:#fff7d1;
+  min-width:0;
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+
+@media(max-width:720px){
+  .product-sidebar{
+    border-right:0;
+    border-bottom:var(--pixel) solid var(--wood-dark);
+  }
+  .workspace-header,.panel,.modal{
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+  .nav-item,.btn,.capbtn{
+    box-shadow:3px 3px 0 var(--shadow);
+  }
+  .capbtn{padding-left:48px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="product-sidebar">
+    <div class="brand"><div class="mascot" aria-hidden="true"><span></span></div><div><h1>家务便利贴</h1><p>家庭分工工作台</p></div></div>
+    <nav class="nav" aria-label="产品功能菜单">
+      <button class="nav-item active" data-target="today">今日工作台</button>
+      <button class="nav-item" data-target="capture">录入便利贴</button>
+      <button class="nav-item" data-target="wall">便利贴墙</button>
+      <button class="nav-item" data-target="protocol">便利贴委员会</button>
+      <button class="nav-item" data-target="balance">家庭天平</button>
+      <button class="nav-item" data-target="care">照护项目</button>
+      <button class="nav-item" data-target="sleep">睡眠护栏</button>
+      <button class="nav-item" data-target="memory">记忆与空间</button>
+      <button class="nav-item" data-target="demo">路演控制台</button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn primary" id="demoBtn">走一遍路演</button>
+      <button class="btn note" id="seedBtn">灌 demo 数据</button>
+      <button class="btn soft" id="voiceBtn">贴贴播报 关</button>
+      <button class="btn soft" id="resetBtn">重置</button>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <header class="workspace-header">
+      <div><div class="crumb">家务便利贴 / <span id="currentCrumb">今日工作台</span></div><h2 id="pageTitle">今日工作台</h2><p class="workspace-desc" id="pageDesc">一天一天贴出全家的心愿，我们开心，我们关心。</p></div>
+      <div class="status-row"><span class="badge">睡眠护栏 23:00-07:00</span><span class="badge" id="summaryTasks">0 张便利贴</span><span class="badge" id="summaryGini">天平 --</span></div>
+    </header>
+
+    <section class="content-section section-active" data-section="today" data-title="今日工作台" data-desc="一天一天贴出全家的心愿，我们开心，我们关心。">
+      <div class="grid">
+        <div class="panel span-7 today-tip-panel"><div class="hd"><div><h3>贴贴温馨提示</h3><div class="kicker"></div></div><button class="btn small note" data-sample="meds">贴一张药品便利贴</button></div><div class="body"><div class="callout" id="nextCard">唐母（林女士）说“降压药快见底了”。贴贴建议先传给唐小鸭（唐弟），周勉（丈夫）作为下一棒。</div><div class="device" style="margin-top:16px"><div class="devtop"><span>Seeed 单屏 · 客厅常驻</span><span>睡眠护栏中</span></div><div class="screen"><div class="devnote"><b id="devTitle">唐母（林女士）降压药快见底了</b><span id="devMeta">推荐：唐小鸭（唐弟） · ETA 明早 9 点前 · memAura 找到上次购药记录</span></div><div class="route" id="route"></div></div></div></div></div>
+        <div class="panel span-5 sleep-card today-sleep-card"><div class="hd"><div><h3>睡眠护栏</h3><div class="kicker">唐宁端静默，事情进入明早队列</div></div></div><div class="body"><div class="metric-grid"><div class="metric"><b>0</b><span>夜间推给唐宁</span></div><div class="metric"><b>3</b><span>接棒候选人</span></div><div class="metric"><b>7:00</b><span>明早统一提醒</span></div></div><img class="sleep-family" src="assets/family-team.png" alt="贴贴和家人站在一起"></div></div>
+        <div class="panel span-6"><div class="hd"><div><h3>今日未揭便利贴</h3><div class="kicker">待揭、已揭、传贴都在这里看</div></div></div><div class="body"><div class="wall" id="todayWall"></div></div></div>
+        <div class="panel span-6"><div class="hd"><div><h3>家庭天平摘要</h3><div class="kicker">不审判，只看见分布</div></div></div><div class="body"><div class="bars" id="todayBars"></div></div></div>
+      </div>
+    </section>
+
+    <section class="content-section" data-section="capture" data-title="录入便利贴" data-desc="把语音、群截图、视频和 OCR 直接变成可追踪便利贴。">
+      <div class="grid"><div class="panel span-7"><div class="hd"><div><h3>录入入口</h3><div class="kicker">累的人不用再打字整理</div></div></div><div class="body"><div class="capture"><button class="capbtn" data-cap="voice" id="voiceCaptureBtn"><strong>语音口述</strong><span>点击后开始听写，转成文字再生成便利贴</span></button><button class="capbtn" data-cap="chat"><strong>群截图</strong><span>上传聊天群截图，贴贴识别其中需要接住的事</span></button><button class="capbtn" data-cap="video"><strong>视频识别</strong><span>上传视频，提取视频里出现的待办线索</span></button><button class="capbtn" data-cap="ocr"><strong>OCR 备忘</strong><span>上传病历、药盒、通知单等图片或 PDF</span></button></div><input class="sr" id="chatUpload" type="file" accept="image/*"><input class="sr" id="videoUpload" type="file" accept="video/*"><input class="sr" id="ocrUpload" type="file" accept="image/*,.pdf"><div class="upload-zone" id="captureResult"><b>等待录入</b><span>选择语音、截图、视频或 OCR 后，识别结果会出现在这里；你可以确认后生成便利贴。</span></div><textarea id="quickText">妈妈降压药快见底了，明早需要有人下单。</textarea><button class="btn note" id="parseBtn">让贴贴解析</button></div></div><div class="panel span-5"><div class="hd"><div><h3>Agent 解析链</h3><div class="kicker">当前 demo 使用本地 mock</div></div></div><div class="body"><div class="agents"><div class="agent"><span class="dot"></span><div><b>HaiSnap VoiceParser</b><br><small>拆成标题、类型、推荐接棒人</small></div><span>mock</span></div><div class="agent"><span class="dot"></span><div><b>memAura</b><br><small>注入上次购药、复诊、报销上下文</small></div><span>mock</span></div><div class="agent"><span class="dot"></span><div><b>XGRIDS</b><br><small>用家庭路径和距离推荐谁顺路</small></div><span>mock</span></div></div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="wall" data-title="便利贴墙" data-desc="管理全部便利贴：待揭、传贴、完成，以及每张贴的上下文。">
+      <div class="grid"><div class="panel span-12"><div class="hd"><div><h3>全部便利贴</h3><div class="kicker" id="wallSummary">0 张便利贴</div></div><div class="walltools"><button class="btn small" data-sample="meds">药品</button><button class="btn small" data-sample="hospital">复诊</button><button class="btn small" data-sample="gas">燃气</button></div></div><div class="body"><div class="wall" id="taskWall"></div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="protocol" data-title="便利贴委员会" data-desc="管理传贴优先级、未响应规则，以及每日复盘和心愿池。">
+      <div class="grid"><div class="panel span-7"><div class="hd"><div><h3>当前传贴链路</h3><div class="kicker">唐小鸭（唐弟） → 周勉（丈夫） → 唐宁</div></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge" id="protocolUpdatedAt">上次修改：尚未修改</span><button class="btn small note" id="updateProtocolBtn">更新协议</button></div></div><div class="body"><div class="route" id="batonRoute"></div><div class="callout" style="margin-top:16px" id="batonReason">memAura 找到上次购药记录；XGRIDS 发现唐小鸭（唐弟）明早会经过药盒。</div></div></div><div class="panel span-5"><div class="hd"><div><h3>未响应规则</h3><div class="kicker">温柔传贴，不公开羞辱</div></div></div><div class="body"><div class="list"><div class="list-item"><span class="dot"></span><div>唐小鸭（唐弟）工作忙，无法揭贴</div><b>传给周勉（丈夫）</b></div><div class="list-item"><span class="dot"></span><div>周勉（丈夫）也无法接住</div><b>最后通知唐宁</b></div><div class="list-item"><span class="dot"></span><div>仍无人处理</div><b>进入明早队列</b></div></div></div></div><div class="panel span-6"><div class="hd"><div><h3>今日复盘卡</h3><div class="kicker">不打卡，只做减法确认</div></div><button class="btn small" id="reviewBtn">生成复盘</button></div><div class="body review" id="review"><div class="callout">她今晚能睡了。</div><div>家务便利贴不奖励“谁做最多”，只奖励“谁让家里更平衡”。</div></div></div><div class="panel span-6"><div class="hd"><div><h3>心愿池</h3><div class="kicker">奖励改善分布的人</div></div></div><div class="body"><div class="callout">本月让家里更平衡的人，获得一次家庭决策权。</div><div class="list" id="wishPool" style="margin-top:12px"></div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="balance" data-title="家庭天平" data-desc="把观察、协调、执行和兜底都记进小账本，看见分布是否倾斜。">
+      <div class="grid"><div class="panel span-8"><div class="hd"><div><h3>负担分布</h3><div class="kicker">唐宁被保护，但不是被排除</div></div></div><div class="body"><div class="bars" id="bars"></div><div class="meter"><div class="mline"><b>家里的天平</b><span id="gini">--</span></div><div class="track"><div class="fill" id="fill"></div></div></div></div></div><div class="panel span-4"><div class="hd"><div><h3>小账本</h3><div class="kicker">观察 +1 / 协调 +2 / 执行 +3 / 兜底 +5</div></div></div><div class="body"><div class="ledger" id="ledger"></div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="care" data-title="照护项目" data-desc="把复诊、买药、报销、燃气物业等长期事项拆成可接的小段。">
+      <div class="grid"><div class="panel span-12"><div class="hd"><div><h3>复诊流水线</h3><div class="kicker">一个“大任务”拆成 6 个节点，每个人接一小段</div></div><button class="btn small note" id="assignBtn">让贴贴自动分</button></div><div class="body"><div class="pipeline" id="pipeline"></div></div></div><div class="panel span-4"><div class="body"><div class="callout">买药续购</div></div></div><div class="panel span-4"><div class="body"><div class="callout">报销与票据</div></div></div><div class="panel span-4"><div class="body"><div class="callout">燃气 / 物业 / 周期事项</div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="sleep" data-title="睡眠护栏" data-desc="保护主照护者的夜间休息，把非紧急事项路由给其他人或明早队列。">
+      <div class="grid"><div class="panel span-6 sleep-card"><div class="hd"><div><h3>唐宁静默窗口</h3><div class="kicker">23:00-07:00</div></div></div><div class="body"><div class="callout">夜里了，这件事让明天的人接住。</div></div></div><div class="panel span-6"><div class="hd"><div><h3>夜间路由优先级</h3><div class="kicker">不让唐宁默认兜底</div></div></div><div class="body"><div class="list"><div class="list-item"><span class="dot"></span><div>第一棒</div><b>唐小鸭（唐弟）</b></div><div class="list-item"><span class="dot"></span><div>第二棒</div><b>周勉（丈夫）</b></div><div class="list-item"><span class="dot"></span><div>最后通知</div><b>唐宁</b></div></div></div></div></div>
+    </section>
+
+
+    <section class="content-section" data-section="memory" data-title="记忆与空间" data-desc="展示 memAura、XGRIDS 和 HaiSnap 如何让便利贴更聪明。">
+      <div class="grid"><div class="panel span-4"><div class="hd"><div><h3>memAura</h3><div class="kicker">长期记忆</div></div></div><div class="body"><div class="callout">上次购药、复诊材料、报销账户都会被贴贴记住。</div></div></div><div class="panel span-4"><div class="hd"><div><h3>XGRIDS</h3><div class="kicker">家庭空间路径</div></div></div><div class="body"><div class="callout">谁顺路、谁离药盒近、谁白天方便，都能参与推荐。</div></div></div><div class="panel span-4"><div class="hd"><div><h3>HaiSnap Agent</h3><div class="kicker">多模态解析</div></div></div><div class="body"><div class="callout">语音、图片、视频和聊天记录都能变成结构化便利贴。</div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="demo" data-title="路演控制台" data-desc="保留黑客松演示能力，但不打扰真实产品导航。">
+      <div class="grid"><div class="panel span-6"><div class="hd"><div><h3>演示进度</h3><div class="kicker">可自动跑，也可一步步讲</div></div></div><div class="body demo-card"><div class="progress"><span id="progress"></span></div><div class="caption" id="caption">准备好了。按“走一遍路演”，30 秒看完整条产品链。</div><div><button class="btn small" id="nextBtn">下一步</button></div></div></div><div class="panel span-6"><div class="hd"><div><h3>事件流</h3><div class="kicker">现场可以边点边讲</div></div></div><div class="body"><div class="log" id="log"></div></div></div></div>
+    </section>
+  </main>
+</div>
+
+<div class="modalbg" id="modal"><div class="modal"><header><h3>贴一张便利贴</h3></header><div class="mbody"><div class="field"><label for="taskTitle">事情</label><input id="taskTitle"></div><div class="field"><label for="taskSource">来源</label><select id="taskSource"><option>语音</option><option>群截图</option><option>视频</option><option>OCR</option><option>手动</option></select></div><div class="field"><label for="taskType">劳动类型</label><select id="taskType"><option>观察</option><option>协调</option><option selected>执行</option><option>兜底</option></select></div><div class="field"><label for="taskNoticeBy">谁发现的</label><select id="taskNoticeBy"><option value="mom">唐母（林女士）</option><option value="tangning">唐宁</option><option value="brother">唐小鸭（唐弟）</option><option value="husband">周勉（丈夫）</option></select></div><div class="mactions"><button class="btn soft" id="closeBtn">取消</button><button class="btn note" id="saveBtn">贴上</button></div></div></div></div>
+<div class="modalbg" id="protocolModal"><div class="modal"><header><h3>更新传贴协议</h3></header><div class="mbody"><div class="kicker" style="margin-bottom:10px">拖拽下面的名字调整顺序，排在前面的人会先收到新便利贴。</div><div class="list" id="protocolOrder"></div><div class="mactions"><button class="btn soft" id="closeProtocolBtn">取消</button><button class="btn note" id="saveProtocolBtn">保存协议</button></div></div></div></div>
+<div class="modalbg" id="wishModal"><div class="modal"><header><h3>修改心愿</h3></header><div class="mbody"><div class="field"><label for="wishPerson">家人</label><input id="wishPerson" readonly></div><div class="field"><label for="wishText">心愿</label><textarea id="wishText"></textarea></div><div class="mactions"><button class="btn soft" id="closeWishBtn">取消</button><button class="btn note" id="saveWishBtn">保存心愿</button></div></div></div></div>
+
+<script>
+const weights={观察:1,协调:2,执行:3,兜底:5};
+const people=[{id:"tangning",name:"唐宁",role:"主照护者",score:18,sleep:true},{id:"brother",name:"唐小鸭（唐弟）",role:"首选接棒",score:6},{id:"husband",name:"周勉（丈夫）",role:"夜间共担",score:7},{id:"mom",name:"唐母（林女士）",role:"被照护者",score:1}];
+const samples={meds:{title:"唐母（林女士）降压药快见底了",source:"群截图",type:"执行",noticeBy:"mom",eta:"明早 9 点前",memory:"memAura：上次是唐小鸭（唐弟）在京东到家买的同款。",route:["brother","husband","tangning"],xgrids:"XGRIDS：唐小鸭（唐弟）桌面离客厅屏最近，早晨会经过药盒。"},hospital:{title:"唐母（林女士）周三复诊，空腹提醒",source:"OCR",type:"协调",noticeBy:"tangning",eta:"周二晚 21 点前",memory:"memAura：上次复诊需要医保卡、过敏史、旧报告。",route:["brother","husband","tangning"],xgrids:"XGRIDS：周勉（丈夫）下班后会经过资料柜，唐小鸭（唐弟）公司离医院近。"},gas:{title:"燃气年检通知别忘了",source:"OCR",type:"协调",noticeBy:"tangning",eta:"本周五前约时间",memory:"memAura：去年由周勉（丈夫）联系物业。",route:["brother","husband","tangning"],xgrids:"XGRIDS：周勉（丈夫）晚饭后会在厨房附近整理。"}};
+const nodes=[["前夜准备","空腹提醒、材料打包","husband"],["材料整理","医保卡、病历、报告","husband"],["早晨陪同","7:00 出发","brother"],["医院全程","挂号、问诊、检查","husband"],["取药记录","午休顺路取药","brother"],["报销提交","单据拍照入账","brother"]].map((x,i)=>({id:i+1,name:x[0],detail:x[1],suggest:x[2],owner:null}));
+const wishes=[{id:"tangning",person:"唐宁",text:"周末想有半天不用盯群消息，安静补一觉。"},{id:"brother",person:"唐小鸭（唐弟）",text:"想把下次家庭聚餐定在家附近的小馆子。"},{id:"husband",person:"周勉（丈夫）",text:"想安排一次不用赶路的周日晚饭。"},{id:"mom",person:"林女士（妈妈）",text:"想有人陪她去公园慢慢走一圈。"}];
+const state={tasks:[],logs:[],voice:false,modalPreset:null,demoIndex:0,timer:null,current:"today",protocolRoute:["brother","husband","tangning"],protocolUpdatedAt:"2026/5/1 08:00",draggingProtocolId:null,wishEditingId:null,wishes};
+const $=id=>document.getElementById(id),by=id=>people.find(p=>p.id===id),esc=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"),time=()=>new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
+function switchSection(id){const section=document.querySelector(`[data-section="${id}"]`);if(!section)return;document.querySelectorAll("[data-section]").forEach(s=>s.classList.toggle("section-active",s===section));document.querySelectorAll("[data-target]").forEach(b=>b.classList.toggle("active",b.dataset.target===id));state.current=id;$("currentCrumb").textContent=section.dataset.title;$("pageTitle").textContent=section.dataset.title;$("pageDesc").textContent=section.dataset.desc}
+function log(text){state.logs.unshift({time:time(),text});state.logs=state.logs.slice(0,28);renderLog()}
+function say(text){if(!state.voice||!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=1;u.pitch=1.08;speechSynthesis.speak(u)}
+function routeFor(raw){return[...new Set(state.protocolRoute.concat(raw.route||[]))]}
+function add(raw){const order=routeFor(raw),task={id:"t"+Date.now()+Math.random(),title:raw.title,source:raw.source||"手动",type:raw.type||"执行",noticeBy:raw.noticeBy||"tangning",eta:raw.eta||"今天",owner:raw.owner||order[0],status:"pending",memory:raw.memory||"memAura：这是第一次被记住，之后会自动复用。",xgrids:raw.xgrids||"XGRIDS：按家庭动线推荐离这件事最近的人。",route:order};state.tasks.unshift(task);const observer=by(task.noticeBy);if(observer)observer.score+=1;log(`${observer?observer.name:"有人"} 贴出《${task.title}》，小账本记下 1 分观察。`);log(`贴贴把《${task.title}》先传给 ${by(task.owner).name}。`);device(task);render();return task}
+function device(task){$("devTitle").textContent=task.title;$("devMeta").textContent=`推荐：${by(task.owner).name} · ETA ${task.eta} · ${task.memory.replace("memAura：","")}`;$("nextCard").textContent=`${task.title}。贴贴建议先传给${by(task.owner).name}，下一棒会自动接住。`;$("batonReason").textContent=`${task.memory} ${task.xgrids}`}
+function claim(id,owner){const t=state.tasks.find(x=>x.id===id),p=by(owner);if(!t||!p||t.status==="done")return;t.owner=owner;t.status="done";p.score+=weights[t.type]||3;log(`${p.name} 揭走《${t.title}》，小账本记下 ${weights[t.type]||3} 分${t.type}。`);device(t);render()}
+function transfer(id){const t=state.tasks.find(x=>x.id===id);if(!t||t.status==="done")return;const i=Math.max(0,t.route.indexOf(t.owner));t.owner=t.route[i+1]||t.route[0];log(`《${t.title}》传贴到 ${by(t.owner).name} 桌上。`);device(t);render()}
+function deleteTask(id){const t=state.tasks.find(x=>x.id===id);state.tasks=state.tasks.filter(x=>x.id!==id);if(t)log(`删帖：《${t.title}》已从便利贴墙移除。`);render()}
+function gini(vals){const a=vals.slice().sort((x,y)=>x-y),sum=a.reduce((x,y)=>x+y,0);if(!sum)return 0;let acc=0,n=a.length;a.forEach((v,i)=>acc+=(2*(i+1)-n-1)*v);return acc/(n*sum)}
+function render(){renderWall();renderProtocolTimestamp();renderWishPool();renderBars("bars");renderBars("todayBars");renderPipe();renderReview();$("summaryTasks").textContent=`${state.tasks.length} 张便利贴`;const val=gini(people.map(p=>p.score));$("summaryGini").textContent=`天平 ${val.toFixed(2)}`}
+function renderProtocolTimestamp(){const el=$("protocolUpdatedAt");if(el)el.textContent="上次修改："+state.protocolUpdatedAt;const label=document.querySelector('[data-section="protocol"] .hd .kicker');if(label)label.textContent=state.protocolRoute.map(id=>by(id).name).join(" → ")}
+function renderRouteInto(id,task){const el=$(id);if(!el)return;const route=task?task.route:state.protocolRoute;el.innerHTML=route.map((pid,i)=>`<span class="chip ${task&&task.owner===pid?"on":""}">${esc(by(pid).name)}</span>${i<route.length-1?"<span>→</span>":""}`).join("")}
+function wallHtml(tasks){if(!tasks.length)return'<div class="empty">墙上还没有便利贴。<br>点左侧录入，或者直接灌 demo 数据。</div>';return tasks.map((t,i)=>{const cls=t.status==="done"?"done":t.type==="协调"?"route-note":t.noticeBy==="tangning"?"focus":"";const action=t.status==="done"?`<span class="pill">已经揭走</span><button class="btn small soft" data-delete="${t.id}">删帖</button>`:`<button class="btn small" data-claim="${t.id}">揭贴</button><button class="btn small soft" data-transfer="${t.id}">传贴</button><button class="btn small soft" data-delete="${t.id}">删帖</button>`;return`<article class="sticky ${cls}" style="--rot:${((i%5)-2)*1.2}deg"><div class="stitle">${esc(t.title)}</div><div class="meta"><span class="pill">${esc(t.source)}</span> <span class="pill">${esc(t.type)}</span> <span class="pill">给 ${esc(by(t.owner).name)}</span></div><div class="memory">${esc(t.memory)}<br>${esc(t.xgrids)}</div><div>${action}</div></article>`}).join("")}
+function renderWall(){const done=state.tasks.filter(t=>t.status==="done").length;$("wallSummary").textContent=`${state.tasks.length} 张便利贴 · ${done} 张已揭`;$("taskWall").innerHTML=wallHtml(state.tasks);$("todayWall").innerHTML=wallHtml(state.tasks.filter(t=>t.status!=="done").slice(0,2));renderRouteInto("route",state.tasks[0]);renderRouteInto("batonRoute")}
+function renderBars(target){const max=Math.max(...people.map(p=>p.score),1);$(target).innerHTML=people.map(p=>{const avatar=p.id==="tangning"?'<div class="avatar photo"><img src="assets/tangning-avatar.png" alt="唐宁头像"></div>':`<div class="avatar ${p.sleep?"sleepface":""}"><span></span></div>`;return`<div class="person ${p.id==="tangning"?"tangning":""}"><div class="barwrap"><div class="bar" style="height:${Math.max(8,Math.round(p.score/max*145))}px"></div></div>${avatar}<div class="pname">${esc(p.name)}</div><div class="score">${p.score} 分</div></div>`}).join("");const val=gini(people.map(p=>p.score));$("gini").textContent=val.toFixed(2)+(val<.32?" · 稳了一点":" · 还在倾斜");$("fill").style.width=Math.min(100,Math.round(val*100))+"%";$("ledger").innerHTML=people.slice().sort((a,b)=>b.score-a.score).slice(0,3).map(p=>`<div><span>${esc(p.name)} · ${esc(p.role)}</span><b>${p.score} 分</b></div>`).join("")}
+function renderPipe(){$("pipeline").innerHTML=nodes.map(n=>`<div class="node ${n.owner?"claimed":""}"><strong>[${n.id}] ${esc(n.name)}</strong><small>${esc(n.detail)}</small><span class="owner">${n.owner?"已揭：":"推荐："}${esc(by(n.owner||n.suggest).name)}</span></div>`).join("")}
+function renderWishPool(){const el=$("wishPool");if(!el)return;el.innerHTML=state.wishes.map(w=>`<div class="list-item"><span class="dot"></span><div><b>${esc(w.person)}</b><br><small>${esc(w.text)}</small></div><button class="btn small soft" type="button" data-wish-edit="${esc(w.id)}">修改</button></div>`).join("")}
+function renderLog(){$("log").innerHTML=state.logs.length?state.logs.map(x=>`<div class="logitem"><span class="time">${esc(x.time)}</span>${esc(x.text)}</div>`).join(""):'<div class="logitem">还没有事件。贴第一张便利贴吧。</div>'}
+function renderReview(){const total=state.tasks.length,done=state.tasks.filter(t=>t.status==="done").length,tn=state.tasks.filter(t=>t.owner==="tangning"&&t.status==="done").length,val=gini(people.map(p=>p.score));$("review").innerHTML=`<div class="callout">贴贴帮你回忆今天：${done}/${total||0} 张便利贴已经被接住。</div><div>唐宁今天自己揭了 ${tn} 张。${tn===0?"夜里那几张都被挡在护栏外。":"下一轮试着让别人先接一张。"}</div><div>家里的天平现在是 ${val.toFixed(2)}。${val<.32?"比开场稳了一点。":"还在倾斜，但已经被看见了。"}</div><div>心愿池：本月让家里更平衡的人，可以决定下次家庭活动。</div>`}
+function autoHospital(){nodes.forEach((n,i)=>setTimeout(()=>{if(!n.owner){n.owner=n.suggest;by(n.owner).score+=3;log(`复诊[${n.id}] ${n.name} 贴给 ${by(n.owner).name}。`);render()}},i*220))}
+function reset(writeLog=true){clearInterval(state.timer);state.timer=null;state.demoIndex=0;state.tasks=[];state.logs=[];[18,6,7,1].forEach((v,i)=>people[i].score=v);nodes.forEach(n=>n.owner=null);$("progress").style.width="0%";$("caption").textContent="准备好了。按“走一遍路演”，30 秒看完整条产品链。";$("devTitle").textContent="唐母（林女士）降压药快见底了";$("devMeta").textContent="推荐：唐小鸭（唐弟） · ETA 明早 9 点前 · memAura 找到上次购药记录";$("nextCard").textContent="唐母（林女士）说“降压药快见底了”。贴贴建议先传给唐小鸭（唐弟），周勉（丈夫）作为下一棒。";$("batonReason").textContent="memAura 找到上次购药记录；XGRIDS 发现唐小鸭（唐弟）明早会经过药盒。";if(writeLog)log("demo 已重置。");render();renderLog()}
+function seed(){reset(false);const a=add(samples.meds);claim(a.id,"brother");const b=add(samples.hospital);b.owner="husband";add(samples.gas);autoHospital();switchSection("today")}
+const steps=[()=>{switchSection("sleep");log("睡眠护栏开启，唐宁端保持静默。");say("夜里了，这件事让明天的人接住。")},()=>{switchSection("capture");add(samples.meds);say("唐小鸭，唐母那边降压药快见底啦，明早顺手下单好不好？")},()=>{switchSection("protocol");log("BatonRouter 推荐唐小鸭（唐弟），周勉（丈夫）作为下一棒，唐宁最后通知。")},()=>{switchSection("wall");const t=state.tasks[0];if(t)claim(t.id,"brother")},()=>{switchSection("care");add(samples.hospital);autoHospital()},()=>{switchSection("protocol");renderReview();log("贴贴生成今日复盘卡：只做减法确认，不要求打字。");say("她不用做更多，全家一起贴。")}];
+function step(){const fn=steps[state.demoIndex];if(!fn){clearInterval(state.timer);state.timer=null;$("caption").textContent="路演链路结束：录入、传贴、睡眠护栏、复诊流水线、复盘都跑通了。";$("progress").style.width="100%";switchSection("demo");return}fn();$("caption").textContent=["睡眠护栏先保护唐宁。","录入便利贴生成便利贴。","传贴协议解释推荐逻辑。","便利贴被揭走，天平变化。","照护项目拆成 6 个节点。","复盘与月度会形成闭环。"][state.demoIndex];$("progress").style.width=Math.round((state.demoIndex+1)/steps.length*100)+"%";state.demoIndex++}
+function demo(){reset(false);switchSection("demo");step();clearInterval(state.timer);state.timer=setInterval(step,4700)}
+function guessCaptureText(kind,fileName=""){const name=fileName.toLowerCase();if(kind==="chat")return"群截图里识别到：妈妈说降压药快见底了，唐宁回复收到。建议生成购药便利贴并先传给弟弟。";if(kind==="video")return name.includes("药")?"视频里识别到药盒剩余不足，需要续购降压药。":"视频已上传，贴贴标记：画面里可能有药盒、账单或通知单，请确认需要接住的事。";if(kind==="ocr")return name.includes("复诊")||name.includes("病历")?"文档里识别到：妈妈周三复诊，需空腹，带医保卡、病历和既往报告。":"图片/文档里识别到一条家庭事项，请确认标题、时间和接棒人。";return"妈妈降压药快见底了，明早需要有人下单。"}
+function showCaptureResult(kind,file,text,url){const label={voice:"语音口述",chat:"群截图",video:"视频识别",ocr:"OCR 备忘"}[kind]||"录入";const preview=url?kind==="video"?`<video class="upload-preview" src="${url}" controls></video>`:`<img class="upload-preview" src="${url}" alt="上传预览">`:"";$("captureResult").innerHTML=`<b>${label} · ${file?esc(file.name):"实时听写"}</b>${preview}<textarea class="recognized-text" id="recognizedText">${esc(text)}</textarea><div class="capture-actions"><button class="btn small note" id="createRecognizedTask">生成便利贴</button><button class="btn small soft" id="copyRecognizedText">放到输入框</button></div>`;$("createRecognizedTask").onclick=()=>createTaskFromRecognizedText(kind);$("copyRecognizedText").onclick=()=>{$("quickText").value=$("recognizedText").value};$("quickText").value=text}
+function createTaskFromRecognizedText(kind){const text=($("recognizedText")?.value||$("quickText").value||"").trim();if(!text)return;let p={...samples.meds,title:text,source:kind==="chat"?"群截图":kind==="video"?"视频":kind==="ocr"?"OCR":"语音",noticeBy:text.includes("药")?"mom":"tangning"};if(text.includes("复诊")||text.includes("医院")||text.includes("病历"))p={...samples.hospital,title:text,source:p.source};if(text.includes("燃气")||text.includes("年检"))p={...samples.gas,title:text,source:p.source};add(p);switchSection("wall")}
+let recognition=null,isRecording=false;
+function toggleVoiceCapture(){const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SpeechRecognition){showCaptureResult("voice",null,"当前浏览器不支持语音识别。可以直接在下方输入文字，或换 Chrome/Edge 打开后再试。","");return}if(isRecording&&recognition){recognition.stop();return}recognition=new SpeechRecognition();recognition.lang="zh-CN";recognition.interimResults=true;recognition.continuous=false;isRecording=true;$("voiceCaptureBtn").classList.add("recording");showCaptureResult("voice",null,"正在听你说话……","");recognition.onresult=e=>{let text="";for(let i=e.resultIndex;i<e.results.length;i++)text+=e.results[i][0].transcript;showCaptureResult("voice",null,text||"正在听你说话……","")};recognition.onerror=()=>showCaptureResult("voice",null,"没有听清楚。你可以再点一次语音口述，或直接输入文字。","");recognition.onend=()=>{isRecording=false;$("voiceCaptureBtn").classList.remove("recording")};recognition.start()}
+function handleCaptureFile(kind,input){const file=input.files&&input.files[0];if(!file)return;const url=URL.createObjectURL(file);const text=guessCaptureText(kind,file.name);showCaptureResult(kind,file,text,url);log(`${kind==="chat"?"群截图":kind==="video"?"视频":"OCR 文件"}已上传：${file.name}`)}
+function openModal(preset){state.modalPreset=preset||null;$("taskTitle").value=preset?.title||"";$("taskSource").value=preset?.source||"手动";$("taskType").value=preset?.type||"执行";$("taskNoticeBy").value=preset?.noticeBy||"tangning";$("modal").classList.add("show");$("taskTitle").focus()}
+function closeModal(){$("modal").classList.remove("show");state.modalPreset=null}
+function save(){const title=$("taskTitle").value.trim();if(!title)return;add({...state.modalPreset,title,source:$("taskSource").value,type:$("taskType").value,noticeBy:$("taskNoticeBy").value});closeModal()}
+function openProtocolModal(){renderProtocolEditor();$("protocolModal").classList.add("show")}
+function closeProtocolModal(){$("protocolModal").classList.remove("show");state.draggingProtocolId=null}
+function renderProtocolEditor(order=state.protocolRoute){const el=$("protocolOrder");if(!el)return;el.innerHTML=order.map((pid,i)=>`<button type="button" class="list-item protocol-person" draggable="true" data-protocol-id="${pid}"><span class="handle">↕</span><div><b>${esc(by(pid).name)}</b><small>第 ${i+1} 顺位</small></div><span class="chip">拖拽</span></button>`).join("");el.querySelectorAll("[data-protocol-id]").forEach(item=>{item.addEventListener("dragstart",e=>{state.draggingProtocolId=item.dataset.protocolId;item.classList.add("dragging");if(e.dataTransfer)e.dataTransfer.effectAllowed="move"});item.addEventListener("dragend",()=>item.classList.remove("dragging"));item.addEventListener("dragover",e=>e.preventDefault());item.addEventListener("drop",e=>{e.preventDefault();const from=state.draggingProtocolId,to=item.dataset.protocolId;if(!from||from===to)return;const ids=[...el.querySelectorAll("[data-protocol-id]")].map(x=>x.dataset.protocolId).filter(x=>x!==from);ids.splice(ids.indexOf(to),0,from);renderProtocolEditor(ids)})})}
+function saveProtocolOrder(){const ids=[...document.querySelectorAll("#protocolOrder [data-protocol-id]")].map(x=>x.dataset.protocolId);if(ids.length)state.protocolRoute=ids;state.tasks.forEach(t=>{if(t.status!=="done"){t.route=[...state.protocolRoute];t.owner=t.route[0]}});state.protocolUpdatedAt=new Date().toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});log(`传贴协议已更新：${state.protocolRoute.map(id=>by(id).name).join(" → ")}`);closeProtocolModal();render()}
+function openWishModal(id){const wish=state.wishes.find(w=>w.id===id);if(!wish)return;state.wishEditingId=id;$("wishPerson").value=wish.person;$("wishText").value=wish.text;$("wishModal").classList.add("show");$("wishText").focus()}
+function closeWishModal(){$("wishModal").classList.remove("show");state.wishEditingId=null}
+function saveWish(){const wish=state.wishes.find(w=>w.id===state.wishEditingId),text=$("wishText").value.trim();if(!wish||!text)return;wish.text=text;log(`心愿池更新：${wish.person} 的心愿被贴好了。`);closeWishModal();renderWishPool()}
+document.querySelectorAll("[data-target]").forEach(b=>b.onclick=()=>switchSection(b.dataset.target));$("demoBtn").onclick=demo;$("seedBtn").onclick=seed;$("resetBtn").onclick=()=>reset();$("nextBtn").onclick=step;$("assignBtn").onclick=autoHospital;$("reviewBtn").onclick=()=>{renderReview();log("贴贴生成今日复盘卡。")};$("parseBtn").onclick=()=>{const text=$("quickText").value.trim();if(!text)return;let p={...samples.meds,title:text,source:"语音",noticeBy:text.includes("药")?"mom":"tangning"};if(text.includes("复诊")||text.includes("医院"))p={...samples.hospital,title:text};if(text.includes("燃气")||text.includes("年检"))p={...samples.gas,title:text};add(p);switchSection("wall")};$("voiceBtn").onclick=()=>{state.voice=!state.voice;$("voiceBtn").textContent=state.voice?"贴贴播报 开":"贴贴播报 关";if(state.voice)say("贴贴播报打开啦。")};$("updateProtocolBtn").onclick=openProtocolModal;$("closeProtocolBtn").onclick=closeProtocolModal;$("saveProtocolBtn").onclick=saveProtocolOrder;$("closeWishBtn").onclick=closeWishModal;$("saveWishBtn").onclick=saveWish;$("closeBtn").onclick=closeModal;$("saveBtn").onclick=save;
+document.querySelectorAll("[data-cap]").forEach(b=>b.onclick=()=>{const t=b.dataset.cap;if(t==="voice")toggleVoiceCapture();if(t==="chat")$("chatUpload").click();if(t==="video")$("videoUpload").click();if(t==="ocr")$("ocrUpload").click()});$("chatUpload").onchange=e=>handleCaptureFile("chat",e.target);$("videoUpload").onchange=e=>handleCaptureFile("video",e.target);$("ocrUpload").onchange=e=>handleCaptureFile("ocr",e.target);document.querySelectorAll("[data-sample]").forEach(b=>b.onclick=()=>add(samples[b.dataset.sample]));
+document.body.onclick=e=>{const c=e.target.closest("[data-claim]"),tr=e.target.closest("[data-transfer]"),del=e.target.closest("[data-delete]"),wish=e.target.closest("[data-wish-edit]");if(c){const t=state.tasks.find(x=>x.id===c.dataset.claim);claim(t.id,t.owner||t.route[0])}if(tr)transfer(tr.dataset.transfer);if(del)deleteTask(del.dataset.delete);if(wish)openWishModal(wish.dataset.wishEdit)};$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};$("protocolModal").onclick=e=>{if(e.target===$("protocolModal"))closeProtocolModal()};$("wishModal").onclick=e=>{if(e.target===$("wishModal"))closeWishModal()};document.addEventListener("keydown",e=>{if(e.key.toLowerCase()==="d")demo();if(e.key==="Escape"){closeModal();closeProtocolModal();closeWishModal()}});
+reset(false);log("贴贴上线，产品工作台 demo 已就绪。");
+</script>
+</body>
+</html>

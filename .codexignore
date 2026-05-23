@@ -1,0 +1,9 @@
+# Codex 忽略
+node_modules/
+.DS_Store
+*.pdf
+*.html.bak
+*.log
+.env
+.env.local
+docs/PRD.pdf
