@@ -1,5 +1,8 @@
 {
   "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  },
   "scripts": {
     "build": "node scripts/build-check.js",
     "preview": "node scripts/preview-server.js",

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-05-27 Codex
+
+- Added `/api/family-state` Vercel Function for Supabase-backed family snapshot GET/PUT, keeping the current frontend untouched.
+
 ## 2026-05-26 Codex
 
 - 优化 demo 数据语言切换：为 demo familySpace 标记 isDemo/demoLang，并在 demo 家庭切换中英文时重新生成对应语言的成员与便利贴数据。

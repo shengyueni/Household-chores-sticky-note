@@ -1,0 +1,379 @@
+const { createClient } = require("@supabase/supabase-js");
+
+const DEFAULT_SPACE_ID = process.env.DEFAULT_FAMILY_SPACE_ID || "default-home";
+
+function sendJson(res, status, body) {
+  res.statusCode = status;
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(body));
+}
+
+function checkToken(req, res) {
+  const expected = process.env.FAMILY_SPACE_TOKEN;
+  if (!expected) return true;
+
+  const actual = req.headers["x-family-space-token"];
+  if (actual === expected) return true;
+
+  sendJson(res, 401, { ok: false, error: "Unauthorized family space token." });
+  return false;
+}
+
+function getSupabase() {
+  const url = process.env.SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !serviceRoleKey) {
+    throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.");
+  }
+
+  return createClient(url, serviceRoleKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false
+    }
+  });
+}
+
+function safeJson(value, fallback) {
+  if (value === null || value === undefined) return fallback;
+  if (typeof value === "string") {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return fallback;
+    }
+  }
+  return value;
+}
+
+function readBody(req) {
+  if (req.body && typeof req.body === "object") {
+    return Promise.resolve(req.body);
+  }
+
+  return new Promise((resolve, reject) => {
+    let raw = "";
+    req.on("data", (chunk) => {
+      raw += chunk;
+    });
+    req.on("end", () => {
+      try {
+        resolve(raw ? JSON.parse(raw) : {});
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+function toIsoDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function completedAtFromTask(note) {
+  if (note.completedAtMs) {
+    const date = new Date(Number(note.completedAtMs));
+    if (!Number.isNaN(date.getTime())) return date.toISOString();
+  }
+  return toIsoDate(note.completedAt);
+}
+
+function familySpaceFromRow(row, members) {
+  const payload = safeJson(row.payload, {});
+  return {
+    ...payload,
+    id: row.id,
+    name: row.name,
+    slogan: row.slogan || "",
+    currentMemberId: row.current_member_id || "",
+    protocolRoute: row.protocol_route || [],
+    wishes: safeJson(row.wishes, []),
+    members,
+    version: row.version,
+    cloudRevision: row.cloud_revision,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  };
+}
+
+function memberFromRow(row) {
+  const payload = safeJson(row.payload, {});
+  return {
+    ...payload,
+    id: row.id,
+    name: row.name,
+    relation: row.relation || "",
+    relationship: payload.relationship || row.relation || "",
+    role: row.role || row.relation || "",
+    avatarId: row.avatar_id || payload.avatarId || payload.avatar || "",
+    avatar: row.avatar_id || payload.avatar || payload.avatarId || "",
+    color: row.color || payload.color || "",
+    wish: row.wish || payload.wish || "",
+    sleepGuardProtected: !!row.sleep_guard_protected,
+    sleep: payload.sleep === undefined ? !!row.sleep_guard_protected : !!payload.sleep,
+    initialScore: row.initial_score || 0,
+    sortOrder: row.sort_order || 0,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  };
+}
+
+function noteFromRow(row) {
+  const payload = safeJson(row.payload, {});
+  return {
+    ...payload,
+    id: row.id,
+    title: row.title,
+    content: row.content || "",
+    category: row.category || "",
+    type: row.type || row.category || "",
+    source: row.source || "",
+    eta: row.eta || "",
+    status: row.status || "pending",
+    createdById: row.created_by_member_id || "",
+    noticeBy: row.notice_by_member_id || row.created_by_member_id || "",
+    assigneeId: row.assignee_member_id || "",
+    claimedById: row.claimed_by_member_id || "",
+    completedById: row.completed_by_member_id || "",
+    owner: row.owner_member_id || row.assignee_member_id || "",
+    route: row.route || [],
+    morningQueue: !!row.morning_queue,
+    memory: row.memory || "",
+    xgrids: row.xgrids || "",
+    proofName: row.proof_name || "",
+    proofNote: row.proof_note || "",
+    completedAt: payload.completedAt || row.completed_at || "",
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  };
+}
+
+function memberToRow(member, familySpaceId, index) {
+  return {
+    id: member.id,
+    family_space_id: familySpaceId,
+    name: member.name || "家人",
+    relation: member.relation || member.relationship || member.role || null,
+    role: member.role || member.relation || member.relationship || null,
+    avatar_id: member.avatarId || member.avatar || null,
+    color: member.color || null,
+    wish: member.wish || null,
+    sleep_guard_protected: !!(member.sleepGuardProtected || member.sleep),
+    initial_score: Number.isFinite(Number(member.initialScore))
+      ? Number(member.initialScore)
+      : 0,
+    sort_order: Number.isFinite(Number(member.sortOrder))
+      ? Number(member.sortOrder)
+      : index,
+    payload: member,
+    deleted_at: null
+  };
+}
+
+function existingMemberId(id, memberIds) {
+  return id && memberIds.has(id) ? id : null;
+}
+
+function noteToRow(note, familySpaceId, memberIds) {
+  const createdById = existingMemberId(note.createdById || note.noticeBy, memberIds);
+  const noticeById = existingMemberId(note.noticeBy || note.createdById, memberIds);
+  const assigneeId = existingMemberId(note.assigneeId || note.owner, memberIds);
+  const claimedById = existingMemberId(note.claimedById, memberIds);
+  const completedById = existingMemberId(note.completedById, memberIds);
+  const ownerId = existingMemberId(note.owner || note.assigneeId || note.claimedById, memberIds);
+
+  return {
+    id: note.id,
+    family_space_id: familySpaceId,
+    title: note.title || "未命名便利贴",
+    content: note.content || null,
+    category: note.category || note.type || null,
+    type: note.type || note.category || null,
+    source: note.source || null,
+    eta: note.eta || null,
+    status: note.status || "pending",
+    created_by_member_id: createdById,
+    notice_by_member_id: noticeById,
+    assignee_member_id: assigneeId,
+    claimed_by_member_id: claimedById,
+    completed_by_member_id: completedById,
+    owner_member_id: ownerId,
+    route: Array.isArray(note.route) ? note.route : [],
+    morning_queue: !!note.morningQueue,
+    memory: note.memory || null,
+    xgrids: note.xgrids || null,
+    proof_name: note.proofName || null,
+    proof_note: note.proofNote || null,
+    completed_at: completedAtFromTask(note),
+    payload: note,
+    deleted_at: null
+  };
+}
+
+async function handleGet(req, res) {
+  const supabase = getSupabase();
+
+  const { data: space, error: spaceError } = await supabase
+    .from("family_spaces")
+    .select("*")
+    .eq("id", DEFAULT_SPACE_ID)
+    .maybeSingle();
+
+  if (spaceError) throw spaceError;
+  if (!space) {
+    return sendJson(res, 200, {
+      familySpace: null,
+      stickyNotes: [],
+      cloudRevision: 0,
+      serverUpdatedAt: null
+    });
+  }
+
+  const [{ data: members, error: membersError }, { data: notes, error: notesError }] =
+    await Promise.all([
+      supabase
+        .from("family_members")
+        .select("*")
+        .eq("family_space_id", DEFAULT_SPACE_ID)
+        .is("deleted_at", null)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true }),
+      supabase
+        .from("sticky_notes")
+        .select("*")
+        .eq("family_space_id", DEFAULT_SPACE_ID)
+        .is("deleted_at", null)
+        .order("created_at", { ascending: true })
+    ]);
+
+  if (membersError) throw membersError;
+  if (notesError) throw notesError;
+
+  const frontMembers = (members || []).map(memberFromRow);
+
+  return sendJson(res, 200, {
+    familySpace: familySpaceFromRow(space, frontMembers),
+    stickyNotes: (notes || []).map(noteFromRow),
+    cloudRevision: space.cloud_revision || 0,
+    serverUpdatedAt: space.updated_at || null
+  });
+}
+
+async function handlePut(req, res) {
+  const body = await readBody(req);
+  const familySpace = body && body.familySpace;
+  const stickyNotes = Array.isArray(body && body.stickyNotes) ? body.stickyNotes : [];
+
+  if (!familySpace || typeof familySpace !== "object") {
+    return sendJson(res, 400, { ok: false, error: "Invalid request body: familySpace is required." });
+  }
+
+  if (familySpace.isDemo === true) {
+    return sendJson(res, 200, { ok: true, skipped: "demo-family" });
+  }
+
+  const supabase = getSupabase();
+  const now = new Date().toISOString();
+
+  const { data: current, error: currentError } = await supabase
+    .from("family_spaces")
+    .select("cloud_revision")
+    .eq("id", DEFAULT_SPACE_ID)
+    .maybeSingle();
+
+  if (currentError) throw currentError;
+
+  const nextRevision = Number(current && current.cloud_revision ? current.cloud_revision : 0) + 1;
+  const members = Array.isArray(familySpace.members) ? familySpace.members : [];
+  const memberIds = new Set(members.map((member) => member && member.id).filter(Boolean));
+
+  const spaceRow = {
+    id: DEFAULT_SPACE_ID,
+    name: familySpace.name || "我们的家庭空间",
+    slogan: familySpace.slogan || null,
+    current_member_id: null,
+    protocol_route: Array.isArray(familySpace.protocolRoute) ? familySpace.protocolRoute : [],
+    wishes: Array.isArray(familySpace.wishes) ? familySpace.wishes : [],
+    version: Number.isFinite(Number(familySpace.version)) ? Number(familySpace.version) : 1,
+    cloud_revision: nextRevision,
+    payload: familySpace,
+    updated_at: now
+  };
+
+  const { error: spaceUpsertError } = await supabase
+    .from("family_spaces")
+    .upsert(spaceRow, { onConflict: "id" });
+
+  if (spaceUpsertError) throw spaceUpsertError;
+
+  if (members.length) {
+    const { error: memberUpsertError } = await supabase
+      .from("family_members")
+      .upsert(members.map((member, index) => memberToRow(member, DEFAULT_SPACE_ID, index)), {
+        onConflict: "id"
+      });
+
+    if (memberUpsertError) throw memberUpsertError;
+  }
+
+  const currentMemberId = familySpace.currentMemberId || familySpace.current_member_id || null;
+  if (currentMemberId && memberIds.has(currentMemberId)) {
+    const { error: currentMemberError } = await supabase
+      .from("family_spaces")
+      .update({ current_member_id: currentMemberId })
+      .eq("id", DEFAULT_SPACE_ID);
+
+    if (currentMemberError) throw currentMemberError;
+  }
+
+  if (stickyNotes.length) {
+    const { error: notesUpsertError } = await supabase
+      .from("sticky_notes")
+      .upsert(stickyNotes.map((note) => noteToRow(note, DEFAULT_SPACE_ID, memberIds)), {
+        onConflict: "id"
+      });
+
+    if (notesUpsertError) throw notesUpsertError;
+  }
+
+  const { data: saved, error: savedError } = await supabase
+    .from("family_spaces")
+    .select("cloud_revision, updated_at")
+    .eq("id", DEFAULT_SPACE_ID)
+    .single();
+
+  if (savedError) throw savedError;
+
+  return sendJson(res, 200, {
+    ok: true,
+    cloudRevision: saved.cloud_revision,
+    serverUpdatedAt: saved.updated_at
+  });
+}
+
+module.exports = async function familyState(req, res) {
+  if (!checkToken(req, res)) return;
+
+  try {
+    if (req.method === "GET") {
+      return await handleGet(req, res);
+    }
+
+    if (req.method === "PUT") {
+      return await handlePut(req, res);
+    }
+
+    res.setHeader("Allow", "GET, PUT");
+    return sendJson(res, 405, { ok: false, error: "Method not allowed." });
+  } catch (error) {
+    const status = req.method === "PUT" && error instanceof SyntaxError ? 400 : 500;
+    return sendJson(res, status, {
+      ok: false,
+      error: error && error.message ? error.message : "Unexpected server error."
+    });
+  }
+};
