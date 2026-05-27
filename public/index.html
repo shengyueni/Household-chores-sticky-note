@@ -163,6 +163,15 @@ body:before{
 }
 .badge:before{content:"◆";color:var(--green)}
 
+.cloud-sync-badge{
+  max-width:168px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.cloud-sync-badge.warn:before{color:var(--pink)}
+.cloud-sync-badge.ok:before{color:var(--green)}
+
 .panel,.modal{
   border:var(--pixel) solid var(--wood-dark);
   border-radius:0;
@@ -1339,7 +1348,7 @@ body{
   <main class="workspace">
     <header class="workspace-header">
       <div><div class="crumb">家务便利贴 / <span id="currentCrumb">今日工作台</span></div><h2 id="pageTitle">今日工作台</h2><p class="workspace-desc" id="pageDesc">一天一天贴出全家的心愿，我们开心，我们关心。</p></div>
-      <div class="header-side"><div class="status-row"><span class="badge" id="sleepGuardBadge">睡眠护栏 23:00-07:00</span><span class="badge" id="summaryTasks">0 张便利贴</span><span class="badge" id="summaryGini">天平 --</span><button class="btn small soft" id="languageBtn">🌐 中文</button></div><div class="title-actions"><button class="btn small soft" id="currentRoleBtn">当前：家人</button><button class="btn small soft" id="switchFamilyBtn">切换家庭</button><button class="btn small note" id="seedBtn">灌 demo 数据</button><button class="btn small soft" id="voiceBtn">贴贴播报 关</button></div></div>
+      <div class="header-side"><div class="status-row"><span class="badge" id="sleepGuardBadge">睡眠护栏 23:00-07:00</span><span class="badge" id="summaryTasks">0 张便利贴</span><span class="badge" id="summaryGini">天平 --</span><span class="badge cloud-sync-badge" id="cloudSyncBadge">已贴到本地</span><button class="btn small soft" id="languageBtn">🌐 中文</button></div><div class="title-actions"><button class="btn small soft" id="currentRoleBtn">当前：家人</button><button class="btn small soft" id="switchFamilyBtn">切换家庭</button><button class="btn small note" id="seedBtn">灌 demo 数据</button><button class="btn small soft" id="voiceBtn">贴贴播报 关</button></div></div>
     </header>
 
     <section class="content-section section-active" data-section="today" data-title="今日工作台" data-desc="一天一天贴出全家的心愿，我们开心，我们关心。">
@@ -1399,7 +1408,7 @@ body{
 
 <script>
 const weights={观察:1,协调:2,执行:3,兜底:5};
-const storeKeys={family:"familySpace",tasks:"stickyNotes",current:"currentMemberId",language:"appLanguage"};
+const storeKeys={family:"familySpace",tasks:"stickyNotes",current:"currentMemberId",language:"appLanguage",cloudMeta:"cloudSyncMeta",cloudToken:"familyCloudToken"};
 // Keep these keys aligned with src/i18n/copy.ts while the demo runs as a single HTML file.
 const copy={
   zh: {
@@ -1912,10 +1921,19 @@ const demoMembersEn=[{id:"tang",name:"Tang",relation:"Main caretaker",relationsh
 let familySpace=null,people=[],currentMemberId="",currentLang="zh",setupDraft={step:1,name:"",slogan:"",count:4,index:0,members:[]},familyEditorDraft=null,deleteMemberId=null,avatarPickerTargetIndex=null,avatarPickerMode="family",avatarPickerCurrentIndex=0;
 const nodes=[["前夜准备","空腹提醒、材料打包"],["材料整理","医保卡、病历、报告"],["早晨陪同","7:00 出发"],["医院全程","挂号、问诊、检查"],["取药记录","午休顺路取药"],["报销提交","单据拍照入账"]].map((x,i)=>({id:i+1,name:x[0],detail:x[1],suggest:null,owner:null,done:false}));
 const state={tasks:[],logs:[],voice:false,modalPreset:null,demoIndex:0,timer:null,current:"today",protocolRoute:[],protocolUpdatedAt:"尚未修改",draggingProtocolId:null,wishEditingId:null,proofTaskId:null,transferTaskId:null,wishes:[]};
+let cloudSaveTimer=null,cloudSaveInFlight=false,suppressCloudSave=false;
 const removedMember={id:"removed",name:"已移除成员",role:"已移除",relationship:"已移除",relation:"已移除",score:0,initialScore:0,avatarId:"b01",avatar:"b01",color:"#E9E2D3"};
 const $=id=>document.getElementById(id),members=()=>familySpace?.members||people||[],findMember=id=>members().find(p=>p.id===id),by=id=>id?(findMember(id)||removedMember):(members()[0]||fallbackMember),esc=s=>String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"),time=()=>new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
 function readStore(key,fallback){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch{return fallback}}
 function writeStore(key,value){try{localStorage.setItem(key,typeof value==="string"?value:JSON.stringify(value))}catch{}}
+function readCloudSyncMeta(){const meta=readStore(storeKeys.cloudMeta,{});return {cloudRevision:Number(meta.cloudRevision)||0,lastSyncedAt:meta.lastSyncedAt||null,dirty:!!meta.dirty,lastError:meta.lastError||null}}
+function writeCloudSyncMeta(meta){const next={...readCloudSyncMeta(),...(meta||{})};writeStore(storeKeys.cloudMeta,next);renderCloudSyncStatus(next);return next}
+function getFamilyCloudToken(){try{return localStorage.getItem(storeKeys.cloudToken)||""}catch{return ""}}
+function cloudSyncLabel(meta=readCloudSyncMeta()){if(familySpace?.isDemo===true)return currentLang==="en"?"Saved locally":"已贴到本地";if(meta.lastError==="401")return currentLang==="en"?"Cloud token needed":"云同步需要口令";if(meta.lastError)return currentLang==="en"?"Offline, will sync later":"离线，稍后贴上去";if(meta.dirty)return currentLang==="en"?"Saved locally":"已贴到本地";return meta.lastSyncedAt||meta.cloudRevision?currentLang==="en"?"Synced to cloud":"已贴到云上":currentLang==="en"?"Saved locally":"已贴到本地"}
+function renderCloudSyncStatus(meta=readCloudSyncMeta()){const el=$("cloudSyncBadge");if(!el)return;el.textContent=cloudSyncLabel(meta);el.classList.toggle("warn",!!meta.lastError);el.classList.toggle("ok",!meta.lastError&&!meta.dirty&&(!!meta.lastSyncedAt||!!meta.cloudRevision))}
+async function fetchCloudState(){const headers={},token=getFamilyCloudToken();if(token)headers["X-Family-Space-Token"]=token;const res=await fetch("/api/family-state",{method:"GET",headers});const data=await res.json().catch(()=>({}));if(!res.ok){const err=new Error(data.error||`Cloud GET failed: ${res.status}`);err.status=res.status;throw err}return data}
+function scheduleCloudSave(){if(suppressCloudSave||!familySpace||familySpace.isDemo===true)return;writeCloudSyncMeta({dirty:true,lastError:null});clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(pushCloudState,1000)}
+async function pushCloudState(){if(cloudSaveInFlight||!familySpace||familySpace.isDemo===true)return;cloudSaveInFlight=true;try{const meta=readCloudSyncMeta(),token=getFamilyCloudToken(),headers={"Content-Type":"application/json"};if(token)headers["X-Family-Space-Token"]=token;const res=await fetch("/api/family-state",{method:"PUT",headers,body:JSON.stringify({familySpace,stickyNotes:state.tasks.map(normalizeTask),baseRevision:meta.cloudRevision,clientUpdatedAt:new Date().toISOString()})});const data=await res.json().catch(()=>({}));if(!res.ok){const err=new Error(data.error||`Cloud PUT failed: ${res.status}`);err.status=res.status;throw err}if(data.skipped==="demo-family")return;writeCloudSyncMeta({cloudRevision:Number(data.cloudRevision)||meta.cloudRevision,lastSyncedAt:data.serverUpdatedAt||new Date().toISOString(),dirty:false,lastError:null})}catch(err){writeCloudSyncMeta({dirty:true,lastError:err?.status===401?"401":err?.message||"cloud-sync-failed"})}finally{cloudSaveInFlight=false}}
 function normalizeLang(lang){return lang==="en"?"en":"zh"}
 function readLanguage(){try{return normalizeLang(localStorage.getItem(storeKeys.language)||"zh")}catch{return "zh"}}
 function updateLanguageButton(){const text=currentLang==="en"?"🌐 EN":"🌐 中文";["languageBtn","welcomeLanguageBtn"].forEach(id=>{const btn=$(id);if(btn)btn.textContent=text})}
@@ -1923,7 +1941,7 @@ function renderNavCopy(){const labels=copy[currentLang]?.nav||copy.zh.nav;docume
 function pageCopy(id=state.current){return (copy[currentLang]?.pages||copy.zh.pages)[id]||copy.zh.pages[id]}
 function renderPageHeader(){const page=pageCopy();if(!page)return;$("currentCrumb").textContent=page.title;$("pageTitle").textContent=page.title;$("pageDesc").textContent=page.desc}
 function renderCurrentRoleButton(){const labels=copy[currentLang]?.topbar||copy.zh.topbar;if(!people.length){$("currentRoleBtn").textContent=`${labels.current}：${labels.notSelected}`;return}$("currentRoleBtn").innerHTML=memberPill(currentMemberId,`${labels.current}：`)}
-function renderTopbarCopy(){const labels=copy[currentLang]?.topbar||copy.zh.topbar;$("sleepGuardBadge").textContent=`${labels.sleepGuard} 23:00-07:00`;$("switchFamilyBtn").textContent=labels.switchHome;$("seedBtn").textContent=labels.loadDemo;$("voiceBtn").textContent=state.voice?labels.broadcastOn:labels.broadcastOff;renderCurrentRoleButton()}
+function renderTopbarCopy(){const labels=copy[currentLang]?.topbar||copy.zh.topbar;$("sleepGuardBadge").textContent=`${labels.sleepGuard} 23:00-07:00`;$("switchFamilyBtn").textContent=labels.switchHome;$("seedBtn").textContent=labels.loadDemo;$("voiceBtn").textContent=state.voice?labels.broadcastOn:labels.broadcastOff;renderCurrentRoleButton();renderCloudSyncStatus()}
 function buttonCopy(){return copy[currentLang]?.buttons||copy.zh.buttons}
 function uiCopy(){return copy[currentLang]?.ui||copy.zh.ui}
 function topbarCopy(){return copy[currentLang]?.topbar||copy.zh.topbar}
@@ -1970,7 +1988,7 @@ function isPending(t){return t.status==="pending"}
 function isClaimed(t){return t.status==="claimed"||t.status==="done"}
 function isCompleted(t){return t.status==="completed"||t.status==="done-completed"||t.completedAt||t.completedAtMs}
 function normalizeTask(t){const assigneeId=t.assigneeId||t.owner||"",claimedById=t.claimedById||(t.status==="done"?t.owner:"")||"",completedById=t.completedById||"",createdById=t.createdById||t.noticeBy||currentMemberId||"",status=isCompleted(t)?"done":t.status==="done"?"claimed":t.status||"pending";return {...t,category:t.category||t.type,assigneeId,claimedById,createdById,completedById,owner:assigneeId||claimedById||t.owner||"",noticeBy:t.noticeBy||createdById,status,createdAt:t.createdAt||new Date().toISOString()}}
-function saveAppData(){if(!familySpace)return;familySpace.members=people;familySpace.protocolRoute=state.protocolRoute;familySpace.wishes=state.wishes;familySpace.currentMemberId=currentMemberId;familySpace.updatedAt=new Date().toISOString();writeStore(storeKeys.family,familySpace);writeStore(storeKeys.tasks,state.tasks.map(normalizeTask));writeStore(storeKeys.current,currentMemberId)}
+function saveAppData(){if(!familySpace)return;familySpace.members=people;familySpace.protocolRoute=state.protocolRoute;familySpace.wishes=state.wishes;familySpace.currentMemberId=currentMemberId;familySpace.updatedAt=new Date().toISOString();writeStore(storeKeys.family,familySpace);writeStore(storeKeys.tasks,state.tasks.map(normalizeTask));writeStore(storeKeys.current,currentMemberId);scheduleCloudSave()}
 function buildDemoFamily(){if(currentLang==="en"){return {id:"demo-home-en",isDemo:true,demoLang:"en",name:"Tang's House",slogan:"Small things, shared gently.",members:normalizeMembers(demoMembersEn.map(m=>({...m}))),protocolRoute:["xiaoTang","zhou","tang"],wishes:[],currentMemberId:"tang",createdAt:new Date().toISOString(),version:1}}return {id:"demo-home",isDemo:true,demoLang:"zh",name:"唐宁的小家",slogan:"把家里的小事一起接住。",members:normalizeMembers(demoMembers.map(m=>({...m}))),protocolRoute:["brother","husband","tangning"],wishes:[],currentMemberId:"tangning",createdAt:new Date().toISOString(),version:1}}
 function characterOptionHtml(avatarId,name,selected,groupName){const avatar=avatarById(avatarId);return `<label class="character-option" title="${esc(avatar.name)}"><input type="radio" name="${esc(groupName)}" value="${esc(avatar.id)}" ${selected?"checked":""}><img src="${esc(getAvatarSrc(avatar.id,"body"))}" alt="${esc(avatar.name)}" onerror="this.onerror=null;this.src='${esc(getAvatarFallbackSrc(avatar.id,"body"))}'"></label>`}
 function characterGridHtml(selectedId,groupName){const selected=validAvatarId(selectedId);return `<div class="character-grid">${characterAvatars.map(a=>characterOptionHtml(a.id,a.name,a.id===selected,groupName)).join("")}</div>`}
@@ -1993,7 +2011,8 @@ function saveCurrentSetup(){if(setupDraft.step===1){setupDraft.name=$("familyNam
 function nextSetupStep(){if(!saveCurrentSetup())return;if(setupDraft.step<3){setupDraft.step++;renderSetup();return}if(setupDraft.index<setupDraft.count-1){setupDraft.index++;renderSetup();return}finishSetup()}
 function prevSetupStep(){if(setupDraft.step===3){saveCurrentSetup();if(setupDraft.index>0){setupDraft.index--;renderSetup();return}setupDraft.step=2;renderSetup();return}if(setupDraft.step===2){setupDraft.step=1;renderSetup();return}showWelcome()}
 function finishSetup(){const members=normalizeMembers(setupDraft.members.slice(0,setupDraft.count).map((m,i)=>({...m,id:`member-${Date.now()}-${i}`,score:0,initialScore:0,wish:"想让家里的天平今天稳一点。"}))),protectedOne=members.find(isProtectedMember),route=protectedOne?[...members.filter(m=>m.id!==protectedOne.id).map(m=>m.id),protectedOne.id]:members.map(m=>m.id);const space={id:`family-${Date.now()}`,name:setupDraft.name||"我们的家庭空间",slogan:setupDraft.slogan||"小事一起接住",members,protocolRoute:route,wishes:[],createdAt:new Date().toISOString(),version:1};enterFamily(space,[],members[0]?.id);$("quickText").value=`${careMember().name}降压药快见底了，明早需要有人下单。`;log(`贴贴把「${space.name}」的家庭空间贴好了。`)}
-function initApp(){setLanguage(readLanguage());const storedFamily=normalizeStoredFamilyName(readStore(storeKeys.family,null)),storedTasks=readStore(storeKeys.tasks,[]);let storedCurrent="";try{storedCurrent=localStorage.getItem(storeKeys.current)||""}catch{}if(storedFamily&&Array.isArray(storedFamily.members)&&storedFamily.members.length){enterFamily(storedFamily,storedTasks,storedCurrent);log("贴贴回来啦，家庭空间已经接上。")}else showWelcome()}
+async function syncCloudOnStart(){try{const cloud=await fetchCloudState();if(cloud?.familySpace){suppressCloudSave=true;try{enterFamily(cloud.familySpace,cloud.stickyNotes||[],cloud.familySpace.currentMemberId||currentMemberId)}finally{suppressCloudSave=false}writeCloudSyncMeta({cloudRevision:Number(cloud.cloudRevision)||0,lastSyncedAt:cloud.serverUpdatedAt||new Date().toISOString(),dirty:false,lastError:null})}}catch(err){writeCloudSyncMeta({lastError:err?.status===401?"401":err?.message||"cloud-fetch-failed"})}}
+function initApp(){setLanguage(readLanguage());renderCloudSyncStatus();const storedFamily=normalizeStoredFamilyName(readStore(storeKeys.family,null)),storedTasks=readStore(storeKeys.tasks,[]);let storedCurrent="";try{storedCurrent=localStorage.getItem(storeKeys.current)||""}catch{}if(storedFamily&&Array.isArray(storedFamily.members)&&storedFamily.members.length){suppressCloudSave=true;try{enterFamily(storedFamily,storedTasks,storedCurrent)}finally{suppressCloudSave=false}log("贴贴回来啦，家庭空间已经接上。")}else showWelcome();syncCloudOnStart()}
 function switchSection(id){const section=document.querySelector(`[data-section="${id}"]`);if(!section)return;document.querySelectorAll("[data-section]").forEach(s=>s.classList.toggle("section-active",s===section));document.querySelectorAll("[data-target]").forEach(b=>b.classList.toggle("active",b.dataset.target===id));state.current=id;renderPageHeader();if(id==="familyInfo"){familyEditorDraft=null;renderFamilyInfo()}}
 function log(text){state.logs.unshift({time:time(),text});state.logs=state.logs.slice(0,28);renderLog()}
 function say(text){if(!state.voice||!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=1;u.pitch=1.08;speechSynthesis.speak(u)}

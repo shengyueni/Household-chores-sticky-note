@@ -2,6 +2,7 @@
 
 ## 2026-05-27 Codex
 
+- Added local-first frontend cloud sync through `/api/family-state`, with background GET/PUT, debounced saves, offline metadata, and a compact sync status chip.
 - Added `/api/family-state` Vercel Function for Supabase-backed family snapshot GET/PUT, keeping the current frontend untouched.
 
 ## 2026-05-26 Codex
