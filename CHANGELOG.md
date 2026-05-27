@@ -2,6 +2,7 @@
 
 ## 2026-05-27 Codex
 
+- Fixed cloud snapshot restore to hard-replace local family and sticky data before rendering, preventing stale local stickies from mixing with cloud state.
 - Added local-first frontend cloud sync through `/api/family-state`, with background GET/PUT, debounced saves, offline metadata, and a compact sync status chip.
 - Added `/api/family-state` Vercel Function for Supabase-backed family snapshot GET/PUT, keeping the current frontend untouched.
 
