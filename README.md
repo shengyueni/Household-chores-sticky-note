@@ -1,110 +1,184 @@
-# 家务便利贴 · Jiawu Bianliti
+# 家务便利贴 / Chore Stickies
 
-> 第五夜｜待办家事 黑客松项目
-> 一句话定位：不是家务管理系统，是家务**重新分工**系统
-
----
-
-## 快速开始
-
-### 1. 直接看 demo
-
-双击 `public/index.html`，浏览器自动打开。所有交互前端 mock 即可。
-
-```bash
-open public/index.html
-```
-
-### 2. 用 Codex 接着改
-
-```bash
-cd ~/jiawu-bianliti
-codex
-```
-
-Codex 进入后先读 `AGENTS.md`（工作守则）+ `docs/PRD.md`（产品文档），再改 `public/index.html`。
+一个本地优先的家庭家务协作 Demo。  
+A local-first demo for coordinating household chores and care work.
 
 ---
 
-## 文件结构
+## 中文
 
+### 项目简介
+
+家务便利贴把家里的小事做成“便利贴”，通过家庭成员、当前角色、请帮忙接力、睡眠护栏和家庭天平，帮助家庭看见并分担日常家务与照护劳动。
+
+当前项目是前端本地 Demo，不包含账号系统、后端数据库、邀请链接或多人实时同步。数据保存在浏览器 `localStorage` 中。
+
+### 功能列表
+
+- 家庭空间初始化：首次进入可创建家庭空间，配置家庭名称、口号和成员。
+- Demo 小家：提供中文和英文 Demo 数据。
+- 成员管理：编辑成员称呼、关系、像素头像，支持添加和删除成员。
+- 睡眠护栏：可为成员设置夜间不优先接收便利贴。
+- 当前角色：切换当前操作成员，用于揭贴、请帮忙和确认完成。
+- 便利贴录入：支持直接输入、浏览器语音识别和文件上传模拟识别。
+- 便利贴手册：查看待处理、接力中和已完成的便利贴。
+- 家庭接力委员会：展示接力顺序、成员状态和请帮忙规则。
+- 家庭天平：根据便利贴行为统计家庭小账本和负担分布。
+- 中英文切换：支持中文 / English 界面切换。
+- 本地保存：使用 `localStorage` 保存 `familySpace`、`stickyNotes`、`currentMemberId` 和 `appLanguage`。
+
+### 安装步骤
+
+项目不依赖后端服务。运行本地脚本需要 Node.js。
+
+```bash
+git clone <repository-url>
+cd jiawu-bianliti
+npm install
 ```
+
+如果只需要查看静态页面，也可以直接打开 `public/index.html`。
+
+### 本地运行方法
+
+启动本地预览服务：
+
+```bash
+npm run preview
+```
+
+然后在浏览器打开：
+
+```text
+http://127.0.0.1:5173/
+```
+
+运行构建检查：
+
+```bash
+npm run build
+```
+
+重新生成小尺寸头像素材：
+
+```bash
+npm run generate:heads
+```
+
+### 项目结构
+
+```text
 jiawu-bianliti/
-├── AGENTS.md          ← Codex 守则（视觉/文案/角色铁律）
-├── README.md          ← 本文件
-├── CHANGELOG.md       ← 改动日志
-├── .codexignore       ← Codex 忽略目录
-├── .gitignore
 ├── public/
-│   └── index.html     ← 当前 demo 主体（单文件可跑）
-├── src/               ← 拆分后的 JS / CSS 模块（Codex 第一步建议拆这里）
-├── assets/            ← 图片 / SVG / 音效
-└── docs/
-    ├── PRD.md         ← 产品需求文档（合约，禁改）
-    └── PRD.pdf        ← PDF 版
+│   ├── index.html
+│   └── assets/
+├── scripts/
+│   ├── build-check.js
+│   ├── preview-server.js
+│   └── generate-character-heads.js
+├── src/
+│   └── i18n/
+├── assets/
+├── docs/
+├── package.json
+└── README.md
 ```
 
----
+### 技术栈
 
-## 项目核心
-
-### 反 pattern
-不优化主负责人（唐宁）效率，**优化家庭基尼系数**——劳动分布的均衡度。
-
-### 设计基调
-- 主题沉重，产品要轻
-- 不焦虑、不审判、不打卡
-- 全程 Q 版可爱 + 便利贴黄
-
-### 核心模块（5 + 1）
-1. **小账本**：4 类劳动（察觉/协调/执行/兜底）打分
-2. **接棒协议**：群「收到」→ 结构化揭贴 + 自动传贴
-3. **睡眠护栏**：唐宁 23:00-7:00 静默
-4. **复诊流水线**：1 大任务拆 6 节点 × 多人接棒
-5. **零打字录入**：5 路（口喷/视频/微信截图/OCR/复盘）
-6. **游戏化层**：月度天平大会，改善度第一者获家庭决策权
-
-详见 `docs/PRD.md`。
+- HTML
+- CSS
+- JavaScript
+- `localStorage`
+- Web Speech API（取决于浏览器支持）
+- Node.js 脚本
 
 ---
 
-## 当前进度
+## English
 
-- [x] PRD v1.0
-- [x] 单文件 demo（5 路录入 + 天平 + 便利贴墙 + 复诊 + 睡眠护栏 + 复盘卡）
-- [ ] 拆 HTML/CSS/JS 三文件
-- [ ] Q 版 SVG 头像
-- [ ] 贴贴 TTS 语音播报
-- [ ] 升级链动画
-- [ ] 月度大会动画
-- [ ] HaiSnap Agent mock
-- [ ] memAura 长期记忆 mock
-- [ ] XGRIDS 空间路径 mock
-- [ ] 演示脚本走查 + 录屏备份
+### Project Overview
 
----
+Chore Stickies turns small household tasks into “stickies.” It uses family members, a current role, relay-based help requests, Sleep Guard, and Family Balance to make everyday chores and care work easier to see and share.
 
-## 团队
+This project is a local front-end demo. It does not include user accounts, a backend database, invite links, or real-time multi-user sync. Data is stored in the browser with `localStorage`.
 
-| 角色 | 主责 |
-|------|------|
-| 后端 + Agent | （待填） |
-| 前端 + 大屏 | （待填） |
-| 硬件 + 固件 | （待填） |
-| 设计 + 视觉 | （待填） |
-| PM + 演示 | （待填） |
+### Features
 
----
+- Home space setup: create a family space with a name, slogan, and members.
+- Demo home: includes Chinese and English demo data.
+- Member management: edit member names, relationships, pixel avatars, add members, and remove members.
+- Sleep Guard: mark members as protected from being prioritized at night.
+- Current role: switch the active member used for claiming, asking for help, and marking stickies done.
+- Sticky input: supports direct text input, browser speech recognition, and simulated file recognition.
+- Sticky archive: view pending, relayed, and completed stickies.
+- Family Relay Board: shows relay order, member status, and help-request rules.
+- Family Balance: summarizes household ledger points and workload distribution.
+- Language switching: supports Chinese and English UI.
+- Local persistence: stores `familySpace`, `stickyNotes`, `currentMemberId`, and `appLanguage` in `localStorage`.
 
-## 时间窗
+### Installation
 
-- 开始：2026-05-23 20:00
-- 结束：2026-05-25 12:00
-- 路演：5/25 11:00-12:00
+The project does not require a backend service. Node.js is needed for the local scripts.
 
----
+```bash
+git clone <repository-url>
+cd jiawu-bianliti
+npm install
+```
 
-## 一句话 pitch
+If you only want to view the static page, you can open `public/index.html` directly.
 
-> memAura 替家庭记，HaiSnap 替家庭算，XGRIDS 替家庭看，Seeed 替家庭分。
-> 她不用打字，系统替她说。她今晚能睡了。
+### Local Development
+
+Start the local preview server:
+
+```bash
+npm run preview
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5173/
+```
+
+Run the build check:
+
+```bash
+npm run build
+```
+
+Regenerate small avatar assets:
+
+```bash
+npm run generate:heads
+```
+
+### Project Structure
+
+```text
+jiawu-bianliti/
+├── public/
+│   ├── index.html
+│   └── assets/
+├── scripts/
+│   ├── build-check.js
+│   ├── preview-server.js
+│   └── generate-character-heads.js
+├── src/
+│   └── i18n/
+├── assets/
+├── docs/
+├── package.json
+└── README.md
+```
+
+### Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- `localStorage`
+- Web Speech API, depending on browser support
+- Node.js scripts
