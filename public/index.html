@@ -7,7 +7,11 @@
 <style>
 :root{--note:#ffd86b;--cream:#fff8ec;--paper:#fffdf5;--rice:#e9e2d3;--ink:#392b00;--muted:#806728;--green:#7bc47f;--mint:#dff3de;--pink:#ffb3b3;--pink2:#ffe3e3;--blue:#d8e9ff;--night:#2f4058;--line:#eadfbd}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(90deg,rgba(255,216,107,.16) 1px,transparent 1px),linear-gradient(0deg,rgba(255,216,107,.12) 1px,transparent 1px),linear-gradient(135deg,#fff8ec,#fff2d8 58%,#fffdf5);background-size:28px 28px,28px 28px,100% 100%}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}.product-sidebar{position:sticky;top:0;height:100vh;padding:16px 14px;border-right:2px solid #dfcf9d;background:#fff9e8;overflow:auto}.brand{display:flex;gap:11px;align-items:center;padding:10px 8px 16px}.mascot{position:relative;width:48px;height:44px;flex:0 0 auto;border:2px solid var(--ink);border-radius:8px 8px 4px 8px;background:#fff3a6;transform:rotate(-4deg);box-shadow:2px 2px 0 var(--ink)}.mascot:before,.mascot:after{content:"";position:absolute;top:16px;width:6px;height:6px;border-radius:50%;background:var(--ink)}.mascot:before{left:13px}.mascot:after{right:13px}.mascot span{position:absolute;left:16px;top:27px;width:15px;height:8px;border-bottom:2px solid var(--ink);border-radius:0 0 20px 20px}.brand h1{margin:0;font-size:22px;line-height:1.05}.brand p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.nav{display:grid;gap:7px}.nav-item{width:100%;min-height:40px;padding:9px 10px;border:1px solid transparent;border-radius:8px;background:transparent;color:#5b470c;text-align:left;font-weight:800}.nav-item:hover{background:#fff3c4}.nav-item.active{border:2px solid var(--ink);background:var(--note);box-shadow:2px 2px 0 var(--ink);color:var(--ink)}.sidebar-footer{display:grid;gap:8px;margin-top:16px;padding-top:14px;border-top:1px dashed #d7c48b}.workspace{min-width:0;padding:18px 22px 28px}.workspace-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;margin-bottom:16px}.crumb{color:var(--muted);font-size:13px;font-weight:800}.workspace h2{margin:6px 0 7px;font-size:clamp(26px,3vw,40px);line-height:1.12}.workspace-desc{margin:0;color:#5c4913;font-size:15px;line-height:1.6}.status-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.badge{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:5px 10px;border:1px solid #dfc977;border-radius:999px;background:#fffdf5;color:#60480a;font-size:12px;font-weight:800}.btn{min-height:38px;padding:9px 13px;border:2px solid var(--ink);border-radius:8px;background:#fffdf5;color:var(--ink);font-weight:800;box-shadow:2px 2px 0 var(--ink);transition:.15s;white-space:nowrap}.btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}.primary{background:var(--mint)}.note{background:var(--note)}.soft{background:var(--cream)}.small{min-height:32px;padding:6px 10px;font-size:12px}.content-section{display:none}.content-section.section-active{display:block}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.panel{border:2px solid var(--rice);border-radius:8px;background:rgba(255,253,245,.95);box-shadow:0 4px 0 rgba(233,226,211,.9),0 12px 26px rgba(57,43,0,.08)}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:1/-1}.hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 11px;border-bottom:2px dashed rgba(255,216,107,.85)}.hd h3{margin:0;font-size:16px}.kicker{color:var(--muted);font-size:12px;line-height:1.45}.body{padding:15px 16px 16px}.callout{padding:14px 16px;border:2px solid var(--ink);border-radius:8px;background:var(--note);box-shadow:3px 3px 0 var(--ink);font-weight:900;line-height:1.65}.sleep-card{background:var(--night);color:#fff4b8;border-color:#ffd86b}.sleep-card .kicker,.sleep-card text{color:#fff4b8}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:12px;border:1px solid var(--line);border-radius:8px;background:#fffaf0}.metric b{display:block;font-size:24px}.metric span{color:var(--muted);font-size:12px}.device{border:3px solid var(--ink);border-radius:8px;background:#2f4058;box-shadow:6px 7px 0 rgba(57,43,0,.22);color:#fff8cf;overflow:hidden}.devtop{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:2px solid rgba(255,248,207,.22);font-size:12px}.screen{padding:16px}.devnote{min-height:104px;padding:12px;border-radius:8px;background:#ffec94;color:var(--ink);transform:rotate(-1.2deg);box-shadow:3px 4px 0 rgba(0,0,0,.22)}.devnote b{display:block;margin-bottom:8px;font-size:16px}.route{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;align-items:center}.chip{padding:6px 9px;border:1px solid rgba(57,43,0,.2);border-radius:999px;background:#fff;color:#5c4608;font-size:12px;font-weight:800}.device .chip{border-color:rgba(255,248,207,.55);background:#3c506c;color:#fff8cf}.chip.on{border-color:var(--note);background:rgba(255,216,107,.22)}.capture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.capbtn{min-height:86px;padding:12px;border:2px solid #ead79c;border-radius:8px;background:#fff;color:var(--ink);text-align:left}.capbtn:hover{background:var(--cream);border-color:var(--note)}.capbtn strong{display:block;margin-bottom:6px;font-size:15px}.capbtn span{display:block;color:var(--muted);font-size:12px;line-height:1.45}textarea{width:100%;min-height:90px;resize:vertical;padding:11px 12px;border:2px solid var(--rice);border-radius:8px;background:#fff;color:var(--ink);line-height:1.6}.agents,.list{display:grid;gap:8px}.agent,.list-item{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fffaf0;font-size:12px}.dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(123,196,127,.18)}.walltools{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.wall{display:grid;grid-template-columns:repeat(3,minmax(160px,1fr));gap:14px;min-height:260px}.sticky{position:relative;min-height:178px;padding:14px 13px 12px;border:2px solid rgba(57,43,0,.8);border-radius:8px;background:#ffe98f;box-shadow:3px 5px 0 rgba(57,43,0,.18);transform:rotate(var(--rot));display:flex;flex-direction:column;gap:9px}.sticky.done{background:var(--mint)}.sticky.focus{background:var(--pink2)}.sticky.route-note{background:var(--blue)}.stitle{font-weight:900;line-height:1.35}.meta{color:#684f08;font-size:12px;line-height:1.55}.memory{margin-top:auto;padding:8px 9px;border-radius:8px;background:rgba(255,255,255,.68);color:#5a460d;font-size:12px;line-height:1.45}.pill{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border:1px solid rgba(57,43,0,.2);border-radius:999px;background:rgba(255,255,255,.74);color:#5c4608;font-size:12px;font-weight:700}.empty{grid-column:1/-1;display:grid;place-items:center;min-height:220px;border:2px dashed #ddca91;border-radius:8px;color:var(--muted);text-align:center;line-height:1.7}.bars{display:grid;grid-template-columns:repeat(5,minmax(44px,1fr));gap:8px;height:260px;padding:16px 10px 8px;align-items:end;border:1px dashed #d8c58c;border-radius:8px;background:linear-gradient(0deg,rgba(233,226,211,.65) 1px,transparent 1px),#fffaf0;background-size:100% 46px}.person{display:grid;justify-items:center;align-items:end;gap:7px;min-width:0}.barwrap{display:grid;align-items:end;width:32px;height:150px}.bar{width:100%;min-height:8px;border:2px solid var(--ink);border-bottom:0;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#fff1a8,var(--note));transition:.45s}.person.tangning .bar{background:linear-gradient(180deg,var(--pink2),var(--pink))}.avatar{width:50px;height:50px;border:2px solid var(--ink);border-radius:50%;background:#ffe9a2;position:relative;box-shadow:2px 2px 0 var(--ink)}.avatar:before,.avatar:after{content:"";position:absolute;top:18px;width:5px;height:5px;border-radius:50%;background:var(--ink)}.avatar:before{left:15px}.avatar:after{right:15px}.avatar span{position:absolute;left:14px;top:29px;width:20px;height:8px;border-bottom:2px solid var(--ink);border-radius:0 0 20px 20px}.sleepface{background:var(--pink2)}.sleepface:before,.sleepface:after{width:9px;height:2px;border-radius:0;top:20px}.pname{font-size:12px;font-weight:900;white-space:nowrap}.score{color:var(--muted);font-size:12px}.meter{margin-top:14px;padding:12px;border:2px solid rgba(255,216,107,.75);border-radius:8px;background:var(--cream)}.mline{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px}.track{height:16px;border:1px solid #c8b57e;border-radius:999px;background:var(--rice);overflow:hidden}.fill{width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--note),var(--pink));transition:.45s}.ledger{display:grid;gap:8px;margin-top:13px}.ledger div{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fffaf0;color:#5f4b12;font-size:12px}.pipeline{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px}.node{min-height:132px;padding:12px;border:2px dashed #d9bd67;border-radius:8px;background:#fffaf0;display:grid;align-content:start;gap:9px}.node.claimed{border-style:solid;border-color:var(--green);background:#f1f9ef}.node strong{line-height:1.35;font-size:13px}.node small{color:var(--muted);line-height:1.45}.owner{align-self:end;width:max-content;max-width:100%;padding:5px 8px;border-radius:999px;background:var(--note);font-size:12px;font-weight:900}.log{max-height:360px;overflow:auto;display:grid;gap:8px}.logitem{padding:9px 10px;border-left:4px solid var(--note);border-radius:8px;background:#fffaf0;color:#58440d;font-size:13px;line-height:1.5}.time{display:inline-block;margin-right:8px;color:#9a8350;font-variant-numeric:tabular-nums;font-weight:800}.review{display:grid;gap:10px;line-height:1.7;color:#5c4913}.demo-card{display:grid;gap:10px}.progress{height:12px;border:1px solid #d2bc80;border-radius:999px;background:#f1e7cd;overflow:hidden}.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--note));transition:.35s}.caption{color:var(--muted);font-size:13px}.modalbg{position:fixed;inset:0;z-index:20;display:none;place-items:center;padding:20px;background:rgba(57,43,0,.48)}.modalbg.show{display:grid}.modal{width:min(520px,100%);border:3px solid var(--ink);border-radius:8px;background:var(--paper);box-shadow:7px 8px 0 rgba(57,43,0,.24)}.modal header{padding:15px 16px 11px;border-bottom:2px dashed var(--note)}.modal h3{margin:0;font-size:18px}.mbody{padding:15px 16px 16px}.field{display:grid;gap:6px;margin-bottom:12px}.field label{color:var(--muted);font-size:12px;font-weight:800}.field input,.field select{width:100%;min-height:38px;padding:8px 10px;border:2px solid var(--rice);border-radius:8px;background:#fff;color:var(--ink)}.mactions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:14px}.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}
-@media(max-width:1180px){.workspace-header{grid-template-columns:1fr}.status-row{justify-content:flex-start}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:1/-1}.pipeline{grid-template-columns:repeat(3,minmax(150px,1fr))}.wall{grid-template-columns:repeat(2,minmax(150px,1fr))}}@media(max-width:720px){.shell{grid-template-columns:1fr}.product-sidebar{position:relative;height:auto;border-right:0;border-bottom:2px solid #dfcf9d}.workspace{padding:14px 12px 24px}.nav,.capture,.wall,.pipeline,.metric-grid{grid-template-columns:1fr}.bars{overflow-x:auto;grid-template-columns:repeat(5,70px)}}
+[hidden]{display:none!important}
+.welcome-flow{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(90deg,rgba(13,59,102,.08) 1px,transparent 1px),linear-gradient(0deg,rgba(13,59,102,.06) 1px,transparent 1px),#f8df72;background-size:24px 24px,24px 24px,100% 100%}.welcome-card,.setup-card{width:min(760px,100%);border:3px solid var(--wood-dark);background:var(--paper);box-shadow:7px 7px 0 var(--shadow),12px 12px 0 rgba(122,76,40,.16)}.welcome-card{display:grid;gap:22px;padding:30px}.welcome-title{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}.welcome-title h1{margin:0;font-size:clamp(34px,5vw,58px);line-height:1.05;color:var(--ink);text-shadow:2px 2px 0 #fff8d9}.welcome-title p{margin:8px 0 0;color:#5b371a;font-size:17px;line-height:1.7;font-weight:800}.welcome-actions{display:flex;flex-wrap:wrap;gap:12px}.setup-card header{padding:16px 18px 12px;border-bottom:3px solid var(--wood-dark);background:#ffe39b}.setup-card h2{margin:0;font-size:22px}.setup-progress{display:flex;gap:8px;margin-top:10px}.setup-dot{width:100%;height:12px;border:2px solid var(--wood-dark);background:#fff8d9}.setup-dot.on{background:var(--green)}.setup-body{padding:18px;display:grid;gap:14px}.setup-copy{margin:0;color:#5b371a;line-height:1.7;font-weight:800}.count-grid{display:grid;grid-template-columns:repeat(4,minmax(82px,1fr));gap:10px}.count-option,.avatar-option,.color-option{position:relative;display:grid;place-items:center;min-height:54px;border:3px solid var(--wood-dark);background:#fff8d9;box-shadow:3px 3px 0 rgba(122,76,40,.4);font-weight:900}.count-option input,.avatar-option input,.color-option input{position:absolute;opacity:0;pointer-events:none}.count-option:has(input:checked),.avatar-option:has(input:checked),.color-option:has(input:checked){background:var(--note);border-color:var(--ink);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}.avatar-grid,.color-grid{display:grid;grid-template-columns:repeat(6,minmax(56px,1fr));gap:10px}.color-swatch{width:30px;height:30px;border:3px solid var(--ink);background:var(--swatch)}.setup-member-count{color:var(--muted);font-size:13px;font-weight:900}.current-member-picker{display:flex;align-items:center;gap:7px;min-height:32px;padding:4px 8px;border:3px solid var(--wood-dark);background:#fff9d6;box-shadow:3px 3px 0 rgba(122,76,40,.45);font-size:12px;font-weight:900}.current-member-picker select{min-height:28px;border:2px solid var(--wood-dark);background:#fffdf0;color:var(--ink);font-weight:900}.member-roster{margin-bottom:10px}.member-chip{display:inline-flex;align-items:center;gap:6px}.member-color-dot{width:14px;height:14px;border:2px solid var(--ink);background:var(--member-color);box-shadow:2px 2px 0 rgba(122,76,40,.25)}.pixel-avatar{--member-color:var(--note);display:block;overflow:hidden;background:var(--member-color)}.pixel-avatar .avatar-mark{position:absolute;display:block;background:#fff8d9;border:2px solid var(--ink);box-shadow:2px 2px 0 rgba(122,76,40,.25)}.pixel-avatar[data-avatar="note"] .avatar-mark{left:8px;top:7px;width:15px;height:10px;background:var(--note)}.pixel-avatar[data-avatar="leaf"] .avatar-mark{right:7px;top:6px;width:14px;height:14px;background:var(--green)}.pixel-avatar[data-avatar="heart"] .avatar-mark{left:18px;top:5px;width:14px;height:14px;background:var(--pink)}.pixel-avatar[data-avatar="cap"] .avatar-mark{left:7px;top:6px;width:30px;height:9px;background:var(--blue)}.pixel-avatar[data-avatar="moon"] .avatar-mark{right:9px;top:8px;width:15px;height:15px;background:#fff8ec}.pixel-avatar[data-avatar="star"] .avatar-mark{left:17px;top:5px;width:14px;height:14px;background:#fff8ec}.avatar-preview{width:44px;height:44px}.avatar-preview:before{left:13px}.avatar-preview:after{right:13px}.avatar-preview span{left:12px;top:26px}
+.continue-home{display:grid;gap:8px;padding:12px;border:3px solid var(--wood-dark);background:#fff8d9;box-shadow:4px 4px 0 rgba(122,76,40,.35)}.continue-home .kicker{font-weight:900}.family-form{display:grid;gap:14px}.setup-member-editor{display:grid;grid-template-columns:196px minmax(0,1fr);gap:16px;align-items:start;padding:12px;border:3px solid var(--wood-dark);background:#fff8d9;box-shadow:4px 4px 0 rgba(122,76,40,.28)}.setup-avatar-window{width:184px;height:244px}.setup-avatar-window img{width:180px;height:236px}.setup-member-fields{display:grid;gap:12px}.family-member-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.family-member-card{display:grid;gap:10px;padding:12px;border:3px solid var(--wood-dark);background:#fff8d9;box-shadow:4px 4px 0 rgba(122,76,40,.35)}.family-card-layout{display:grid;grid-template-columns:164px minmax(0,1fr);gap:14px;align-items:stretch}.member-avatar-side{display:grid;align-content:start;justify-items:center;gap:9px}.member-avatar-window{width:156px;height:196px;display:grid;place-items:center;padding:0;border:3px solid var(--wood-dark);background:#fffdf0;box-shadow:4px 4px 0 rgba(122,76,40,.28);cursor:pointer}.member-avatar-window img{width:154px;height:190px;object-fit:contain;image-rendering:pixelated;display:block}.member-edit-side{display:grid;gap:10px;align-content:start}.member-card-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.member-card-title b{font-size:15px}.member-card-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.member-edit-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}.member-save-tip{min-height:18px;color:#5b371a;font-size:12px;font-weight:900}.family-member-card input,.family-member-card select{width:100%;min-height:36px;border:3px solid var(--wood-dark);background:#fffdf0;color:var(--ink);font-weight:800}.family-member-card label{display:grid;gap:5px;color:var(--muted);font-size:12px;font-weight:900}.avatar-picker-window{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:6px;border:3px solid var(--wood-dark);background:#fff1b8;box-shadow:4px 4px 0 rgba(122,76,40,.3)}.avatar-picker-stage{min-height:330px;display:grid;place-items:center;padding:0;border:3px solid var(--wood-dark);background:#fffdf0;box-shadow:inset 4px 4px 0 rgba(255,216,107,.35)}.avatar-picker-stage img{width:286px;height:320px;object-fit:contain;image-rendering:pixelated;display:block}.avatar-arrow{width:46px;height:54px;padding:0;font-size:30px;line-height:1}.avatar-picker-meta{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:12px;color:#5b371a;font-weight:900}.role-list{display:grid;gap:8px}.role-choice{width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;text-align:left}.role-choice .chip{justify-self:end}.modal-note{line-height:1.7;color:#5b371a;font-weight:800}
+.character-grid{display:grid;grid-template-columns:repeat(7,minmax(48px,1fr));gap:8px}.character-option{position:relative;display:grid;place-items:center;min-height:66px;padding:5px;border:3px solid var(--wood-dark);background:#fff8d9;box-shadow:3px 3px 0 rgba(122,76,40,.35);cursor:pointer}.character-option input{position:absolute;opacity:0;pointer-events:none}.character-option:has(input:checked){background:var(--note);border-color:var(--ink);box-shadow:5px 5px 0 var(--shadow);transform:translate(-1px,-1px)}.character-option img{width:52px;height:52px;object-fit:contain;image-rendering:pixelated;display:block}.pixel-avatar.character-avatar{display:grid;place-items:center;background:#fff8d9}.pixel-avatar.character-avatar:before,.pixel-avatar.character-avatar:after,.pixel-avatar.character-avatar span,.pixel-avatar.character-avatar .avatar-mark{display:none}.pixel-avatar.character-avatar img{width:92%;height:92%;object-fit:contain;display:block;image-rendering:pixelated}.inline-avatar{width:44px;height:44px;border:3px solid var(--ink);box-shadow:2px 2px 0 rgba(122,76,40,.25);background:#fff8d9;vertical-align:middle}.avatar-preview{width:48px;height:48px}.member-pill{display:inline-flex;align-items:center;gap:7px;line-height:1.2}.chip .inline-avatar,.pill .inline-avatar{flex:0 0 auto}.route .chip{border:2px solid var(--wood-dark);border-radius:8px;background:#fff8d9;box-shadow:3px 3px 0 rgba(122,76,40,.25)}.bars .avatar{width:56px;height:56px}
+@media(max-width:1180px){.workspace-header{grid-template-columns:1fr}.status-row{justify-content:flex-start}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:1/-1}.pipeline{grid-template-columns:repeat(3,minmax(150px,1fr))}.wall{grid-template-columns:repeat(2,minmax(150px,1fr))}.character-grid{grid-template-columns:repeat(5,minmax(48px,1fr))}}@media(max-width:720px){.shell{grid-template-columns:1fr}.product-sidebar{position:relative;height:auto;border-right:0;border-bottom:2px solid #dfcf9d}.workspace{padding:14px 12px 24px}.nav,.capture,.wall,.pipeline,.metric-grid{grid-template-columns:1fr}.bars{overflow-x:auto;grid-template-columns:repeat(5,70px)}.welcome-card{padding:22px}.welcome-title{grid-template-columns:1fr}.count-grid,.avatar-grid,.color-grid,.character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.setup-member-editor,.family-card-layout{grid-template-columns:1fr}.setup-avatar-window,.member-avatar-window{width:100%;height:220px}.setup-avatar-window img,.member-avatar-window img{width:200px;height:214px}.family-member-grid{grid-template-columns:1fr}.member-card-row{grid-template-columns:1fr}.member-edit-actions{justify-content:stretch}.member-edit-actions .btn{width:100%}.avatar-picker-window{grid-template-columns:44px minmax(0,1fr) 44px}.avatar-picker-stage{min-height:280px}.avatar-picker-stage img{width:230px;height:268px}}
 .upload-zone{display:grid;gap:8px;margin-top:14px;padding:12px;border:2px dashed #ddca91;border-radius:8px;background:#fffaf0;color:#5f4b12;font-size:13px;line-height:1.55}.upload-zone b{font-size:15px}.upload-preview{max-width:100%;max-height:190px;border:2px solid var(--rice);border-radius:8px;background:#fff;object-fit:contain}.recognized-text{width:100%;min-height:90px;margin-top:0}.capture-actions{display:flex;gap:8px;flex-wrap:wrap}.recording{border-color:var(--pink)!important;background:var(--pink2)!important}
 .protocol-person{width:100%;text-align:left;cursor:grab}.protocol-person:active{cursor:grabbing}.protocol-person.dragging{opacity:.58}.protocol-person b{display:block}.protocol-person small{color:var(--muted);line-height:1.35}.handle{font-size:18px;font-weight:900;color:#9a7300}
 
@@ -236,6 +240,25 @@ body:before{
   image-rendering:auto;
   filter:drop-shadow(4px 4px 0 rgba(0,0,0,.22));
 }
+.sleep-protected-roster{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+  align-items:center;
+}
+.sleep-protected-item{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:6px 8px;
+  border:2px solid rgba(255,248,207,.55);
+  border-radius:8px;
+  background:#143f72;
+  color:#fff8cf;
+  font-size:12px;
+  font-weight:900;
+}
 .today-tip-panel,
 .today-sleep-card{
   display:flex;
@@ -317,6 +340,7 @@ body:before{
   font-size:15px;
 }
 .capbtn[data-cap="voice"]:before{content:"♪"}
+.capbtn[data-cap="file"]:before{content:"📎"}
 .capbtn[data-cap="chat"]:before{content:"□"}
 .capbtn[data-cap="video"]:before{content:"▶"}
 .capbtn[data-cap="ocr"]:before{content:"文"}
@@ -635,6 +659,23 @@ body{
   gap:8px;
   justify-content:flex-end;
 }
+#currentRoleBtn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+#currentRoleBtn .member-pill{
+  gap:6px;
+}
+#currentRoleBtn .inline-avatar{
+  width:36px;
+  height:36px;
+  border-width:2px;
+}
+.nav-item{
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
 @media(max-width:1180px){
   .header-side{
     justify-items:start;
@@ -710,6 +751,122 @@ body{
 .protocol-chain-actions .btn{
   flex:0 0 auto;
 }
+.family-committee-panel .body{
+  display:grid;
+  gap:14px;
+  align-items:stretch;
+}
+.committee-block{
+  border:2px solid var(--wood-dark);
+  border-radius:8px;
+  background:#fff8d9;
+  box-shadow:3px 3px 0 rgba(122,76,40,.2);
+  padding:12px;
+}
+.committee-block-title{
+  margin-bottom:10px;
+  color:#5b3517;
+  font-size:13px;
+  font-weight:900;
+}
+.committee-route{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:8px;
+  align-items:center;
+  overflow-x:auto;
+  padding:4px 4px 8px;
+  margin-top:0;
+}
+.committee-route-item{
+  flex:0 0 auto;
+  display:inline-grid;
+  grid-template-columns:auto 1fr;
+  gap:8px;
+  align-items:center;
+  min-width:138px;
+  padding:8px 10px;
+  border:2px solid var(--wood-dark);
+  border-radius:8px;
+  background:#fffdf0;
+  box-shadow:3px 3px 0 rgba(122,76,40,.24);
+}
+.committee-route-item.sleep-skipped{
+  opacity:.62;
+  filter:grayscale(.25);
+  background:#f3ecd8;
+}
+.committee-route-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:4px;
+}
+.sleep-guard-tag{
+  border-color:var(--wood-dark);
+  background:#fff1b8;
+  color:#5b371a;
+}
+.committee-route-item b,
+.committee-member-card b{
+  display:block;
+  font-size:13px;
+  line-height:1.25;
+}
+.committee-route-item small,
+.committee-member-card small{
+  color:var(--muted);
+  line-height:1.35;
+}
+.committee-arrow{
+  flex:0 0 auto;
+  color:#7a4c28;
+  font-size:18px;
+  font-weight:900;
+}
+.committee-status-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:10px;
+}
+.committee-member-card{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:9px;
+  align-items:center;
+  padding:10px;
+  border:2px solid #ddca91;
+  border-radius:8px;
+  background:#fffdf0;
+}
+.committee-member-card .chip{
+  width:max-content;
+  margin-top:5px;
+  border-color:var(--wood-dark);
+  background:var(--note);
+}
+.committee-avatar{
+  width:52px;
+  height:52px;
+  border:3px solid var(--ink);
+  box-shadow:2px 2px 0 rgba(122,76,40,.25);
+}
+.committee-rules{
+  display:grid;
+  gap:8px;
+}
+.committee-rule{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffdf0;
+  color:#5c4608;
+  font-size:13px;
+  font-weight:800;
+}
 @media(max-width:720px){
   .content-section[data-section="wall"] .wall{
     grid-template-columns:1fr;
@@ -776,122 +933,1158 @@ body{
   min-height:0;
   align-content:start;
 }
+.bars{
+  overflow-x:auto;
+  justify-content:center;
+}
+.bars .person{
+  min-width:96px;
+}
+.today-tip-panel .route{
+  align-items:stretch;
+  gap:8px;
+}
+.device-route-card{
+  flex:1 1 128px;
+  min-width:126px;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:8px;
+  align-items:center;
+  padding:8px 9px;
+  border:2px solid rgba(255,248,207,.82);
+  background:#163f68;
+  color:#fff8cf;
+  box-shadow:3px 3px 0 rgba(0,0,0,.22);
+}
+.device-route-card.on{
+  background:#285b86;
+  border-color:var(--note);
+}
+.device-route-card b{
+  display:block;
+  color:#fffdf5;
+  font-size:13px;
+  line-height:1.25;
+  text-shadow:1px 1px 0 #003f7c;
+}
+.device-route-card small{
+  color:#ffe9a8;
+  line-height:1.35;
+}
+.device-route-arrow{
+  flex:0 0 auto;
+  align-self:center;
+  color:#fff8cf;
+  font-weight:900;
+  text-shadow:1px 1px 0 #003f7c;
+}
+.device-route-card .inline-avatar{
+  width:44px;
+  height:44px;
+  border-color:#fff8cf;
+  background:#fff8d9;
+}
+.bars{
+  height:auto;
+  min-height:260px;
+  overflow:visible;
+  align-items:stretch;
+  justify-content:stretch;
+  gap:12px;
+  padding:14px;
+}
+#todayBars{
+  min-height:0;
+}
+.bars .person{
+  min-width:0;
+  min-height:214px;
+  align-items:end;
+  align-content:end;
+  justify-items:center;
+  padding:10px 8px;
+  border:2px solid rgba(122,76,40,.32);
+  background:rgba(255,253,245,.72);
+  box-shadow:3px 3px 0 rgba(122,76,40,.16);
+}
+#todayBars .person{
+  min-height:184px;
+}
+.bars .avatar{
+  width:64px;
+  height:64px;
+  overflow:visible;
+}
+#todayBars .avatar{
+  width:58px;
+  height:58px;
+}
+.bars .pixel-avatar.character-avatar{
+  overflow:visible;
+}
+.bars .pixel-avatar.character-avatar img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  image-rendering:pixelated;
+}
+.bars .barwrap{
+  height:118px;
+}
+#todayBars .barwrap{
+  height:88px;
+}
+.bars .pname,
+.bars .score{
+  text-align:center;
+  line-height:1.35;
+}
+.committee-member-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:76px;
+}
+.committee-member-info{
+  min-width:0;
+  flex:1 1 auto;
+  display:grid;
+  gap:3px;
+}
+.committee-member-card .committee-status{
+  flex:0 0 auto;
+  min-width:72px;
+  min-height:32px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 0 auto;
+  padding:5px 9px;
+  text-align:center;
+  white-space:nowrap;
+}
+.capture-draft-field{
+  margin-top:14px;
+}
+.capture-draft-field label{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+}
+.capture-draft-field .kicker{
+  margin:0 0 8px;
+}
+#quickText{
+  min-height:132px;
+}
+.committee-status-grid{
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px;
+}
+.committee-member-card{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  min-height:86px;
+}
+.committee-member-card .committee-avatar{
+  width:56px;
+  height:56px;
+  justify-self:center;
+}
+.committee-member-card .committee-status{
+  min-width:88px;
+  height:32px;
+  padding:4px 10px;
+  margin:0;
+  white-space:nowrap;
+}
+.bars{
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
+  min-height:0;
+  overflow:visible;
+}
+.bars .person{
+  min-height:196px;
+  align-content:center;
+  gap:8px;
+  padding:10px;
+}
+#todayBars .person{
+  min-height:182px;
+}
+.bars .barwrap{
+  width:38px;
+  height:62px;
+}
+#todayBars .barwrap{
+  height:48px;
+}
+.bars .avatar{
+  width:64px;
+  height:64px;
+}
+.sticky{
+  height:auto;
+}
+.sticky .meta,
+.sticky-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  max-width:100%;
+}
+.sticky .pill{
+  max-width:100%;
+  min-width:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.sticky .member-pill{
+  max-width:100%;
+  min-width:0;
+  flex-wrap:wrap;
+  overflow-wrap:anywhere;
+}
+.family-card-layout{
+  grid-template-columns:226px minmax(0,1fr);
+}
+.member-avatar-window{
+  width:214px;
+  height:286px;
+  padding:4px;
+  overflow:visible;
+}
+.member-avatar-window img{
+  width:100%;
+  height:100%;
+  transform:scale(1.16);
+  transform-origin:center;
+}
+.setup-member-editor{
+  grid-template-columns:226px minmax(0,1fr);
+}
+.setup-avatar-window{
+  width:214px;
+  height:286px;
+}
+.setup-avatar-window img{
+  width:100%;
+  height:100%;
+}
+.avatar-picker-stage{
+  min-height:344px;
+  overflow:visible;
+}
+.avatar-picker-stage img{
+  width:100%;
+  height:336px;
+  transform:scale(1.12);
+  transform-origin:center;
+}
+.bars{
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:12px;
+}
+.bars .person{
+  min-height:170px;
+  padding:4px 2px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+#todayBars .person{
+  min-height:158px;
+}
+.bars .barwrap{
+  width:26px;
+  height:54px;
+  border-left:0;
+  border-right:0;
+}
+#todayBars .barwrap{
+  height:42px;
+}
+.bars .bar{
+  width:24px;
+  justify-self:center;
+}
+.sticky.done{
+  min-height:190px;
+}
+.sticky.done .meta,
+.sticky.done .sticky-actions{
+  gap:4px;
+}
+.sticky.done .pill{
+  padding:2px 6px;
+  font-size:11px;
+  line-height:1.25;
+}
+.member-avatar-window{
+  overflow:hidden;
+  padding:0;
+}
+.member-avatar-window img{
+  transform:scale(1.35);
+  transform-origin:center center;
+}
+.family-member-card .member-avatar-window{
+  overflow:hidden;
+  padding:0;
+}
+.family-member-card .member-avatar-window img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:pixelated;
+  transform:scale(1.5);
+  transform-origin:center center;
+}
+.member-edit-actions{
+  flex-wrap:wrap;
+}
+.sleep-guard-toggle.on{
+  background:#fff1b8;
+}
+.welcome-title #welcomeLanguageBtn{
+  justify-self:end;
+  align-self:start;
+}
+.sticky .stitle{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  line-height:1.35;
+}
+.sticky .meta{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.sticky-actions{
+  flex-wrap:wrap;
+}
+.sticky-actions .btn{
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+@media(max-width:720px){
+  .committee-member-card{
+    grid-template-columns:64px minmax(0,1fr);
+  }
+  .committee-member-card .committee-status{
+    grid-column:2;
+    justify-self:start;
+  }
+  .family-card-layout,
+  .setup-member-editor{
+    grid-template-columns:1fr;
+  }
+  .member-avatar-window,
+  .setup-avatar-window{
+    width:100%;
+    height:260px;
+  }
+  .member-avatar-window img,
+  .setup-avatar-window img{
+    width:100%;
+    height:100%;
+  }
+}
 </style>
 </head>
 <body>
-<div class="shell">
+<div class="welcome-flow" id="welcomeFlow" hidden>
+  <section class="welcome-card" id="welcomeIntro" aria-labelledby="welcomeTitle">
+    <div class="welcome-title">
+      <div class="mascot" aria-hidden="true"><span></span></div>
+      <div>
+        <h1 id="welcomeTitle">家务便利贴</h1>
+        <p>把家里的小事，变成大家一起接住的便利贴。</p>
+      </div>
+      <button class="btn small soft" id="welcomeLanguageBtn" type="button">🌐 中文</button>
+    </div>
+    <div class="welcome-actions">
+      <button class="btn note" id="createFamilyBtn">创建家庭空间</button>
+      <button class="btn soft" id="enterDemoHomeBtn">进入 唐宁in the house</button>
+    </div>
+    <div class="continue-home" id="continueHomeBox" hidden></div>
+  </section>
+  <section class="setup-card" id="setupFlow" hidden aria-labelledby="setupTitle">
+    <header>
+      <h2 id="setupTitle">创建家庭空间</h2>
+      <div class="setup-progress" id="setupProgress"></div>
+    </header>
+    <div class="setup-body" id="setupBody"></div>
+  </section>
+</div>
+
+<div class="shell" id="appShell" hidden>
   <aside class="product-sidebar">
     <div class="brand"><div class="mascot" aria-hidden="true"><span></span></div><div><h1>家务便利贴</h1><p>家庭分工工作台</p></div></div>
     <nav class="nav" aria-label="产品功能菜单">
-      <button class="nav-item active" data-target="today">今日工作台</button>
-      <button class="nav-item" data-target="capture">录入便利贴</button>
-      <button class="nav-item" data-target="wall">便利贴手册</button>
-      <button class="nav-item" data-target="protocol">便利贴委员会</button>
-      <button class="nav-item" data-target="balance">家庭天平</button>
+      <button class="nav-item active" data-target="today" data-nav-key="today">今日工作台</button>
+      <button class="nav-item" data-target="capture" data-nav-key="capture">录入便利贴</button>
+      <button class="nav-item" data-target="wall" data-nav-key="wall">便利贴手册</button>
+      <button class="nav-item" data-target="protocol" data-nav-key="protocol">便利贴委员会</button>
+      <button class="nav-item" data-target="balance" data-nav-key="balance">家庭天平</button>
+      <button class="nav-item" data-target="familyInfo" data-nav-key="familyInfo">家庭信息</button>
     </nav>
   </aside>
 
   <main class="workspace">
     <header class="workspace-header">
       <div><div class="crumb">家务便利贴 / <span id="currentCrumb">今日工作台</span></div><h2 id="pageTitle">今日工作台</h2><p class="workspace-desc" id="pageDesc">一天一天贴出全家的心愿，我们开心，我们关心。</p></div>
-      <div class="header-side"><div class="status-row"><span class="badge">睡眠护栏 23:00-07:00</span><span class="badge" id="summaryTasks">0 张便利贴</span><span class="badge" id="summaryGini">天平 --</span></div><div class="title-actions"><button class="btn small note" id="seedBtn">灌 demo 数据</button><button class="btn small soft" id="voiceBtn">贴贴播报 关</button></div></div>
+      <div class="header-side"><div class="status-row"><span class="badge" id="sleepGuardBadge">睡眠护栏 23:00-07:00</span><span class="badge" id="summaryTasks">0 张便利贴</span><span class="badge" id="summaryGini">天平 --</span><button class="btn small soft" id="languageBtn">🌐 中文</button></div><div class="title-actions"><button class="btn small soft" id="currentRoleBtn">当前：家人</button><button class="btn small soft" id="switchFamilyBtn">切换家庭</button><button class="btn small note" id="seedBtn">灌 demo 数据</button><button class="btn small soft" id="voiceBtn">贴贴播报 关</button></div></div>
     </header>
 
     <section class="content-section section-active" data-section="today" data-title="今日工作台" data-desc="一天一天贴出全家的心愿，我们开心，我们关心。">
       <div class="grid">
-        <div class="panel span-7 today-tip-panel"><div class="hd"><div><h3>贴贴温馨提示</h3><div class="kicker"></div></div><button class="btn small note" data-sample="meds">贴一张药品便利贴</button></div><div class="body"><div class="callout" id="nextCard">唐母（林女士）说“降压药快见底了”。贴贴建议先传给唐小鸭（唐弟），周勉（丈夫）作为下一棒。</div><div class="device" style="margin-top:16px"><div class="devtop"><span>Seeed 单屏 · 客厅常驻</span><span>睡眠护栏中</span></div><div class="screen"><div class="devnote"><b id="devTitle">唐母（林女士）降压药快见底了</b><span id="devMeta">推荐：唐小鸭（唐弟） · ETA 明早 9 点前 · memAura 找到上次购药记录</span></div><div class="route" id="route"></div></div></div></div></div>
-        <div class="panel span-5 sleep-card today-sleep-card"><div class="hd"><div><h3>睡眠护栏</h3><div class="kicker">唐宁端静默，事情进入明早队列</div></div></div><div class="body"><div class="metric-grid"><div class="metric"><b>0</b><span>夜间推给唐宁</span></div><div class="metric"><b>3</b><span>接棒候选人</span></div><div class="metric"><b>7:00</b><span>明早统一提醒</span></div></div><img class="sleep-family" src="assets/family-team.png" alt="贴贴和家人站在一起"></div></div>
+        <div class="panel span-7 today-tip-panel"><div class="hd"><div><h3>贴贴温馨提示</h3><div class="kicker"></div></div><button class="btn small note" data-sample="meds">贴一张药品便利贴</button></div><div class="body"><div class="callout" id="nextCard">家人说“小事快见底了”。贴贴会先找最顺路的人接住。</div><div class="device" style="margin-top:16px"><div class="devtop"><span>Seeed 单屏 · 客厅常驻</span><span>睡眠护栏中</span></div><div class="screen"><div class="devnote"><b id="devTitle">家人的便利贴</b><span id="devMeta">推荐：等待家庭成员 · ETA 今天 · memAura 会记住上下文</span></div><div class="route" id="route"></div></div></div></div></div>
+        <div class="panel span-5 sleep-card today-sleep-card"><div class="hd"><div><h3>睡眠护栏</h3><div class="kicker" id="sleepKicker">事情进入明早队列</div></div></div><div class="body"><div class="metric-grid"><div class="metric"><b id="sleepProtectedCount">0</b><span id="sleepProtectedLabel">夜间推给主负责人</span></div><div class="metric"><b id="helperCount">0</b><span>接棒候选人</span></div><div class="metric"><b>7:00</b><span>明早统一提醒</span></div></div><div class="sleep-protected-roster" id="sleepProtectedRoster"></div><img class="sleep-family" src="assets/family-team.png" alt="贴贴和家人站在一起"></div></div>
         <div class="panel span-6"><div class="hd"><div><h3>今日待接便利贴</h3><div class="kicker">待接、已接、请帮忙都在这里看</div></div></div><div class="body"><div class="wall" id="todayWall"></div></div></div>
         <div class="panel span-6"><div class="hd"><div><h3>家庭天平摘要</h3><div class="kicker">不审判，只看见分布</div></div></div><div class="body"><div class="bars" id="todayBars"></div></div></div>
       </div>
     </section>
 
     <section class="content-section" data-section="capture" data-title="录入便利贴" data-desc="把语音、文档、照片和视频直接变成可追踪便利贴。">
-      <div class="grid"><div class="panel span-12"><div class="hd"><div><h3>录入入口</h3><div class="kicker">累的人不用再打字整理</div></div></div><div class="body"><div class="capture"><button class="capbtn" data-cap="voice" id="voiceCaptureBtn"><strong>语音录入</strong><span>点击后开始听写，转成文字再生成便利贴</span></button><button class="capbtn" data-cap="file"><strong>文件上传</strong><span>文档、照片、视频都可以上传，贴贴会识别需要接住的事</span></button></div><input class="sr" id="fileUpload" type="file" accept="image/*,video/*,.pdf,.doc,.docx,.txt"><div class="upload-zone" id="captureResult"><b>等待录入</b><span>选择语音录入或文件上传后，识别结果会出现在这里；你可以确认后生成便利贴。</span></div><textarea id="quickText">妈妈降压药快见底了，明早需要有人下单。</textarea><button class="btn note" id="parseBtn">让贴贴解析</button></div></div></div>
+      <div class="grid"><div class="panel span-12"><div class="hd"><div><h3>录入入口</h3><div class="kicker">可以直接输入，也可以通过语音或文件识别生成内容</div></div></div><div class="body"><div class="capture"><button class="capbtn" data-cap="voice" id="voiceCaptureBtn"><strong>说出来，贴贴帮你记</strong><span>语音识别后会填入下方草稿区，还能继续手动修改</span></button><button class="capbtn" data-cap="file"><strong>上传截图/照片/文档</strong><span>识别结果会填入下方草稿区，再由你确认生成便利贴</span></button></div><input class="sr" id="fileUpload" type="file" accept="image/*,video/*,.pdf,.doc,.docx,.txt"><div class="upload-zone" id="captureResult" hidden></div><div class="field capture-draft-field"><label for="quickText">便利贴内容</label><textarea id="quickText">家里有件小事，明早需要有人顺手接一下。</textarea></div><div class="field capture-owner-field"><label for="quickOwner">指派给</label><select id="quickOwner"></select></div><button class="btn note" id="parseBtn">让贴贴解析</button></div></div></div>
     </section>
 
     <section class="content-section" data-section="wall" data-title="便利贴手册" data-desc="管理全部便利贴：待接、已接和完成，以及每张贴的上下文。">
       <div class="grid"><div class="panel span-6"><div class="hd"><div><h3>贴贴等待中</h3><div class="kicker" id="wallSummary">0 张便利贴</div></div><div class="walltools"><button class="btn small" data-sample="meds">药品</button><button class="btn small" data-sample="hospital">复诊</button><button class="btn small" data-sample="gas">燃气</button></div></div><div class="body"><div class="wall wall-scroll" id="taskWall"></div></div></div><div class="panel span-6"><div class="hd"><div><h3>贴贴已完成</h3><div class="kicker" id="manualSummary">0 张已完成 · 保留 14 天</div></div></div><div class="body"><div class="wall wall-scroll" id="completedWall"></div></div></div></div>
     </section>
 
-    <section class="content-section" data-section="protocol" data-title="便利贴委员会" data-desc="管理请帮忙优先级、未响应规则，以及每日复盘和心愿池。">
-	      <div class="grid"><div class="panel span-6 protocol-chain-panel"><div class="hd"><div><h3>当前请帮忙链路</h3><div class="kicker">唐小鸭（唐弟） → 周勉（丈夫） → 唐宁</div></div><div class="protocol-chain-actions"><span class="badge" id="protocolUpdatedAt">上次修改：尚未修改</span><button class="btn small note" id="updateProtocolBtn">更新协议</button></div></div><div class="body"><div class="route" id="batonRoute"></div></div></div><div class="panel span-6"><div class="hd"><div><h3>未响应规则</h3><div class="kicker">温柔请帮忙，不公开羞辱</div></div></div><div class="body"><div class="list"><div class="list-item"><span class="dot"></span><div>唐小鸭（唐弟）工作忙，暂时接不住</div><b>请周勉（丈夫）帮忙</b></div><div class="list-item"><span class="dot"></span><div>周勉（丈夫）也无法接住</div><b>最后通知唐宁</b></div><div class="list-item"><span class="dot"></span><div>仍无人处理</div><b>进入明早队列</b></div></div></div></div><div class="panel span-6"><div class="hd"><div><h3>今日复盘卡</h3><div class="kicker">不打卡，只做减法确认</div></div><button class="btn small" id="reviewBtn">生成复盘</button></div><div class="body review" id="review"><div class="callout">她今晚能睡了。</div><div>家务便利贴不奖励“谁做最多”，只奖励“谁让家里更平衡”。</div></div></div><div class="panel span-6"><div class="hd"><div><h3>心愿池</h3><div class="kicker">奖励改善分布的人</div></div></div><div class="body"><div class="list" id="wishPool"></div></div></div></div>
+    <section class="content-section" data-section="protocol" data-title="便利贴委员会" data-desc="管理请帮忙顺序、每日复盘和心愿池。">
+	      <div class="grid"><div class="panel span-12 protocol-chain-panel family-committee-panel"><div class="hd"><div><h3>家庭接力委员会</h3><div class="kicker" id="committeeSubtitle">大家按顺序接住便利贴，不公开羞辱任何人</div></div><div class="protocol-chain-actions"><span class="badge" id="protocolUpdatedAt">上次修改：尚未修改</span><button class="btn small note" id="updateProtocolBtn">更新协议</button></div></div><div class="body committee-body"><section class="committee-block"><div class="committee-block-title">当前接力顺序</div><div class="committee-route" id="batonRoute"></div></section><section class="committee-block"><div class="committee-block-title">成员接力状态</div><div class="committee-status-grid" id="memberRoster"></div></section><section class="committee-block"><div class="committee-block-title">请帮忙规则</div><div class="committee-rules" id="fallbackRules"></div></section></div></div><div class="panel span-6"><div class="hd"><div><h3>今日复盘卡</h3><div class="kicker">不打卡，只做减法确认</div></div><button class="btn small" id="reviewBtn">生成复盘</button></div><div class="body review" id="review"><div class="callout">她今晚能睡了。</div><div>家务便利贴不奖励“谁做最多”，只奖励“谁让家里更平衡”。</div></div></div><div class="panel span-6"><div class="hd"><div><h3>心愿池</h3><div class="kicker">奖励改善分布的人</div></div></div><div class="body"><div class="list" id="wishPool"></div></div></div></div>
     </section>
 
     <section class="content-section" data-section="balance" data-title="家庭天平" data-desc="把观察、协调、执行和兜底都记进小账本，看见分布是否倾斜。">
-      <div class="grid"><div class="panel span-8"><div class="hd"><div><h3>负担分布</h3><div class="kicker">唐宁被保护，但不是被排除</div></div></div><div class="body"><div class="bars" id="bars"></div><div class="meter"><div class="mline"><b>家里的天平</b><span id="gini">--</span></div><div class="track"><div class="fill" id="fill"></div></div></div></div></div><div class="panel span-4"><div class="hd"><div><h3>小账本</h3><div class="kicker">观察 +1 / 协调 +2 / 执行 +3 / 兜底 +5</div></div></div><div class="body"><div class="ledger" id="ledger"></div></div></div></div>
+      <div class="grid"><div class="panel span-8"><div class="hd"><div><h3>负担分布</h3><div class="kicker" id="balanceKicker">家人被保护，但不是被排除</div></div></div><div class="body"><div class="bars" id="bars"></div><div class="meter"><div class="mline"><b>家里的天平</b><span id="gini">--</span></div><div class="track"><div class="fill" id="fill"></div></div></div></div></div><div class="panel span-4"><div class="hd"><div><h3>小账本</h3><div class="kicker">观察 +1 / 协调 +2 / 执行 +3 / 兜底 +5</div></div></div><div class="body"><div class="ledger" id="ledger"></div></div></div></div>
+    </section>
+
+    <section class="content-section" data-section="familyInfo" data-title="家庭信息" data-desc="维护家庭门牌、口号和成员贴纸，所有便利贴会立刻使用新的家人数据。">
+      <div class="grid">
+        <div class="panel span-12">
+          <div class="hd"><div><h3>家庭门牌</h3><div class="kicker">只保存在这台设备，不需要账号</div></div><button class="btn small note" id="saveFamilyInfoBtn">保存家庭信息</button></div>
+          <div class="body family-form">
+            <div class="grid">
+              <div class="field span-6"><label for="familyInfoName">家庭名称</label><input id="familyInfoName"></div>
+              <div class="field span-6"><label for="familyInfoSlogan">家庭口号</label><input id="familyInfoSlogan"></div>
+            </div>
+            <div class="hd" style="padding-left:0;padding-right:0;background:transparent;border-bottom:0"><div><h3>家庭成员列表</h3><div class="kicker">称呼、关系和像素小人形象都能改</div></div><button class="btn small soft" id="addFamilyMemberBtn">添加成员</button></div>
+            <div class="family-member-grid" id="familyMemberEditor"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>
 </div>
 
-<div class="modalbg" id="modal"><div class="modal"><header><h3>贴一张便利贴</h3></header><div class="mbody"><div class="field"><label for="taskTitle">事情</label><input id="taskTitle"></div><div class="field"><label for="taskSource">来源</label><select id="taskSource"><option>语音</option><option>群截图</option><option>视频</option><option>OCR</option><option>手动</option></select></div><div class="field"><label for="taskType">劳动类型</label><select id="taskType"><option>观察</option><option>协调</option><option selected>执行</option><option>兜底</option></select></div><div class="field"><label for="taskNoticeBy">谁发现的</label><select id="taskNoticeBy"><option value="mom">唐母（林女士）</option><option value="tangning">唐宁</option><option value="brother">唐小鸭（唐弟）</option><option value="husband">周勉（丈夫）</option></select></div><div class="mactions"><button class="btn soft" id="closeBtn">取消</button><button class="btn note" id="saveBtn">贴上</button></div></div></div></div>
+<div class="modalbg" id="modal"><div class="modal"><header><h3>贴一张便利贴</h3></header><div class="mbody"><div class="field"><label for="taskTitle">事情</label><input id="taskTitle"></div><div class="field"><label for="taskSource">来源</label><select id="taskSource"><option>语音</option><option>群截图</option><option>视频</option><option>OCR</option><option>手动</option></select></div><div class="field"><label for="taskType">劳动类型</label><select id="taskType"><option>观察</option><option>协调</option><option selected>执行</option><option>兜底</option></select></div><div class="field"><label for="taskNoticeBy">谁发现的</label><select id="taskNoticeBy"></select></div><div class="field"><label for="taskOwner">指派给</label><select id="taskOwner"></select></div><div class="mactions"><button class="btn soft" id="closeBtn">取消</button><button class="btn note" id="saveBtn">贴上</button></div></div></div></div>
 <div class="modalbg" id="protocolModal"><div class="modal"><header><h3>更新请帮忙协议</h3></header><div class="mbody"><div class="kicker" style="margin-bottom:10px">拖拽下面的名字调整顺序，排在前面的人会先收到新便利贴。</div><div class="list" id="protocolOrder"></div><div class="mactions"><button class="btn soft" id="closeProtocolBtn">取消</button><button class="btn note" id="saveProtocolBtn">保存协议</button></div></div></div></div>
+<div class="modalbg" id="transferModal"><div class="modal"><header><h3>请家人帮忙</h3></header><div class="mbody"><div class="field"><label for="transferTaskTitle">便利贴</label><input id="transferTaskTitle" readonly></div><div class="field"><label for="transferMemberSelect">请谁接一下</label><select id="transferMemberSelect"></select></div><div class="kicker">贴贴会温柔传贴，不公开比较谁快谁慢。</div><div class="mactions"><button class="btn soft" id="closeTransferBtn">取消</button><button class="btn note" id="saveTransferBtn">贴过去</button></div></div></div></div>
+<div class="modalbg" id="switchFamilyModal"><div class="modal"><header><h3>返回家庭入口？</h3></header><div class="mbody"><div class="modal-note">当前家庭数据已保存在本地，返回后可以重新进入或创建新的家庭空间。</div><div class="mactions"><button class="btn soft" id="closeSwitchFamilyBtn">取消</button><button class="btn note" id="returnHomeBtn">返回首页</button></div></div></div></div>
+<div class="modalbg" id="roleModal"><div class="modal"><header><h3>切换当前操作角色</h3></header><div class="mbody"><div class="role-list" id="roleChoiceList"></div><div class="mactions"><button class="btn soft" id="closeRoleBtn">取消</button></div></div></div></div>
+<div class="modalbg" id="deleteMemberModal"><div class="modal"><header><h3>删除家庭成员？</h3></header><div class="mbody"><div class="modal-note" id="deleteMemberText">该成员关联的便利贴将改为未指派。</div><div class="mactions"><button class="btn soft" id="closeDeleteMemberBtn">取消</button><button class="btn note" id="confirmDeleteMemberBtn">确认删除</button></div></div></div></div>
 <div class="modalbg" id="wishModal"><div class="modal"><header><h3>修改心愿</h3></header><div class="mbody"><div class="field"><label for="wishPerson">家人</label><input id="wishPerson" readonly></div><div class="field"><label for="wishText">心愿</label><textarea id="wishText"></textarea></div><div class="mactions"><button class="btn soft" id="closeWishBtn">取消</button><button class="btn note" id="saveWishBtn">保存心愿</button></div></div></div></div>
 <div class="modalbg" id="proofModal"><div class="modal"><header><h3>确认完成</h3></header><div class="mbody"><div class="field"><label for="proofTaskTitle">便利贴</label><input id="proofTaskTitle" readonly></div><div class="field"><label for="proofUpload">凭证图片 / 文件（可选）</label><input id="proofUpload" type="file" accept="image/*,video/*,.pdf,.doc,.docx,.txt"></div><div class="field"><label for="proofNote">凭证说明</label><textarea id="proofNote" placeholder="也可以放语音转文字后的说明；不填也能确认完成"></textarea></div><div class="kicker">确认后，这张便利贴会进入“便利贴手册”，保留 14 天。</div><div class="mactions"><button class="btn soft" id="closeProofBtn">取消</button><button class="btn note" id="saveProofBtn">确认完成</button></div></div></div></div>
 
+<div class="modalbg" id="avatarPickerModal"><div class="modal"><header><h3>更换人物形象</h3></header><div class="mbody"><div class="avatar-picker-window"><button class="btn soft avatar-arrow" id="avatarPrevBtn" type="button" aria-label="上一个">‹</button><div class="avatar-picker-stage"><img id="avatarPickerPreview" src="/assets/character-transparent/b01.png" alt="人物形象预览"></div><button class="btn soft avatar-arrow" id="avatarNextBtn" type="button" aria-label="下一个">›</button></div><div class="avatar-picker-meta"><b id="avatarPickerIndex">当前形象 1 / 14</b></div><div class="mactions"><button class="btn soft" id="closeAvatarPickerBtn">取消</button><button class="btn note" id="confirmAvatarPickerBtn">确认更换</button></div></div></div></div>
+
 <script>
 const weights={观察:1,协调:2,执行:3,兜底:5};
-const people=[{id:"tangning",name:"唐宁",role:"主照护者",score:18,sleep:true},{id:"brother",name:"唐小鸭（唐弟）",role:"首选接棒",score:6},{id:"husband",name:"周勉（丈夫）",role:"夜间共担",score:7},{id:"mom",name:"唐母（林女士）",role:"被照护者",score:1}];
-const samples={meds:{title:"唐母（林女士）降压药快见底了",source:"群截图",type:"执行",noticeBy:"mom",eta:"明早 9 点前",memory:"memAura：上次是唐小鸭（唐弟）在京东到家买的同款。",route:["brother","husband","tangning"],xgrids:"XGRIDS：唐小鸭（唐弟）桌面离客厅屏最近，早晨会经过药盒。"},hospital:{title:"唐母（林女士）周三复诊，空腹提醒",source:"OCR",type:"协调",noticeBy:"tangning",eta:"周二晚 21 点前",memory:"memAura：上次复诊需要医保卡、过敏史、旧报告。",route:["brother","husband","tangning"],xgrids:"XGRIDS：周勉（丈夫）下班后会经过资料柜，唐小鸭（唐弟）公司离医院近。"},gas:{title:"燃气年检通知别忘了",source:"OCR",type:"协调",noticeBy:"tangning",eta:"本周五前约时间",memory:"memAura：去年由周勉（丈夫）联系物业。",route:["brother","husband","tangning"],xgrids:"XGRIDS：周勉（丈夫）晚饭后会在厨房附近整理。"}};
-const nodes=[["前夜准备","空腹提醒、材料打包","husband"],["材料整理","医保卡、病历、报告","husband"],["早晨陪同","7:00 出发","brother"],["医院全程","挂号、问诊、检查","husband"],["取药记录","午休顺路取药","brother"],["报销提交","单据拍照入账","brother"]].map((x,i)=>({id:i+1,name:x[0],detail:x[1],suggest:x[2],owner:null,done:false}));
-const wishes=[{id:"tangning",person:"唐宁",text:"周末想有半天不用盯群消息，安静补一觉。"},{id:"brother",person:"唐小鸭（唐弟）",text:"想把下次家庭聚餐定在家附近的小馆子。"},{id:"husband",person:"周勉（丈夫）",text:"想安排一次不用赶路的周日晚饭。"},{id:"mom",person:"林女士（妈妈）",text:"想有人陪她去公园慢慢走一圈。"}];
-const state={tasks:[],logs:[],voice:false,modalPreset:null,demoIndex:0,timer:null,current:"today",protocolRoute:["brother","husband","tangning"],protocolUpdatedAt:"2026/5/1 08:00",draggingProtocolId:null,wishEditingId:null,proofTaskId:null,wishes};
-const $=id=>document.getElementById(id),by=id=>people.find(p=>p.id===id),esc=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"),time=()=>new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
-function switchSection(id){const section=document.querySelector(`[data-section="${id}"]`);if(!section)return;document.querySelectorAll("[data-section]").forEach(s=>s.classList.toggle("section-active",s===section));document.querySelectorAll("[data-target]").forEach(b=>b.classList.toggle("active",b.dataset.target===id));state.current=id;$("currentCrumb").textContent=section.dataset.title;$("pageTitle").textContent=section.dataset.title;$("pageDesc").textContent=section.dataset.desc}
+const storeKeys={family:"familySpace",tasks:"stickyNotes",current:"currentMemberId",language:"appLanguage"};
+// Keep these keys aligned with src/i18n/copy.ts while the demo runs as a single HTML file.
+const copy={
+  zh: {
+    appName: "家务便利贴",
+    appSubtitle: "家庭分工工作台",
+    appIntro: "把家里的小事，变成大家一起接住的便利贴。",
+    demoHomeButton: "进入 唐宁in the house",
+    createHomeButton: "创建家庭空间",
+    savedHomeHint: "本地已经贴着一个家庭空间",
+    continueHomePrefix: "继续进入",
+    languageLabel: "中文",
+    testMessage: "贴贴已准备好",
+    nav: {
+      today: "今日工作台",
+      capture: "录入便利贴",
+      wall: "便利贴手册",
+      protocol: "便利贴委员会",
+      balance: "家庭天平",
+      familyInfo: "家庭信息"
+    },
+    pages: {
+      today: { title: "今日工作台", desc: "一天一天贴出全家的心愿，我们开心，我们关心。" },
+      capture: { title: "录入入口", desc: "可以直接输入，也可以通过语音或文件识别生成内容" },
+      wall: { title: "便利贴手册", desc: "管理全部便利贴：待接、已接和完成，以及每张贴的上下文。" },
+      protocol: { title: "家庭接力委员会", desc: "大家按顺序接住便利贴，不公开羞辱任何人" },
+      balance: { title: "家庭天平", desc: "把观察、协调、执行和兜底都记进小账本，看见分布是否倾斜。" },
+      familyInfo: { title: "家庭信息", desc: "维护家庭门牌、口号和成员贴纸，所有便利贴会立刻使用新的家人数据。" }
+    },
+    topbar: {
+      sleepGuard: "睡眠护栏",
+      sleepGuardShort: "睡眠护栏",
+      protectSleep: "设为睡眠护栏守护",
+      sleepProtected: "睡眠护栏守护中",
+      skippedAtNight: "夜间跳过",
+      morningQueue: "明早队列",
+      allSleepProtected: "所有成员都在睡眠护栏中，贴贴已进入明早队列",
+      doNotDisturb: "夜间优先不打扰这些成员",
+      relayChoiceRequired: "请先选择一个可以接力的成员",
+      current: "当前",
+      notSelected: "未选择",
+      switchHome: "切换家庭",
+      loadDemo: "灌 demo 数据",
+      broadcastOn: "贴贴播报 开",
+      broadcastOff: "贴贴播报 关"
+    },
+    buttons: {
+      claim: "我来吧",
+      askHelp: "请帮忙",
+      markDone: "确认完成",
+      parse: "让贴贴解析",
+      saveInfo: "保存信息",
+      saved: "已保存",
+      pendingSave: "待保存",
+      changeAvatar: "更换形象",
+      addMember: "添加成员",
+      remove: "删除成员",
+      updateRules: "更新协议",
+      cancel: "取消",
+      confirmChange: "确认更换"
+    },
+    ui: {
+      common: {
+        emptyMembers: "还没有家庭成员，先去家庭信息里添加吧。",
+        relationFallback: "家人",
+        noAssignee: "未指派",
+        stickyUnit: "张便利贴",
+        balanceLabel: "天平",
+        scoreUnit: "分",
+        noCurrentRole: "请先选择当前角色",
+        types: {
+          observe: "观察",
+          coordinate: "协调",
+          do: "执行",
+          backup: "兜底"
+        }
+      },
+      modals: {
+        task: {
+          title: "贴一张便利贴",
+          titleLabel: "事情",
+          sourceLabel: "来源",
+          typeLabel: "劳动类型",
+          noticeByLabel: "谁发现的",
+          ownerLabel: "指派给",
+          save: "贴上",
+          sources: ["语音", "群截图", "视频", "OCR", "手动"],
+          types: ["观察", "协调", "执行", "兜底"]
+        },
+        protocol: {
+          title: "更新请帮忙协议",
+          desc: "拖拽下面的名字调整顺序，排在前面的人会先收到新便利贴。",
+          order: "顺序 {n}",
+          drag: "拖拽",
+          save: "保存协议"
+        },
+        transfer: {
+          title: "请家人帮忙",
+          sticky: "便利贴",
+          member: "请谁接一下",
+          desc: "贴贴会温柔传贴，不公开比较谁快谁慢。",
+          send: "贴过去"
+        },
+        switchFamily: {
+          title: "返回家庭入口？",
+          desc: "当前家庭数据已保存在本地，返回后可以重新进入或创建新的家庭空间。",
+          returnHome: "返回首页"
+        },
+        role: {
+          title: "切换当前操作角色",
+          switch: "切换"
+        },
+        deleteMember: {
+          title: "删除家庭成员？",
+          defaultText: "该成员关联的便利贴将改为未指派。",
+          removeText: "这位成员会从家庭成员列表里移除。",
+          relatedText: "该成员关联的 {count} 张便利贴将改为未指派。",
+          confirm: "确认删除"
+        },
+        wish: {
+          title: "修改心愿",
+          member: "家人",
+          wish: "心愿",
+          save: "保存心愿"
+        },
+        proof: {
+          title: "确认完成",
+          sticky: "便利贴",
+          upload: "凭证图片 / 文件（可选）",
+          note: "凭证说明",
+          notePlaceholder: "也可以放语音转文字后的说明；不填也能确认完成",
+          desc: "确认后，这张便利贴会进入“便利贴手册”，保留 14 天。"
+        },
+        avatar: {
+          title: "更换人物形象",
+          previewAlt: "人物形象预览",
+          prev: "上一个",
+          next: "下一个",
+          index: "当前形象 {current} / {total}"
+        }
+      },
+      today: {
+        tipTitle: "贴贴温馨提示",
+        sampleMeds: "贴一张药品便利贴",
+        defaultNext: "家人说“小事快见底了”。贴贴会先找最顺路的人接住。",
+        deviceName: "Seeed 单屏 · 客厅常驻",
+        sleepOn: "睡眠护栏中",
+        deviceTitle: "家人的便利贴",
+        deviceMeta: "推荐：等待家庭成员 · ETA 今天 · memAura 会记住上下文",
+        sleepTitle: "睡眠护栏",
+        sleepQueue: "事情进入明早队列",
+        sleepNoRelay: "添加更多家庭成员后，可以开启夜间接力。",
+        sleepNone: "暂无夜间接力对象",
+        sleepHelper: "接棒候选人",
+        sleepMorning: "明早统一提醒",
+        pendingTitle: "今日待接便利贴",
+        pendingKicker: "待接、已接、请帮忙都在这里看",
+        balanceTitle: "家庭天平摘要",
+        balanceKicker: "不审判，只看见分布",
+        noPending: "今天还没有待接便利贴。<br>点“灌 demo 数据”或去录入一张。",
+        suggestPack: "建议 {name} 包了",
+        defaultTaskLine: "{care}说“降压药快见底了”。贴贴建议先传给{first}，{next}作为下一棒。",
+        quietQueue: "{name}端静默，事情进入明早队列",
+        nightTo: "夜间推给{name}",
+        protectedButIncluded: "{name}被保护，但不是被排除"
+      },
+      capture: {
+        title: "录入入口",
+        kicker: "可以直接输入，也可以通过语音或文件识别生成内容",
+        voiceTitle: "说出来，贴贴帮你记",
+        voiceDesc: "语音识别后会填入下方草稿区，还能继续手动修改",
+        fileTitle: "上传截图/照片/文档",
+        fileDesc: "识别结果会填入下方草稿区，再由你确认生成便利贴",
+        contentLabel: "便利贴内容",
+        defaultDraft: "家里有件小事，明早需要有人顺手接一下。",
+        recognizedFileGeneric: "文件里识别到一条家庭事项，请确认标题、时间和接棒人。",
+        recognizedFileClinic: "文件里识别到：{name}周三复诊，需空腹，带医保卡、病历和既往报告。",
+        recognizedFileMeds: "文件里识别到药盒剩余不足，需要续购降压药。",
+        voiceDefault: "{name}降压药快见底了，明早需要有人下单。",
+        ownerLabel: "指派给",
+        emptyDraft: "先写点内容，或者用语音/文件录入。",
+        listening: "正在听你说话……",
+        notHeard: "没有听清楚。你可以再点一次语音录入，或直接输入文字。",
+        unsupported: "当前浏览器不支持语音识别。可以直接在下方输入文字，或换 Chrome/Edge 打开后再试。"
+      },
+      wall: {
+        waitingTitle: "贴贴等待中",
+        doneTitle: "贴贴已完成",
+        activeSummary: "{total} 张处理中 · {pending} 张待接 · {claimed} 张已接",
+        doneSummary: "{done} 张已完成 · 保留 14 天",
+        emptyActive: "贴贴在等待你的便利贴。<br>点击页面左侧录入便利贴",
+        emptyDone: "手册里还没有已完成的便利贴。<br>确认完成后，贴贴会把它收进这里。",
+        sampleMeds: "药品",
+        sampleHospital: "复诊",
+        sampleGas: "燃气",
+        suggest: "建议",
+        relay: "接力",
+        done: "完成",
+        completed: "已完成"
+      },
+      protocol: {
+        committeeTitle: "家庭接力委员会",
+        subtitle: "大家按顺序接住便利贴，不公开羞辱任何人",
+        updated: "上次修改：{time}",
+        neverUpdated: "尚未修改",
+        routeTitle: "当前接力顺序",
+        statusTitle: "成员接力状态",
+        rulesTitle: "请帮忙规则",
+        reviewTitle: "今日复盘卡",
+        reviewKicker: "不打卡，只做减法确认",
+        reviewButton: "生成复盘",
+        wishTitle: "心愿池",
+        wishKicker: "奖励改善分布的人",
+        statusCurrent: "当前角色",
+        statusQueued: "接力队列中",
+        statusStandby: "待命中",
+        rules: ["按家庭成员顺序依次请帮忙", "无人接住时进入明早队列", "夜间优先保护睡眠护栏"],
+        reviewEmpty: "还没有家庭成员，先去家庭信息里添加吧。",
+        reviewSummary: "贴贴帮你回忆今天：{done}/{total} 张便利贴已经被接住。",
+        reviewSelfZero: "{name}今天自己揭了 0 张。夜里那几张都被挡在护栏外。",
+        reviewSelfSome: "{name}今天自己揭了 {count} 张。下一轮试着让别人先接一张。",
+        balanceStable: "家里的天平现在是 {value}。比开场稳了一点。",
+        balanceTilted: "家里的天平现在是 {value}。还在倾斜，但已经被看见了。"
+      },
+      balance: {
+        loadTitle: "负担分布",
+        ledgerTitle: "小账本",
+        ledgerKicker: "观察 +1 / 协调 +2 / 执行 +3 / 兜底 +5",
+        meter: "家里的天平",
+        noLedgerTitle: "还没有家庭成员",
+        noLedgerHint: "先去家庭信息里添加吧",
+        stable: "稳了一点",
+        tilted: "还在倾斜"
+      },
+      familyInfo: {
+        doorTitle: "家庭门牌",
+        doorKicker: "只保存在这台设备，不需要账号",
+        saveFamily: "保存家庭信息",
+        nameLabel: "家庭名称",
+        sloganLabel: "家庭口号",
+        memberTitle: "家庭成员列表",
+        memberKicker: "称呼、关系和像素小人形象都能改",
+        nameField: "称呼",
+        relationField: "关系",
+        newMember: "新成员"
+      },
+      demo: {
+        ready: "准备好了。按“走一遍路演”，30 秒看完整条产品链。",
+        done: "路演链路结束：录入、请帮忙、睡眠护栏、复诊流水线、复盘都跑通了。",
+        captions: ["睡眠护栏先保护{name}。", "录入便利贴生成便利贴。", "请帮忙协议解释推荐逻辑。", "便利贴被接住，天平变化。", "照护项目拆成 6 个节点。", "复盘与月度会形成闭环。"]
+      }
+    }
+  },
+  en: {
+    appName: "Chore Stickies",
+    appSubtitle: "Family workspace",
+    appIntro: "Turn small household things into stickies everyone can catch.",
+    demoHomeButton: "Enter Tang's House",
+    createHomeButton: "Create Home",
+    savedHomeHint: "A home space is already saved locally",
+    continueHomePrefix: "Continue to",
+    languageLabel: "EN",
+    testMessage: "Tiety is ready",
+    nav: {
+      today: "Today Board",
+      capture: "Create Sticky",
+      wall: "Sticky Archive",
+      protocol: "Family Relay Board",
+      balance: "Family Balance",
+      familyInfo: "Family Settings"
+    },
+    pages: {
+      today: { title: "Today Board", desc: "Small household notes, shared by everyone." },
+      capture: { title: "Input Station", desc: "Type directly, or let voice and files create the draft." },
+      wall: { title: "Sticky Archive", desc: "Track pending, claimed, and completed stickies with context." },
+      protocol: { title: "Family Relay Board", desc: "Everyone catches stickies in order, with no public shaming." },
+      balance: { title: "Family Balance", desc: "See how observing, coordinating, doing, and backing up are distributed." },
+      familyInfo: { title: "Family Settings", desc: "Edit the home name, slogan, and members used across every sticky." }
+    },
+    topbar: {
+      sleepGuard: "Sleep Guard",
+      sleepGuardShort: "Sleep Guard",
+      protectSleep: "Protect sleep",
+      sleepProtected: "Sleep protected",
+      skippedAtNight: "Skipped at night",
+      morningQueue: "Morning queue",
+      allSleepProtected: "Everyone is sleep protected. Sticky moved to the morning queue.",
+      doNotDisturb: "Do not disturb these members at night",
+      relayChoiceRequired: "Please choose someone who can take the relay",
+      current: "Current",
+      notSelected: "Not selected",
+      switchHome: "Switch Home",
+      loadDemo: "Load Demo",
+      broadcastOn: "Sticky Broadcast On",
+      broadcastOff: "Sticky Broadcast Off"
+    },
+    buttons: {
+      claim: "I'll take it",
+      askHelp: "Ask for help",
+      markDone: "Mark done",
+      parse: "Let Sticky parse",
+      saveInfo: "Save",
+      saved: "Saved",
+      pendingSave: "Unsaved",
+      changeAvatar: "Change avatar",
+      addMember: "Add member",
+      remove: "Remove",
+      updateRules: "Update rules",
+      cancel: "Cancel",
+      confirmChange: "Confirm"
+    },
+    ui: {
+      common: {
+        emptyMembers: "No family members yet. Add them in Family Settings first.",
+        relationFallback: "Family",
+        noAssignee: "Unassigned",
+        stickyUnit: "stickies",
+        balanceLabel: "Balance",
+        scoreUnit: "pts",
+        noCurrentRole: "Choose a current role first",
+        types: {
+          observe: "Observe",
+          coordinate: "Coordinate",
+          do: "Do",
+          backup: "Backup"
+        }
+      },
+      modals: {
+        task: {
+          title: "Add a sticky",
+          titleLabel: "Thing",
+          sourceLabel: "Source",
+          typeLabel: "Labor type",
+          noticeByLabel: "Who noticed it?",
+          ownerLabel: "Assign to",
+          save: "Stick it",
+          sources: ["Voice", "Group screenshot", "Video", "OCR", "Manual"],
+          types: ["Observe", "Coordinate", "Do", "Backup"]
+        },
+        protocol: {
+          title: "Update relay rules",
+          desc: "Drag names to adjust the order. Members at the front will receive new stickies first.",
+          order: "Order {n}",
+          drag: "Drag",
+          save: "Save rules"
+        },
+        transfer: {
+          title: "Ask for help",
+          sticky: "Sticky",
+          member: "Who should take it?",
+          desc: "Sticky will pass it gently without ranking anyone.",
+          send: "Send over"
+        },
+        switchFamily: {
+          title: "Return to home entrance?",
+          desc: "Current family data is saved locally. You can return and continue or create a new family space.",
+          returnHome: "Return home"
+        },
+        role: {
+          title: "Switch current role",
+          switch: "Switch"
+        },
+        deleteMember: {
+          title: "Remove family member?",
+          defaultText: "Related stickies will become unassigned.",
+          removeText: "This member will be removed from the family list.",
+          relatedText: "{count} related stickies will become unassigned.",
+          confirm: "Remove"
+        },
+        wish: {
+          title: "Edit wish",
+          member: "Member",
+          wish: "Wish",
+          save: "Save wish"
+        },
+        proof: {
+          title: "Mark done",
+          sticky: "Sticky",
+          upload: "Proof image / file (optional)",
+          note: "Proof note",
+          notePlaceholder: "You can add a note here. This is optional.",
+          desc: "After confirmation, this sticky will move to Sticky Archive and stay for 14 days."
+        },
+        avatar: {
+          title: "Change avatar",
+          previewAlt: "Avatar preview",
+          prev: "Previous",
+          next: "Next",
+          index: "Current avatar {current} / {total}"
+        }
+      },
+      today: {
+        tipTitle: "Sticky Tip",
+        sampleMeds: "Add a medicine sticky",
+        defaultNext: "A small household note is waiting. Sticky will find the nearest helper first.",
+        deviceName: "Seeed Screen · Living Room",
+        sleepOn: "Sleep Guard on",
+        deviceTitle: "Family sticky",
+        deviceMeta: "Suggested: waiting for members · ETA today · memAura keeps context",
+        sleepTitle: "Sleep Guard",
+        sleepQueue: "This goes into tomorrow morning's queue",
+        sleepNoRelay: "Add more family members to enable night handoff.",
+        sleepNone: "No night handoff yet",
+        sleepHelper: "Handoff candidates",
+        sleepMorning: "Morning reminder",
+        pendingTitle: "Pending Stickies",
+        pendingKicker: "Pending, claimed, and help requests stay here",
+        balanceTitle: "Balance Snapshot",
+        balanceKicker: "No judging, just seeing the distribution",
+        noPending: "No pending stickies today.<br>Load demo data or create one.",
+        suggestPack: "Suggested: {name}",
+        defaultTaskLine: "{care} says the medicine is running low. Sticky suggests {first} first, with {next} next.",
+        quietQueue: "{name} stays quiet at night; this moves to tomorrow morning.",
+        nightTo: "Night handoff to {name}",
+        protectedButIncluded: "{name} is protected, not excluded"
+      },
+      capture: {
+        title: "Input Station",
+        kicker: "Type directly, or let voice and files create the draft.",
+        voiceTitle: "Say it, Sticky writes it",
+        voiceDesc: "Speech results land in the draft so you can edit them",
+        fileTitle: "Upload image / photo / document",
+        fileDesc: "Recognition results land below before creating a sticky",
+        contentLabel: "Sticky content",
+        defaultDraft: "There’s a small thing at home that someone can pick up tomorrow morning.",
+        recognizedFileGeneric: "A household item was found in the file. Please confirm the title, time, and relay person.",
+        recognizedFileClinic: "The file mentions a clinic follow-up. Please confirm fasting, health card, medical records, and old reports.",
+        recognizedFileMeds: "The file suggests the medicine box is running low and needs a refill.",
+        voiceDefault: "Dad's blood pressure meds are almost out. Someone should order them tomorrow morning.",
+        ownerLabel: "Assign to",
+        emptyDraft: "Write something first, or use voice/file input.",
+        listening: "Listening…",
+        notHeard: "Sticky did not catch that. Try voice again or type directly.",
+        unsupported: "This browser does not support speech recognition. You can type below or try Chrome/Edge."
+      },
+      wall: {
+        waitingTitle: "Waiting Stickies",
+        doneTitle: "Completed Stickies",
+        activeSummary: "{total} active · {pending} pending · {claimed} claimed",
+        doneSummary: "{done} completed · kept for 14 days",
+        emptyActive: "Sticky is waiting for your first note.<br>Use Create Sticky from the left.",
+        emptyDone: "No completed stickies yet.<br>Marked items will be collected here.",
+        sampleMeds: "Medicine",
+        sampleHospital: "Clinic",
+        sampleGas: "Gas",
+        suggest: "Suggest",
+        relay: "Relay",
+        done: "Done",
+        completed: "Completed"
+      },
+      protocol: {
+        committeeTitle: "Family Relay Board",
+        subtitle: "Everyone catches stickies in order, with no public shaming",
+        updated: "Last updated: {time}",
+        neverUpdated: "Not updated yet",
+        routeTitle: "Current relay order",
+        statusTitle: "Relay status",
+        rulesTitle: "Help rules",
+        reviewTitle: "Daily Review",
+        reviewKicker: "No check-ins, just a light review",
+        reviewButton: "Generate review",
+        wishTitle: "Wish Pool",
+        wishKicker: "Rewards people who improve the distribution",
+        statusCurrent: "Current role",
+        statusQueued: "In relay queue",
+        statusStandby: "Standing by",
+        rules: ["Ask for help in family order", "If nobody catches it, move it to tomorrow morning", "At night, protect the Sleep Guard first"],
+        reviewEmpty: "No family members yet. Add them in Family Settings first.",
+        reviewSummary: "Sticky recalls today: {done}/{total} stickies have been caught.",
+        reviewSelfZero: "{name} caught 0 stickies alone today. The night ones stayed outside the guardrail.",
+        reviewSelfSome: "{name} caught {count} stickies alone today. Next round, let someone else catch one first.",
+        balanceStable: "The family balance is {value}. It is steadier than at the start.",
+        balanceTilted: "The family balance is {value}. It still tilts, but now it is visible."
+      },
+      balance: {
+        loadTitle: "Load Distribution",
+        ledgerTitle: "Ledger",
+        ledgerKicker: "Observe +1 / Coordinate +2 / Do +3 / Backup +5",
+        meter: "Family balance",
+        noLedgerTitle: "No family members yet",
+        noLedgerHint: "Add them in Family Settings first",
+        stable: "steadier",
+        tilted: "still tilted"
+      },
+      familyInfo: {
+        doorTitle: "Home Sign",
+        doorKicker: "Saved only on this device, no account needed",
+        saveFamily: "Save family",
+        nameLabel: "Family name",
+        sloganLabel: "Family slogan",
+        memberTitle: "Family Members",
+        memberKicker: "Edit names, relationships, and pixel avatars",
+        nameField: "Name",
+        relationField: "Relationship",
+        newMember: "New member"
+      },
+      demo: {
+        ready: "Ready. Run the demo path to see the full loop in 30 seconds.",
+        done: "Demo path complete: input, help request, Sleep Guard, clinic pipeline, and review all ran.",
+        captions: ["Sleep Guard protects {name} first.", "Input creates a sticky.", "Help rules explain the recommendation.", "A sticky is caught and the balance changes.", "The clinic visit splits into 6 nodes.", "Review and monthly meeting close the loop."]
+      }
+    }
+  }
+};
+const characterAvatars=Array.from({length:14},(_,i)=>{const id=`b${String(i+1).padStart(2,"0")}`;return{id,name:`角色 ${String(i+1).padStart(2,"0")}`,src:`/assets/character-transparent/${id}.png`,fallbackSrc:`/assets/character/${id}.png`,headSrc:`/assets/character-heads/${id}.png`}});
+const avatarChoices=characterAvatars.map(a=>a.id);
+const colorChoices=["#FFD86B","#7BC47F","#FFB3B3","#9FD5FF","#E9E2D3","#FFF8EC"];
+const fallbackMember={id:"family",name:"家人",role:"家人",relationship:"家人",score:0,initialScore:0,avatarId:"b01",avatar:"b01",color:"#FFD86B"};
+const demoMembers=[{id:"tangning",name:"唐宁",relation:"主负责人",relationship:"主负责人",role:"主负责人",score:18,initialScore:18,sleep:true,avatarId:"b07",avatar:"b07",color:"#FFB3B3",wish:"周末想有半天不用盯群消息，安静补一觉。"},{id:"husband",name:"周勉",relation:"丈夫",relationship:"丈夫",role:"夜间紧急共担",score:7,initialScore:7,avatarId:"b02",avatar:"b02",color:"#9FD5FF",wish:"想安排一次不用赶路的周日晚饭。"},{id:"mom",name:"唐母",relation:"妈妈",relationship:"妈妈",role:"主要事件源",score:1,initialScore:1,avatarId:"b12",avatar:"b12",color:"#FFE3E3",wish:"想有人陪她去公园慢慢走一圈。"},{id:"brother",name:"唐弟",relation:"弟弟",relationship:"弟弟",role:"接棒首选",score:6,initialScore:6,avatarId:"b09",avatar:"b09",color:"#7BC47F",wish:"想把下次家庭聚餐定在家附近的小馆子。"}];
+const demoMembersEn=[{id:"tang",name:"Tang",relation:"Main caretaker",relationship:"Main caretaker",role:"Main caretaker",score:18,initialScore:18,sleep:true,avatarId:"b07",avatar:"b07",color:"#FFB3B3",wish:"A quiet half day without checking family messages."},{id:"zhou",name:"Zhou",relation:"Partner",relationship:"Partner",role:"Night backup",score:7,initialScore:7,avatarId:"b02",avatar:"b02",color:"#9FD5FF",wish:"A Sunday dinner without rushing across town."},{id:"momLin",name:"Mom Lin",relation:"Mother",relationship:"Mother",role:"Care source",score:1,initialScore:1,avatarId:"b12",avatar:"b12",color:"#FFE3E3",wish:"A slow walk in the park with someone beside her."},{id:"xiaoTang",name:"Xiao Tang",relation:"Brother",relationship:"Brother",role:"First relay",score:6,initialScore:6,avatarId:"b09",avatar:"b09",color:"#7BC47F",wish:"The next family meal near home."}];
+let familySpace=null,people=[],currentMemberId="",currentLang="zh",setupDraft={step:1,name:"",slogan:"",count:4,index:0,members:[]},familyEditorDraft=null,deleteMemberId=null,avatarPickerTargetIndex=null,avatarPickerMode="family",avatarPickerCurrentIndex=0;
+const nodes=[["前夜准备","空腹提醒、材料打包"],["材料整理","医保卡、病历、报告"],["早晨陪同","7:00 出发"],["医院全程","挂号、问诊、检查"],["取药记录","午休顺路取药"],["报销提交","单据拍照入账"]].map((x,i)=>({id:i+1,name:x[0],detail:x[1],suggest:null,owner:null,done:false}));
+const state={tasks:[],logs:[],voice:false,modalPreset:null,demoIndex:0,timer:null,current:"today",protocolRoute:[],protocolUpdatedAt:"尚未修改",draggingProtocolId:null,wishEditingId:null,proofTaskId:null,transferTaskId:null,wishes:[]};
+const removedMember={id:"removed",name:"已移除成员",role:"已移除",relationship:"已移除",relation:"已移除",score:0,initialScore:0,avatarId:"b01",avatar:"b01",color:"#E9E2D3"};
+const $=id=>document.getElementById(id),members=()=>familySpace?.members||people||[],findMember=id=>members().find(p=>p.id===id),by=id=>id?(findMember(id)||removedMember):(members()[0]||fallbackMember),esc=s=>String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"),time=()=>new Date().toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
+function readStore(key,fallback){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch{return fallback}}
+function writeStore(key,value){try{localStorage.setItem(key,typeof value==="string"?value:JSON.stringify(value))}catch{}}
+function normalizeLang(lang){return lang==="en"?"en":"zh"}
+function readLanguage(){try{return normalizeLang(localStorage.getItem(storeKeys.language)||"zh")}catch{return "zh"}}
+function updateLanguageButton(){const text=currentLang==="en"?"🌐 EN":"🌐 中文";["languageBtn","welcomeLanguageBtn"].forEach(id=>{const btn=$(id);if(btn)btn.textContent=text})}
+function renderNavCopy(){const labels=copy[currentLang]?.nav||copy.zh.nav;document.querySelectorAll("[data-nav-key]").forEach(btn=>{btn.textContent=labels[btn.dataset.navKey]||btn.textContent})}
+function pageCopy(id=state.current){return (copy[currentLang]?.pages||copy.zh.pages)[id]||copy.zh.pages[id]}
+function renderPageHeader(){const page=pageCopy();if(!page)return;$("currentCrumb").textContent=page.title;$("pageTitle").textContent=page.title;$("pageDesc").textContent=page.desc}
+function renderCurrentRoleButton(){const labels=copy[currentLang]?.topbar||copy.zh.topbar;if(!people.length){$("currentRoleBtn").textContent=`${labels.current}：${labels.notSelected}`;return}$("currentRoleBtn").innerHTML=memberPill(currentMemberId,`${labels.current}：`)}
+function renderTopbarCopy(){const labels=copy[currentLang]?.topbar||copy.zh.topbar;$("sleepGuardBadge").textContent=`${labels.sleepGuard} 23:00-07:00`;$("switchFamilyBtn").textContent=labels.switchHome;$("seedBtn").textContent=labels.loadDemo;$("voiceBtn").textContent=state.voice?labels.broadcastOn:labels.broadcastOff;renderCurrentRoleButton()}
+function buttonCopy(){return copy[currentLang]?.buttons||copy.zh.buttons}
+function uiCopy(){return copy[currentLang]?.ui||copy.zh.ui}
+function topbarCopy(){return copy[currentLang]?.topbar||copy.zh.topbar}
+function fmt(template,values={}){return String(template||"").replace(/\{(\w+)\}/g,(_,key)=>values[key]??"")}
+function quickDraftDefault(lang=currentLang){return (copy[lang]?.ui||copy.zh.ui).capture.defaultDraft}
+function setQuickDraftDefault(force=false){const el=$("quickText");if(!el)return;const defaults=[quickDraftDefault("zh"),quickDraftDefault("en")],value=el.value.trim();if(force||!value||defaults.includes(value)||/降压药快见底/.test(value))el.value=quickDraftDefault()}
+function typeLabel(type){const labels=uiCopy().common.types||{},map={观察:labels.observe,协调:labels.coordinate,执行:labels.do,兜底:labels.backup,Observe:labels.observe,Coordinate:labels.coordinate,Do:labels.do,Backup:labels.backup};return map[type]||type}
+function setText(selector,text){const el=document.querySelector(selector);if(el)el.textContent=text}
+function setAllText(selector,items){document.querySelectorAll(selector).forEach((el,i)=>{if(items[i]!=null)el.textContent=items[i]})}
+function setFieldLabel(forId,text){const label=document.querySelector(`label[for="${forId}"]`);if(label)label.textContent=text}
+function setSelectLabels(id,labels,values=null){const el=$(id);if(!el)return;[...el.options].forEach((option,i)=>{option.textContent=labels[i]||option.textContent;if(values&&values[i])option.value=values[i]})}
+function renderModalCopy(){const ui=uiCopy(),m=ui.modals,buttons=buttonCopy();setText("#modal h3",m.task.title);setFieldLabel("taskTitle",m.task.titleLabel);setFieldLabel("taskSource",m.task.sourceLabel);setFieldLabel("taskType",m.task.typeLabel);setFieldLabel("taskNoticeBy",m.task.noticeByLabel);setFieldLabel("taskOwner",m.task.ownerLabel);setText("#saveBtn",m.task.save);setSelectLabels("taskSource",m.task.sources,["语音","群截图","视频","OCR","手动"]);setSelectLabels("taskType",m.task.types,["观察","协调","执行","兜底"]);setText("#protocolModal h3",m.protocol.title);setText("#protocolModal .kicker",m.protocol.desc);setText("#saveProtocolBtn",m.protocol.save);setText("#transferModal h3",m.transfer.title);setFieldLabel("transferTaskTitle",m.transfer.sticky);setFieldLabel("transferMemberSelect",m.transfer.member);setText("#transferModal .kicker",m.transfer.desc);setText("#saveTransferBtn",m.transfer.send);setText("#switchFamilyModal h3",m.switchFamily.title);setText("#switchFamilyModal .modal-note",m.switchFamily.desc);setText("#returnHomeBtn",m.switchFamily.returnHome);setText("#roleModal h3",m.role.title);setText("#deleteMemberModal h3",m.deleteMember.title);setText("#confirmDeleteMemberBtn",m.deleteMember.confirm);setText("#wishModal h3",m.wish.title);setFieldLabel("wishPerson",m.wish.member);setFieldLabel("wishText",m.wish.wish);setText("#saveWishBtn",m.wish.save);setText("#proofModal h3",m.proof.title);setFieldLabel("proofTaskTitle",m.proof.sticky);setFieldLabel("proofUpload",m.proof.upload);setFieldLabel("proofNote",m.proof.note);$("proofNote").placeholder=m.proof.notePlaceholder;setText("#proofModal .kicker",m.proof.desc);setText("#saveProofBtn",buttons.markDone);setText("#avatarPickerModal h3",m.avatar.title);$("avatarPrevBtn").setAttribute("aria-label",m.avatar.prev);$("avatarNextBtn").setAttribute("aria-label",m.avatar.next);$("avatarPickerPreview").alt=m.avatar.previewAlt;setText("#closeBtn",buttons.cancel);setText("#closeProtocolBtn",buttons.cancel);setText("#closeTransferBtn",buttons.cancel);setText("#closeSwitchFamilyBtn",buttons.cancel);setText("#closeRoleBtn",buttons.cancel);setText("#closeDeleteMemberBtn",buttons.cancel);setText("#closeWishBtn",buttons.cancel);setText("#closeProofBtn",buttons.cancel);setText("#closeAvatarPickerBtn",buttons.cancel);setText("#confirmAvatarPickerBtn",buttons.confirmChange)}
+function renderButtonCopy(){const labels=buttonCopy(),guard=topbarCopy(),pairs={parseBtn:labels.parse,addFamilyMemberBtn:labels.addMember,updateProtocolBtn:labels.updateRules,closeBtn:labels.cancel,closeProtocolBtn:labels.cancel,closeTransferBtn:labels.cancel,closeSwitchFamilyBtn:labels.cancel,closeRoleBtn:labels.cancel,closeDeleteMemberBtn:labels.cancel,closeWishBtn:labels.cancel,closeProofBtn:labels.cancel,closeAvatarPickerBtn:labels.cancel,saveProofBtn:labels.markDone,confirmAvatarPickerBtn:labels.confirmChange};Object.entries(pairs).forEach(([id,text])=>{const el=$(id);if(el)el.textContent=text});document.querySelectorAll("[data-claim]").forEach(el=>el.textContent=labels.claim);document.querySelectorAll("[data-transfer]").forEach(el=>el.textContent=labels.askHelp);document.querySelectorAll("[data-proof]").forEach(el=>el.textContent=labels.markDone);document.querySelectorAll("[data-avatar-pick-open].btn,[data-setup-avatar-open].btn").forEach(el=>el.textContent=labels.changeAvatar);document.querySelectorAll("[data-family-member-delete]").forEach(el=>el.textContent=labels.remove);document.querySelectorAll("[data-family-member-save]").forEach(el=>el.textContent=labels.saveInfo);document.querySelectorAll("[data-sleep-guard-toggle]").forEach(el=>{const member=people[Number(el.dataset.sleepGuardToggle)];el.textContent=member?.sleepGuardProtected?guard.sleepProtected:guard.protectSleep})}
+function renderStaticCopy(){const ui=uiCopy();setText(".today-tip-panel .hd h3",ui.today.tipTitle);setText('.today-tip-panel [data-sample="meds"]',ui.today.sampleMeds);setAllText(".today-tip-panel .devtop span",[ui.today.deviceName,ui.today.sleepOn]);setText('[data-section="today"] .today-sleep-card h3',ui.today.sleepTitle);setAllText('[data-section="today"] .today-sleep-card .metric span',[null,ui.today.sleepHelper,ui.today.sleepMorning]);const todayPanels=document.querySelectorAll('[data-section="today"] .panel.span-6 .hd');if(todayPanels[0]){todayPanels[0].querySelector("h3").textContent=ui.today.pendingTitle;todayPanels[0].querySelector(".kicker").textContent=ui.today.pendingKicker}if(todayPanels[1]){todayPanels[1].querySelector("h3").textContent=ui.today.balanceTitle;todayPanels[1].querySelector(".kicker").textContent=ui.today.balanceKicker}setText('[data-section="capture"] h3',ui.capture.title);setText('[data-section="capture"] .kicker',ui.capture.kicker);setAllText('[data-section="capture"] .capbtn strong',[ui.capture.voiceTitle,ui.capture.fileTitle]);setAllText('[data-section="capture"] .capbtn span',[ui.capture.voiceDesc,ui.capture.fileDesc]);setAllText('[data-section="capture"] .field label',[ui.capture.contentLabel,ui.capture.ownerLabel]);const wallHeads=document.querySelectorAll('[data-section="wall"] .hd h3');if(wallHeads[0])wallHeads[0].textContent=ui.wall.waitingTitle;if(wallHeads[1])wallHeads[1].textContent=ui.wall.doneTitle;setAllText('[data-section="wall"] [data-sample]',[ui.wall.sampleMeds,ui.wall.sampleHospital,ui.wall.sampleGas]);const protocolHeads=document.querySelectorAll('[data-section="protocol"] .panel>.hd h3');setAllText('[data-section="protocol"] .committee-block-title',[ui.protocol.routeTitle,ui.protocol.statusTitle,ui.protocol.rulesTitle]);if(protocolHeads[0])protocolHeads[0].textContent=ui.protocol.committeeTitle;if(protocolHeads[1])protocolHeads[1].textContent=ui.protocol.reviewTitle;if(protocolHeads[2])protocolHeads[2].textContent=ui.protocol.wishTitle;const protocolKickers=document.querySelectorAll('[data-section="protocol"] .panel>.hd .kicker');if(protocolKickers[1])protocolKickers[1].textContent=ui.protocol.reviewKicker;if(protocolKickers[2])protocolKickers[2].textContent=ui.protocol.wishKicker;setText("#reviewBtn",ui.protocol.reviewButton);const balanceHeads=document.querySelectorAll('[data-section="balance"] .hd h3');if(balanceHeads[0])balanceHeads[0].textContent=ui.balance.loadTitle;if(balanceHeads[1])balanceHeads[1].textContent=ui.balance.ledgerTitle;setText('[data-section="balance"] .panel.span-4 .kicker',ui.balance.ledgerKicker);setText('[data-section="balance"] .mline b',ui.balance.meter);const familyHeads=document.querySelectorAll('[data-section="familyInfo"] h3');if(familyHeads[0])familyHeads[0].textContent=ui.familyInfo.doorTitle;if(familyHeads[1])familyHeads[1].textContent=ui.familyInfo.memberTitle;const familyKickers=document.querySelectorAll('[data-section="familyInfo"] .kicker');if(familyKickers[0])familyKickers[0].textContent=ui.familyInfo.doorKicker;if(familyKickers[1])familyKickers[1].textContent=ui.familyInfo.memberKicker;setText("#saveFamilyInfoBtn",ui.familyInfo.saveFamily);setAllText('[data-section="familyInfo"] .field label',[ui.familyInfo.nameLabel,ui.familyInfo.sloganLabel])}
+function setLanguage(lang){const nextLang=normalizeLang(lang),shouldReloadDemo=familySpace?.isDemo===true&&familySpace.demoLang!==nextLang&&$("appShell")&&!$("appShell").hidden;currentLang=nextLang;writeStore(storeKeys.language,currentLang);const app=copy[currentLang]||copy.zh;updateLanguageButton();setText("#welcomeTitle",app.appName);setText("#welcomeIntro .welcome-title p",app.appIntro);setText("#createFamilyBtn",app.createHomeButton);setText("#enterDemoHomeBtn",app.demoHomeButton);renderWelcomeContinue();renderNavCopy();renderPageHeader();renderTopbarCopy();renderButtonCopy();renderModalCopy();renderStaticCopy();if(shouldReloadDemo){loadDemoData(false);return}if($("appShell")&&!$("appShell").hidden)render()}
+function toggleLanguage(){setLanguage(currentLang==="en"?"zh":"en")}
+function memberLabel(p){return `${p.name}${p.relation||p.relationship?`（${p.relation||p.relationship}）`:""}`}
+function isProtectedMember(p){return /唐宁|主负责人|主照护者|Main caretaker|caretaker/i.test(`${p.name}${p.role}${p.relation||p.relationship}`)}
+function isCareSource(p){return /妈|母|妈妈|被照护|主要事件源|Mother|Care source/i.test(`${p.name}${p.role}${p.relation||p.relationship}`)}
+function protectedMember(){return people.find(isProtectedMember)||people[people.length-1]||fallbackMember}
+function careMember(){return people.find(isCareSource)||people[0]||fallbackMember}
+function helperMembers(){const protectedId=protectedMember().id;return people.filter(p=>p.id!==protectedId&&!isCareSource(p)).concat(people.filter(p=>p.id!==protectedId&&isCareSource(p)))}
+function sleepProtectedMembers(){return people.filter(p=>p.sleepGuardProtected===true)}
+function isSleepGuardTime(date=new Date()){const h=date.getHours();return h>=23||h<7}
+function nightAvailableMembers(){return people.filter(p=>!p.sleepGuardProtected)}
+function filterNightRoute(route=[]){if(!isSleepGuardTime())return route;const available=new Set(nightAvailableMembers().map(p=>p.id));return route.filter(id=>available.has(id))}
+function allMembersSleepProtected(){return people.length>0&&nightAvailableMembers().length===0}
+function defaultProtocolRoute(){const protectedId=protectedMember().id,helpers=helperMembers().map(p=>p.id).filter(Boolean),route=[...new Set(helpers.concat(protectedId))];return route.length?route:people.map(p=>p.id)}
+function sanitizeProtocol(route=[]){const ids=people.map(p=>p.id),valid=route.filter(id=>ids.includes(id)),missing=ids.filter(id=>!valid.includes(id));let next=[...valid,...missing];if(!next.length)next=defaultProtocolRoute();const protectedOne=people.find(isProtectedMember);if(protectedOne&&next.includes(protectedOne.id))next=[...next.filter(id=>id!==protectedOne.id),protectedOne.id];return [...new Set(next)]}
+function avatarById(id){return characterAvatars.find(a=>a.id===id)||characterAvatars[0]}
+function getAvatarSrc(avatarId,variant="body"){const avatar=avatarById(avatarId);return variant==="head"?avatar.headSrc:avatar.src}
+function getAvatarFallbackSrc(avatarId,variant="body"){const avatar=avatarById(avatarId);return variant==="head"?avatar.src:avatar.fallbackSrc}
+function validAvatarId(id){return avatarById(id).id}
+function nextAvatarId(index,members=[]){const used=new Set(members.map(m=>validAvatarId(m.avatarId||m.avatar)));return characterAvatars.find(a=>!used.has(a.id))?.id||characterAvatars[index%characterAvatars.length].id}
+function normalizeMembers(members){return (members||[]).map((m,i)=>{const relation=(m.relation||m.relationship||m.role||"家人").trim(),avatarId=validAvatarId(m.avatarId||m.avatar||nextAvatarId(i,members)),sleepGuardProtected=!!(m.sleepGuardProtected||m.sleep);return {id:m.id||`member-${Date.now()}-${i}`,name:(m.name||`家人${i+1}`).trim(),relation,relationship:relation,role:(m.role||relation||"家人").trim(),score:Number.isFinite(Number(m.score))?Number(m.score):Number(m.initialScore)||0,initialScore:Number.isFinite(Number(m.initialScore))?Number(m.initialScore):Number(m.score)||0,sleep:!!(m.sleep||sleepGuardProtected),sleepGuardProtected,avatarId,avatar:avatarId,color:colorChoices.includes(m.color)?m.color:m.color||colorChoices[i%colorChoices.length],wish:m.wish||"想让家里的天平今天稳一点。"}})}
+function recalcMemberScores(){const scoreMap=new Map(people.map(p=>[p.id,0]));state.tasks.forEach(t=>{if(t.createdById&&scoreMap.has(t.createdById))scoreMap.set(t.createdById,scoreMap.get(t.createdById)+1);const worker=t.completedById||t.claimedById;if(worker&&scoreMap.has(worker))scoreMap.set(worker,scoreMap.get(worker)+(weights[t.type]||weights[t.category]||3))});people=people.map(p=>({...p,score:scoreMap.get(p.id)||0}));if(familySpace)familySpace.members=people}
+function setCurrentMemberId(id){currentMemberId=findMember(id)?.id||people[0]?.id||"";writeStore(storeKeys.current,currentMemberId);if(familySpace)familySpace.currentMemberId=currentMemberId;return currentMemberId}
+function updateFamilySpace(nextFamilySpace){familySpace={...(familySpace||{}),...nextFamilySpace};people=normalizeMembers(familySpace.members||[]);familySpace.members=people;state.protocolRoute=sanitizeProtocol(familySpace.protocolRoute||state.protocolRoute||[]);setCurrentMemberId(currentMemberId||familySpace.currentMemberId);state.wishes=syncWishes(familySpace.wishes||state.wishes||[]);syncNodesToFamily();recalcMemberScores();saveAppData()}
+function syncWishes(existing=[]){const old=new Map(existing.map(w=>[w.id,w]));return people.map(p=>{const prev=old.get(p.id);return {id:p.id,person:p.name,text:prev?.text||p.wish||"想让家里的天平今天稳一点。"}})}
+function syncNodesToFamily(){const route=state.protocolRoute.length?state.protocolRoute:people.map(p=>p.id);nodes.forEach((n,i)=>{n.suggest=route[i%route.length]||currentMemberId||people[0]?.id||"";if(n.owner&&!findMember(n.owner))n.owner=null})}
+function noteAssignee(t){return t.assigneeId||t.owner||""}
+function noteClaimedBy(t){return t.claimedById||(t.status==="done"||t.status==="claimed"?t.owner:"")||""}
+function isPending(t){return t.status==="pending"}
+function isClaimed(t){return t.status==="claimed"||t.status==="done"}
+function isCompleted(t){return t.status==="completed"||t.status==="done-completed"||t.completedAt||t.completedAtMs}
+function normalizeTask(t){const assigneeId=t.assigneeId||t.owner||"",claimedById=t.claimedById||(t.status==="done"?t.owner:"")||"",completedById=t.completedById||"",createdById=t.createdById||t.noticeBy||currentMemberId||"",status=isCompleted(t)?"done":t.status==="done"?"claimed":t.status||"pending";return {...t,category:t.category||t.type,assigneeId,claimedById,createdById,completedById,owner:assigneeId||claimedById||t.owner||"",noticeBy:t.noticeBy||createdById,status,createdAt:t.createdAt||new Date().toISOString()}}
+function saveAppData(){if(!familySpace)return;familySpace.members=people;familySpace.protocolRoute=state.protocolRoute;familySpace.wishes=state.wishes;familySpace.currentMemberId=currentMemberId;familySpace.updatedAt=new Date().toISOString();writeStore(storeKeys.family,familySpace);writeStore(storeKeys.tasks,state.tasks.map(normalizeTask));writeStore(storeKeys.current,currentMemberId)}
+function buildDemoFamily(){if(currentLang==="en"){return {id:"demo-home-en",isDemo:true,demoLang:"en",name:"Tang's House",slogan:"Small things, shared gently.",members:normalizeMembers(demoMembersEn.map(m=>({...m}))),protocolRoute:["xiaoTang","zhou","tang"],wishes:[],currentMemberId:"tang",createdAt:new Date().toISOString(),version:1}}return {id:"demo-home",isDemo:true,demoLang:"zh",name:"唐宁的小家",slogan:"把家里的小事一起接住。",members:normalizeMembers(demoMembers.map(m=>({...m}))),protocolRoute:["brother","husband","tangning"],wishes:[],currentMemberId:"tangning",createdAt:new Date().toISOString(),version:1}}
+function characterOptionHtml(avatarId,name,selected,groupName){const avatar=avatarById(avatarId);return `<label class="character-option" title="${esc(avatar.name)}"><input type="radio" name="${esc(groupName)}" value="${esc(avatar.id)}" ${selected?"checked":""}><img src="${esc(getAvatarSrc(avatar.id,"body"))}" alt="${esc(avatar.name)}" onerror="this.onerror=null;this.src='${esc(getAvatarFallbackSrc(avatar.id,"body"))}'"></label>`}
+function characterGridHtml(selectedId,groupName){const selected=validAvatarId(selectedId);return `<div class="character-grid">${characterAvatars.map(a=>characterOptionHtml(a.id,a.name,a.id===selected,groupName)).join("")}</div>`}
+function renderAvatar(member,extra="",variant="head"){const avatar=avatarById(member.avatarId||member.avatar);return `<div class="avatar pixel-avatar character-avatar ${extra}" data-avatar="${esc(avatar.id)}" style="--member-color:${esc(member.color||"#FFD86B")}"><img src="${esc(getAvatarSrc(avatar.id,variant))}" alt="${esc(member.name||avatar.name)}" onerror="this.onerror=null;this.src='${esc(getAvatarFallbackSrc(avatar.id,variant))}'"></div>`}
+function memberPill(memberId,prefix=""){const member=memberId?by(memberId):null;if(!member||member.id==="family")return `${prefix}${prefix?" ":""}${uiCopy().common.noAssignee}`;return `<span class="member-pill">${renderAvatar(member,"inline-avatar")}${prefix?`${esc(prefix)} `:""}${esc(member.name)}</span>`}
+function fillMemberSelect(el,value){if(!el)return;const nightHandoff=isSleepGuardTime()&&["quickOwner","taskOwner","transferMemberSelect"].includes(el.id),source=nightHandoff?nightAvailableMembers():people,selected=value||el.value||currentMemberId||state.protocolRoute[0]||source[0]?.id||"";if(!people.length){el.innerHTML=`<option value="">${esc(uiCopy().common.emptyMembers)}</option>`;el.value="";el.disabled=true;return}if(!source.length){el.innerHTML=`<option value="">${esc(topbarCopy().morningQueue)}</option>`;el.value="";el.disabled=true;return}el.disabled=false;el.innerHTML=source.map(p=>`<option value="${esc(p.id)}">${esc(memberLabel(p))}</option>`).join("");el.value=source.some(p=>p.id===selected)?selected:source[0].id}
+function renderMemberSelects(){fillMemberSelect($("quickOwner"),state.protocolRoute[0]);fillMemberSelect($("taskNoticeBy"),currentMemberId);fillMemberSelect($("taskOwner"),state.protocolRoute[0]);fillMemberSelect($("transferMemberSelect"),state.protocolRoute[0])}
+function familyCopy(){const care=careMember(),first=by(state.protocolRoute[0]),next=by(state.protocolRoute[1]||state.protocolRoute[0]),protectedOne=protectedMember();return {care,first,next,protectedOne,medsTitle:`${care.name}降压药快见底了`}}
+function buildSample(kind){const {care,first,next,protectedOne,medsTitle}=familyCopy(),route=[...state.protocolRoute],owner=route[0]||currentMemberId;if(currentLang==="en"){if(kind==="hospital")return {title:"Clinic follow-up reminder",content:"Dad has a follow-up visit next Monday morning. Remember the health card, blue folder, and blood pressure records.",source:"OCR",type:"Clinic",category:"Clinic",noticeBy:currentMemberId||protectedOne.id,owner,eta:"Next Monday morning",memory:"memAura: bring the health card, blue folder, and blood pressure records.",route,xgrids:`XGRIDS: ${first.name} and ${next.name} both have nearby handoff points today.`};if(kind==="gas")return {title:"Gas inspection notice",content:"The building notice says the gas inspection needs to be scheduled this week. Pick a time slot and keep the photo proof.",source:"OCR",type:"Gas",category:"Gas",noticeBy:currentMemberId||protectedOne.id,owner,eta:"This week",memory:`memAura: last time ${first.name} contacted property management.`,route,xgrids:`XGRIDS: ${first.name} will pass near the kitchen after dinner.`};return {title:"Dad's blood pressure meds are almost out",content:"Mom mentioned Dad only has two pills left. Someone should order the same medicine before tomorrow morning.",source:"Group screenshot",type:"Medicine",category:"Medicine",noticeBy:care.id,owner,eta:"Tomorrow morning",memory:`memAura: last time ${first.name} bought the same medicine.`,route,xgrids:`XGRIDS: ${first.name} will pass the medicine box tomorrow morning, with ${next.name} as the next handoff.`}}if(kind==="hospital")return {title:`${care.name}周三复诊，空腹提醒`,source:"OCR",type:"协调",noticeBy:currentMemberId||protectedOne.id,owner,eta:"周二晚 21 点前",memory:"memAura：上次复诊需要医保卡、过敏史、旧报告。",route,xgrids:`XGRIDS：${first.name}和${next.name}今天都有顺路节点。`};if(kind==="gas")return {title:"燃气年检通知别忘了",source:"OCR",type:"协调",noticeBy:currentMemberId||protectedOne.id,owner,eta:"本周五前约时间",memory:`memAura：上次是${first.name}联系物业。`,route,xgrids:`XGRIDS：${first.name}晚饭后会经过厨房附近。`};return {title:medsTitle,source:"群截图",type:"执行",noticeBy:care.id,owner,eta:"明早 9 点前",memory:`memAura：上次是${first.name}买的同款。`,route,xgrids:`XGRIDS：${first.name}明早会经过药盒，${next.name}作为下一棒。`}}
+const samples=new Proxy({},{get:(_,key)=>buildSample(key)});
+function normalizeStoredFamilyName(space){if(space&&(space.isDemo===true||space.id==="demo-home"||space.id==="demo-home-en")){space.isDemo=true;space.demoLang=space.demoLang||(space.id==="demo-home-en"?"en":"zh");const name=space.demoLang==="en"?"Tang's House":"唐宁的小家";if(space.name!==name){space.name=name}writeStore(storeKeys.family,space)}return space}
+function renderWelcomeContinue(){const box=$("continueHomeBox"),stored=normalizeStoredFamilyName(readStore(storeKeys.family,null)),app=copy[currentLang]||copy.zh;if(!box)return;if(stored&&stored.name&&Array.isArray(stored.members)&&stored.members.length){const demoMismatch=stored.isDemo===true&&stored.demoLang!==currentLang,demo=demoMismatch?buildDemoFamily():null,name=demo?.name||stored.name;box.hidden=false;box.innerHTML=`<div class="kicker">${esc(app.savedHomeHint)}</div><button class="btn note" id="continueFamilyBtn">${esc(app.continueHomePrefix)}「${esc(name)}」</button>`;$("continueFamilyBtn").onclick=()=>demoMismatch?loadDemoData(false):enterFamily(stored,readStore(storeKeys.tasks,[]),stored.currentMemberId||localStorage.getItem(storeKeys.current)||"")}else{box.hidden=true;box.innerHTML=""}}
+function enterFamily(space,tasks=[],memberId=""){familySpace={...space};people=normalizeMembers(space.members||[]);familySpace.members=people;state.tasks=Array.isArray(tasks)?tasks.map(normalizeTask):[];currentMemberId=findMember(memberId)?.id||findMember(space.currentMemberId)?.id||people[0]?.id||"";state.protocolRoute=sanitizeProtocol(space.protocolRoute||[]);state.wishes=syncWishes(space.wishes||[]);syncNodesToFamily();recalcMemberScores();$("welcomeFlow").hidden=true;$("appShell").hidden=false;renderMemberSelects();if(people.length)device(samples.meds);renderFamilyChrome();render();renderLog();saveAppData()}
+function showWelcome(){saveAppData();$("welcomeFlow").hidden=false;$("welcomeIntro").hidden=false;$("setupFlow").hidden=true;$("appShell").hidden=true;renderWelcomeContinue()}
+function startCreateFamily(){setupDraft={step:1,name:"",slogan:"",count:4,index:0,members:[]};$("welcomeIntro").hidden=true;$("setupFlow").hidden=false;renderSetup()}
+function memberDraft(i){if(!setupDraft.members[i])setupDraft.members[i]={name:"",relationship:"",avatarId:nextAvatarId(i,setupDraft.members),avatar:nextAvatarId(i,setupDraft.members),color:colorChoices[i%colorChoices.length]};setupDraft.members[i].avatarId=validAvatarId(setupDraft.members[i].avatarId||setupDraft.members[i].avatar);setupDraft.members[i].avatar=setupDraft.members[i].avatarId;return setupDraft.members[i]}
+function setupAvatarHtml(m,i){const avatar=avatarById(validAvatarId(m.avatarId||m.avatar)),labels=buttonCopy();return`<div class="member-avatar-side"><button class="member-avatar-window setup-avatar-window" type="button" data-setup-avatar-open="${i}" aria-label="更换人物形象"><img src="${esc(getAvatarSrc(avatar.id,"body"))}" data-fallback="${esc(getAvatarFallbackSrc(avatar.id,"body"))}" alt="${esc(avatar.name)}" onerror="this.onerror=null;this.src=this.dataset.fallback"></button><button class="btn small note" type="button" data-setup-avatar-open="${i}">${labels.changeAvatar}</button></div>`}
+function renderSetup(){const body=$("setupBody"),progress=$("setupProgress");progress.innerHTML=[1,2,3].map(i=>`<span class="setup-dot ${i<=setupDraft.step?"on":""}"></span>`).join("");if(setupDraft.step===1){body.innerHTML=`<p class="setup-copy">贴贴先帮这个家贴一张门牌，不用账号，也不用密码。</p><div class="field"><label for="familyName">家庭空间名称</label><input id="familyName" value="${esc(setupDraft.name)}" placeholder="比如：唐宁的小家"></div><div class="field"><label for="familySlogan">家庭口号</label><input id="familySlogan" value="${esc(setupDraft.slogan)}" placeholder="比如：小事一起接住"></div><div class="mactions"><button class="btn soft" id="setupBackHome">返回</button><button class="btn note" id="setupNext">下一步</button></div>`;$("setupBackHome").onclick=showWelcome;$("setupNext").onclick=nextSetupStep;return}if(setupDraft.step===2){body.innerHTML=`<p class="setup-copy">这个空间先放几位家人？之后还可以从小账本继续加。</p><div class="count-grid">${[2,3,4,5,6,7,8].map(n=>`<label class="count-option"><input type="radio" name="memberCount" value="${n}" ${setupDraft.count===n?"checked":""}>${n} 位</label>`).join("")}</div><div class="mactions"><button class="btn soft" id="setupPrev">上一步</button><button class="btn note" id="setupNext">继续填成员</button></div>`;$("setupPrev").onclick=prevSetupStep;$("setupNext").onclick=nextSetupStep;return}const i=setupDraft.index,m=memberDraft(i);body.innerHTML=`<div class="setup-member-count">第 ${i+1} / ${setupDraft.count} 位家人</div><div class="setup-member-editor">${setupAvatarHtml(m,i)}<div class="setup-member-fields"><div class="field"><label for="memberName">称呼</label><input id="memberName" value="${esc(m.name)}" placeholder="比如：唐宁"></div><div class="field"><label for="memberRelation">关系</label><input id="memberRelation" value="${esc(m.relationship||m.relation||"")}" placeholder="比如：姐姐 / 丈夫 / 妈妈"></div></div></div><div class="mactions"><button class="btn soft" id="setupPrev">${i===0?"上一步":"上一位"}</button><button class="btn note" id="setupNext">${i===setupDraft.count-1?"创建完成":"下一位"}</button></div>`;$("setupPrev").onclick=prevSetupStep;$("setupNext").onclick=nextSetupStep}
+function saveCurrentSetup(){if(setupDraft.step===1){setupDraft.name=$("familyName").value.trim();setupDraft.slogan=$("familySlogan").value.trim();if(!setupDraft.name)$("familyName").value=setupDraft.name="我们的家庭空间";if(!setupDraft.slogan)$("familySlogan").value=setupDraft.slogan="小事一起接住";return true}if(setupDraft.step===2){setupDraft.count=Number(document.querySelector('input[name="memberCount"]:checked')?.value)||4;setupDraft.members=setupDraft.members.slice(0,setupDraft.count);return true}const m=memberDraft(setupDraft.index);m.name=$("memberName").value.trim()||`家人${setupDraft.index+1}`;m.relation=$("memberRelation").value.trim()||"家人";m.relationship=m.relation;m.role=m.relation;m.avatarId=validAvatarId(m.avatarId||nextAvatarId(setupDraft.index,setupDraft.members));m.avatar=m.avatarId;return true}
+function nextSetupStep(){if(!saveCurrentSetup())return;if(setupDraft.step<3){setupDraft.step++;renderSetup();return}if(setupDraft.index<setupDraft.count-1){setupDraft.index++;renderSetup();return}finishSetup()}
+function prevSetupStep(){if(setupDraft.step===3){saveCurrentSetup();if(setupDraft.index>0){setupDraft.index--;renderSetup();return}setupDraft.step=2;renderSetup();return}if(setupDraft.step===2){setupDraft.step=1;renderSetup();return}showWelcome()}
+function finishSetup(){const members=normalizeMembers(setupDraft.members.slice(0,setupDraft.count).map((m,i)=>({...m,id:`member-${Date.now()}-${i}`,score:0,initialScore:0,wish:"想让家里的天平今天稳一点。"}))),protectedOne=members.find(isProtectedMember),route=protectedOne?[...members.filter(m=>m.id!==protectedOne.id).map(m=>m.id),protectedOne.id]:members.map(m=>m.id);const space={id:`family-${Date.now()}`,name:setupDraft.name||"我们的家庭空间",slogan:setupDraft.slogan||"小事一起接住",members,protocolRoute:route,wishes:[],createdAt:new Date().toISOString(),version:1};enterFamily(space,[],members[0]?.id);$("quickText").value=`${careMember().name}降压药快见底了，明早需要有人下单。`;log(`贴贴把「${space.name}」的家庭空间贴好了。`)}
+function initApp(){setLanguage(readLanguage());const storedFamily=normalizeStoredFamilyName(readStore(storeKeys.family,null)),storedTasks=readStore(storeKeys.tasks,[]);let storedCurrent="";try{storedCurrent=localStorage.getItem(storeKeys.current)||""}catch{}if(storedFamily&&Array.isArray(storedFamily.members)&&storedFamily.members.length){enterFamily(storedFamily,storedTasks,storedCurrent);log("贴贴回来啦，家庭空间已经接上。")}else showWelcome()}
+function switchSection(id){const section=document.querySelector(`[data-section="${id}"]`);if(!section)return;document.querySelectorAll("[data-section]").forEach(s=>s.classList.toggle("section-active",s===section));document.querySelectorAll("[data-target]").forEach(b=>b.classList.toggle("active",b.dataset.target===id));state.current=id;renderPageHeader();if(id==="familyInfo"){familyEditorDraft=null;renderFamilyInfo()}}
 function log(text){state.logs.unshift({time:time(),text});state.logs=state.logs.slice(0,28);renderLog()}
 function say(text){if(!state.voice||!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=1;u.pitch=1.08;speechSynthesis.speak(u)}
 function saySequence(parts){if(!state.voice||!("speechSynthesis"in window))return;speechSynthesis.cancel();const queue=parts.map(x=>String(x||"").trim()).filter(Boolean);const play=()=>{const text=queue.shift();if(!text)return;const u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=1;u.pitch=1.08;u.onend=play;speechSynthesis.speak(u)};play()}
-function routeFor(raw){return[...new Set(state.protocolRoute.concat(raw.route||[]))]}
-function nextOwnerName(task){const route=task?.route&&task.route.length?task.route:state.protocolRoute,current=task?.owner||route[0],i=Math.max(0,route.indexOf(current)),next=route[i+1]||route[0];return by(next).name}
-function add(raw){const order=routeFor(raw),task={id:"t"+Date.now()+Math.random(),title:raw.title,source:raw.source||"手动",type:raw.type||"执行",noticeBy:raw.noticeBy||"tangning",eta:raw.eta||"今天",owner:raw.owner||order[0],status:"pending",memory:raw.memory||"memAura：这是第一次被记住，之后会自动复用。",xgrids:raw.xgrids||"XGRIDS：按家庭动线推荐离这件事最近的人。",route:order};state.tasks.unshift(task);const observer=by(task.noticeBy);if(observer)observer.score+=1;log(`${observer?observer.name:"有人"} 贴出《${task.title}》，小账本记下 1 分观察。`);log(`贴贴把《${task.title}》先请 ${by(task.owner).name} 帮忙。`);device(task);render();return task}
-function device(task){$("devTitle").textContent=task.title;$("devMeta").textContent=`推荐：${by(task.owner).name} · ETA ${task.eta} · ${task.memory.replace("memAura：","")}`;$("nextCard").textContent=`${task.title}。贴贴建议先传给${by(task.owner).name}，下一棒${nextOwnerName(task)}会自动接住。`;if($("batonReason"))$("batonReason").textContent=`${task.memory} ${task.xgrids}`}
-function claim(id,owner){const t=state.tasks.find(x=>x.id===id),p=by(owner);if(!t||!p||t.status!=="pending")return;t.owner=owner;t.status="done";p.score+=weights[t.type]||3;log(`${p.name} 接住《${t.title}》，小账本记下 ${weights[t.type]||3} 分${t.type}。`);device(t);render()}
-function transfer(id){const t=state.tasks.find(x=>x.id===id);if(!t||t.status!=="pending")return;const i=Math.max(0,t.route.indexOf(t.owner));t.owner=t.route[i+1]||t.route[0];log(`《${t.title}》请 ${by(t.owner).name} 帮忙接一下。`);device(t);render()}
+function routeFor(raw={}){const base=raw.route&&raw.route.length?raw.route:state.protocolRoute,ordered=raw.owner?[raw.owner,...base]:base,valid=ordered.filter(id=>findMember(id)),route=[...new Set(valid.length?valid:defaultProtocolRoute())];return filterNightRoute(route)}
+function nextOwnerName(task){const route=(task?.route&&task.route.length?task.route:state.protocolRoute).filter(id=>findMember(id)),current=task?.owner||route[0],i=Math.max(0,route.indexOf(current)),next=route[i+1]||route[0];return next?by(next).name:"未指派"}
+function add(raw){if(!people.length){log("还没有家庭成员，先去家庭信息里添加吧。");switchSection("familyInfo");return null}const order=routeFor(raw),preferred=findMember(raw.assigneeId||raw.owner),owner=preferred&&(!isSleepGuardTime()||!preferred.sleepGuardProtected)?preferred.id:order[0]||"",morningQueue=isSleepGuardTime()&&!owner,createdById=findMember(raw.createdById||raw.noticeBy)?.id||currentMemberId||owner,task={id:"t"+Date.now()+Math.random(),title:raw.title,category:raw.category||raw.type||"执行",source:raw.source||"手动",type:raw.type||raw.category||"执行",noticeBy:createdById,createdById,assigneeId:owner,claimedById:"",completedById:"",eta:raw.eta||"今天",owner,status:"pending",morningQueue,createdAt:new Date().toISOString(),memory:raw.memory||"memAura：这是第一次被记住，之后会自动复用。",xgrids:raw.xgrids||"XGRIDS：按家庭动线推荐离这件事最近的人。",route:order};state.tasks.unshift(task);const observer=findMember(task.createdById);log(`${observer?observer.name:"有人"} 贴出《${task.title}》，小账本记下 1 分观察。`);log(morningQueue?topbarCopy().allSleepProtected:`贴贴把《${task.title}》先请 ${owner?by(owner).name:"家人"} 帮忙。`);device(task);render();return task}
+function device(task){if(!task)return;const owner=noteAssignee(task)||noteClaimedBy(task),ui=uiCopy(),ownerName=owner?by(owner).name:ui.common.noAssignee;$("devTitle").textContent=task.title;$("devMeta").textContent=currentLang==="en"?`Suggested: ${ownerName} · ETA ${task.eta} · ${task.memory.replace("memAura：","")}`:`推荐：${ownerName} · ETA ${task.eta} · ${task.memory.replace("memAura：","")}`;$("nextCard").textContent=currentLang==="en"?`${task.title}. Sticky suggests ${ownerName} first, then ${nextOwnerName(task)} can catch the next one.`:`${task.title}。贴贴建议先传给${ownerName}，下一棒${nextOwnerName(task)}会自动接住。`;if($("batonReason"))$("batonReason").textContent=`${task.memory} ${task.xgrids}`}
+function claim(id,owner){const t=state.tasks.find(x=>x.id===id),p=findMember(owner)||findMember(currentMemberId);if(!t||!isPending(t))return;if(!p){log("请先选择当前角色。");return}t.claimedById=p.id;t.assigneeId=t.assigneeId||p.id;t.owner=t.assigneeId;t.status="claimed";log(`${p.name} 接住《${t.title}》，小账本记下 ${weights[t.type]||3} 分${t.type}。`);device(t);render()}
+function transfer(id,ownerId){const t=state.tasks.find(x=>x.id===id);if(!t||!isPending(t))return;const picked=findMember(ownerId);if(picked&&(!isSleepGuardTime()||!picked.sleepGuardProtected)){t.assigneeId=picked.id;t.owner=picked.id;t.morningQueue=false;t.route=[...new Set([picked.id,...t.route.filter(pid=>pid!==picked.id)])]}else{const route=routeFor(t);if(!route.length){t.assigneeId="";t.owner="";t.morningQueue=true;t.route=[];log(topbarCopy().allSleepProtected);device(t);render();return}const current=noteAssignee(t),i=route.indexOf(current);t.assigneeId=route[i>=0?i+1:0]||route[0]||"";t.owner=t.assigneeId;t.morningQueue=false;t.route=route}log(`《${t.title}》请 ${t.assigneeId?by(t.assigneeId).name:"家人"} 帮忙接一下。`);device(t);render()}
 function deleteTask(id){const t=state.tasks.find(x=>x.id===id);state.tasks=state.tasks.filter(x=>x.id!==id);if(t)log(`删帖：《${t.title}》已从便利贴手册移除。`);render()}
 function gini(vals){const a=vals.slice().sort((x,y)=>x-y),sum=a.reduce((x,y)=>x+y,0);if(!sum)return 0;let acc=0,n=a.length;a.forEach((v,i)=>acc+=(2*(i+1)-n-1)*v);return acc/(n*sum)}
-function render(){renderWall();renderProtocolTimestamp();renderWishPool();renderBars("bars");renderBars("todayBars");renderReview();$("summaryTasks").textContent=`${state.tasks.length} 张便利贴`;const val=gini(people.map(p=>p.score));$("summaryGini").textContent=`天平 ${val.toFixed(2)}`}
-function renderProtocolTimestamp(){const el=$("protocolUpdatedAt");if(el)el.textContent="上次修改："+state.protocolUpdatedAt;const label=document.querySelector('[data-section="protocol"] .hd .kicker');if(label)label.textContent=state.protocolRoute.map(id=>by(id).name).join(" → ")}
-function renderRouteInto(id,task){const el=$(id);if(!el)return;const route=task?task.route:state.protocolRoute;el.innerHTML=route.map((pid,i)=>`<span class="chip ${task&&task.owner===pid?"on":""}">${esc(by(pid).name)}</span>${i<route.length-1?"<span>→</span>":""}`).join("")}
-function wallHtml(tasks,emptyText="贴贴在等待你的便利贴。<br>点击页面左侧录入便利贴"){if(!tasks.length)return`<div class="empty">${emptyText}</div>`;return tasks.map((t,i)=>{const cls=t.status==="completed"?"done":t.status==="done"?"done":t.type==="协调"?"route-note":t.noticeBy==="tangning"?"focus":"";const owner=by(t.owner);let action="";if(t.status==="completed")action=`<span class="pill">已完成</span>${t.proofName?`<span class="pill">凭证：${esc(t.proofName)}</span>`:""}`;else if(t.status==="done")action=`<span class="pill">${esc(owner.name)}已经包了</span><button class="btn small note" data-proof="${t.id}">确认完成</button>`;else action=`<button class="btn small" data-claim="${t.id}">我来吧</button><button class="btn small soft" data-transfer="${t.id}">请帮忙</button>`;return`<article class="sticky ${cls}" style="--rot:${((i%5)-2)*1.2}deg"><button class="btn small soft sticky-delete" data-delete="${t.id}" aria-label="删帖">×</button><div class="stitle">${esc(t.title)}</div><div class="meta"><span class="pill">${esc(t.source)}</span> <span class="pill">${esc(t.type)}</span> <span class="pill">给 ${esc(owner.name)}</span></div><div class="sticky-actions">${action}</div></article>`}).join("")}
-function todayWallHtml(tasks){if(!tasks.length)return'<div class="empty">今天还没有待接便利贴。<br>点“灌 demo 数据”或去录入一张。</div>';return tasks.map((t,i)=>`<article class="sticky today-sticky ${t.noticeBy==="tangning"?"focus":""}" data-open-wall="1" style="--rot:${((i%5)-2)*1.2}deg"><div class="stitle">${esc(t.title)}</div><div class="today-owner"><span class="pill">建议 ${esc(by(t.owner).name)} 包了</span></div></article>`).join("")}
-function pruneCompleted(){const keep=Date.now()-14*24*60*60*1000;state.tasks=state.tasks.filter(t=>t.status!=="completed"||!t.completedAtMs||t.completedAtMs>=keep)}
-function renderWall(){pruneCompleted();const active=state.tasks.filter(t=>t.status!=="completed"),pending=state.tasks.filter(t=>t.status==="pending").length,done=state.tasks.filter(t=>t.status==="done").length,completed=state.tasks.filter(t=>t.status==="completed");$("wallSummary").textContent=`${active.length} 张处理中 · ${pending} 张待接 · ${done} 张已接`;if($("manualSummary"))$("manualSummary").textContent=`${completed.length} 张已完成 · 保留 14 天`;$("taskWall").innerHTML=wallHtml(active);if($("completedWall"))$("completedWall").innerHTML=wallHtml(completed,"手册里还没有已完成的便利贴。<br>确认完成后，贴贴会把它收进这里。");$("todayWall").innerHTML=todayWallHtml(state.tasks.filter(t=>t.status==="pending").slice(0,2));renderRouteInto("route",active[0]);renderRouteInto("batonRoute")}
-function renderBars(target){const max=Math.max(...people.map(p=>p.score),1);$(target).innerHTML=people.map(p=>{const avatar=p.id==="tangning"?'<div class="avatar photo"><img src="assets/tangning-avatar.png" alt="唐宁头像"></div>':p.id==="brother"?'<div class="avatar photo"><img src="assets/brother-avatar.png" alt="唐小鸭头像"></div>':p.id==="husband"?'<div class="avatar photo"><img src="assets/husband-avatar.png" alt="周勉头像"></div>':p.id==="mom"?'<div class="avatar photo"><img src="assets/mom-avatar.png" alt="林女士头像"></div>':`<div class="avatar ${p.sleep?"sleepface":""}"><span></span></div>`;return`<div class="person ${p.id==="tangning"?"tangning":""}"><div class="barwrap"><div class="bar" style="height:${Math.max(8,Math.round(p.score/max*145))}px"></div></div>${avatar}<div class="pname">${esc(p.name)}</div><div class="score">${p.score} 分</div></div>`}).join("");const val=gini(people.map(p=>p.score));$("gini").textContent=val.toFixed(2)+(val<.32?" · 稳了一点":" · 还在倾斜");$("fill").style.width=Math.min(100,Math.round(val*100))+"%";$("ledger").innerHTML=people.slice().sort((a,b)=>b.score-a.score).slice(0,3).map(p=>`<div><span>${esc(p.name)} · ${esc(p.role)}</span><b>${p.score} 分</b></div>`).join("")}
-function renderPipe(){const el=$("pipeline");if(!el)return;el.innerHTML=nodes.map(n=>`<label class="node ${n.owner?"claimed":""} ${n.done?"done":""}"><input class="node-check" type="checkbox" data-node-done="${n.id}" ${n.done?"checked":""}><strong>[${n.id}] ${esc(n.name)}</strong><small>${esc(n.detail)}</small><span class="owner">${n.done?"已完成：":n.owner?"已接：":"推荐："}${esc(by(n.owner||n.suggest).name)}</span></label>`).join("")}
-function renderWishPool(){const el=$("wishPool");if(!el)return;el.innerHTML=state.wishes.map(w=>`<div class="list-item"><span class="dot"></span><div><b>${esc(w.person)}</b><br><small>${esc(w.text)}</small></div><button class="btn small soft" type="button" data-wish-edit="${esc(w.id)}">修改</button></div>`).join("")}
-function renderLog(){const el=$("log");if(!el)return;el.innerHTML=state.logs.length?state.logs.map(x=>`<div class="logitem"><span class="time">${esc(x.time)}</span>${esc(x.text)}</div>`).join(""):'<div class="logitem">还没有事件。贴第一张便利贴吧。</div>'}
-function renderReview(){const total=state.tasks.length,done=state.tasks.filter(t=>t.status!=="pending").length,tn=state.tasks.filter(t=>t.owner==="tangning"&&t.status!=="pending").length,val=gini(people.map(p=>p.score));$("review").innerHTML=`<div class="callout">贴贴帮你回忆今天：${done}/${total||0} 张便利贴已经被接住。</div><div>唐宁今天自己揭了 ${tn} 张。${tn===0?"夜里那几张都被挡在护栏外。":"下一轮试着让别人先接一张。"}</div><div>家里的天平现在是 ${val.toFixed(2)}。${val<.32?"比开场稳了一点。":"还在倾斜，但已经被看见了。"}</div>`}
+function render(){const ui=uiCopy();state.protocolRoute=sanitizeProtocol(state.protocolRoute);setCurrentMemberId(currentMemberId);recalcMemberScores();renderFamilyChrome();renderMemberSelects();renderWall();renderProtocolTimestamp();renderMemberRoster();renderFallbackRules();renderWishPool();renderBars("bars");renderBars("todayBars");renderReview();renderFamilyInfo();$("summaryTasks").textContent=`${state.tasks.length} ${ui.common.stickyUnit}`;const val=gini(people.map(p=>p.score));$("summaryGini").textContent=people.length?`${ui.common.balanceLabel} ${val.toFixed(2)}`:`${ui.common.balanceLabel} --`;saveAppData()}
+function renderProtocolTimestamp(){const ui=uiCopy();const el=$("protocolUpdatedAt"),notUpdated=!state.protocolUpdatedAt||state.protocolUpdatedAt===copy.zh.ui.protocol.neverUpdated||state.protocolUpdatedAt===copy.en.ui.protocol.neverUpdated;if(el)el.textContent=fmt(ui.protocol.updated,{time:notUpdated?ui.protocol.neverUpdated:state.protocolUpdatedAt});const label=$("committeeSubtitle");if(label)label.textContent=ui.protocol.subtitle}
+function renderFamilyChrome(){const ui=uiCopy(),guard=topbarCopy(),app=copy[currentLang]||copy.zh;document.querySelector(".brand h1").textContent=app.appName;document.querySelector(".brand p").textContent=familySpace?.slogan||familySpace?.name||app.appSubtitle;if(!people.length){$("sleepKicker").textContent=ui.today.sleepNoRelay;$("sleepProtectedCount").textContent="0";$("sleepProtectedLabel").textContent=ui.today.sleepNone;$("sleepProtectedRoster").innerHTML="";$("helperCount").textContent="0";$("balanceKicker").textContent=ui.common.emptyMembers;renderCurrentRoleButton();$("quickText").placeholder=quickDraftDefault();setQuickDraftDefault();if(!state.tasks.length)$("nextCard").textContent=ui.common.emptyMembers;return}const {care,first,next,protectedOne}=familyCopy(),protectedList=sleepProtectedMembers(),available=nightAvailableMembers();$("sleepProtectedCount").textContent=String(protectedList.length);$("sleepProtectedLabel").textContent=guard.doNotDisturb;$("sleepProtectedRoster").innerHTML=protectedList.length?protectedList.map(p=>`<span class="sleep-protected-item">${renderAvatar(p,"inline-avatar")}<b>${esc(p.name)}</b></span>`).join(""):`<span class="kicker">${esc(ui.today.sleepNone)}</span>`;$("helperCount").textContent=String(available.length);$("sleepKicker").textContent=isSleepGuardTime()&&allMembersSleepProtected()?guard.allSleepProtected:guard.doNotDisturb;$("balanceKicker").textContent=fmt(ui.today.protectedButIncluded,{name:protectedOne.name});renderCurrentRoleButton();$("quickText").placeholder=quickDraftDefault();setQuickDraftDefault();if(!state.tasks.length){$("nextCard").textContent=fmt(ui.today.defaultTaskLine,{care:care.name,first:first.name,next:next.name})}}
+function renderMemberRoster(){const el=$("memberRoster"),ui=uiCopy(),guard=topbarCopy();if(!el)return;if(!people.length){el.innerHTML=`<div class="empty">${ui.common.emptyMembers}</div>`;return}const routeIds=new Set((state.protocolRoute.length?state.protocolRoute:people.map(p=>p.id)).filter(id=>findMember(id))),hasPending=state.tasks.some(isPending);el.innerHTML=people.map(p=>{const status=p.id===currentMemberId?ui.protocol.statusCurrent:routeIds.has(p.id)?ui.protocol.statusQueued:hasPending?ui.protocol.statusStandby:ui.protocol.statusStandby,guardChip=p.sleepGuardProtected?`<span class="chip sleep-guard-tag">${guard.sleepGuardShort}</span>`:"";return `<article class="committee-member-card">${renderAvatar(p,"committee-avatar")}<div class="committee-member-info"><b>${esc(memberLabel(p))}</b><small>${esc(p.relation||p.relationship||ui.common.relationFallback)}</small>${guardChip}</div><span class="chip committee-status">${status}</span></article>`}).join("")}
+function renderFallbackRules(){const el=$("fallbackRules"),ui=uiCopy();if(!el)return;if(!people.length){el.innerHTML=`<div class="empty">${ui.common.emptyMembers}</div>`;return}el.innerHTML=ui.protocol.rules.map(rule=>`<div class="committee-rule"><span class="dot"></span><span>${esc(rule)}</span></div>`).join("")}
+function routeGuardBadges(member){const guard=topbarCopy(),badges=[];if(member.sleepGuardProtected)badges.push(`<span class="chip sleep-guard-tag">${guard.sleepGuardShort}</span>`);if(isSleepGuardTime()&&member.sleepGuardProtected)badges.push(`<span class="chip sleep-guard-tag">${guard.skippedAtNight}</span>`);return badges.length?`<span class="committee-route-badges">${badges.join("")}</span>`:""}
+function renderRouteInto(id,task){const el=$(id),ui=uiCopy();if(!el)return;const route=(task?task.route:state.protocolRoute)||[],current=task?noteAssignee(task):"";if(id==="batonRoute"){const ids=(route.length?route:people.map(p=>p.id)).filter(pid=>findMember(pid));if(!ids.length){el.innerHTML=`<div class="empty">${ui.common.emptyMembers}</div>`;return}el.innerHTML=ids.map((pid,i)=>{const member=by(pid),skipped=isSleepGuardTime()&&member.sleepGuardProtected;return `<span class="committee-route-item ${skipped?"sleep-skipped":""}">${renderAvatar(member,"committee-avatar")}<span><b>${esc(member.name)}</b><small>${esc(member.relation||member.relationship||ui.common.relationFallback)}</small>${routeGuardBadges(member)}</span></span>${i<ids.length-1?'<span class="committee-arrow">→</span>':""}`}).join("");return}if(id==="route"){const ids=(route.length?route:people.map(p=>p.id)).filter(pid=>findMember(pid));if(!ids.length){el.innerHTML=`<span class="chip">${ui.common.noAssignee}</span>`;return}el.innerHTML=ids.map((pid,i)=>{const member=by(pid),skipped=isSleepGuardTime()&&member.sleepGuardProtected;return `<div class="device-route-card ${current===pid?"on":""} ${skipped?"sleep-skipped":""}">${renderAvatar(member,"inline-avatar")}<span><b>${esc(member.name)}</b><small>${esc(member.relation||member.relationship||ui.common.relationFallback)}</small>${routeGuardBadges(member)}</span></div>${i<ids.length-1?'<span class="device-route-arrow">→</span>':""}`}).join("");return}if(!route.length){el.innerHTML=`<span class="chip">${ui.common.noAssignee}</span>`;return}el.innerHTML=route.map((pid,i)=>`<span class="chip ${task&&current===pid?"on":""}">${memberPill(pid)}${findMember(pid)?routeGuardBadges(by(pid)):""}</span>${i<route.length-1?"<span>→</span>":""}`).join("")}
+function wallHtml(tasks,emptyText=null){const ui=uiCopy(),sep=currentLang==="en"?": ":"：";if(!tasks.length)return`<div class="empty">${emptyText||ui.wall.emptyActive}</div>`;const labels=buttonCopy();return tasks.map((t,i)=>{const noteType=t.type||t.category||"",notice=findMember(t.createdById||t.noticeBy),cls=isCompleted(t)?"done":isClaimed(t)?"done":noteType==="协调"?"route-note":notice&&isProtectedMember(notice)?"focus":"",owner=noteAssignee(t),claimer=noteClaimedBy(t),completed=t.completedById,noRole=!currentMemberId,shortName=id=>id&&findMember(id)?findMember(id).name:ui.common.noAssignee,content=t.content?`<div class="meta">${esc(t.content)}</div>`:"",metaChips=[`<span class="pill">${esc(typeLabel(noteType))}</span>`,`<span class="pill">${ui.wall.suggest}${sep}${esc(shortName(owner))}</span>`];if(claimer)metaChips.push(`<span class="pill">${ui.wall.relay}${sep}${esc(shortName(claimer))}</span>`);if(completed)metaChips.push(`<span class="pill">${ui.wall.done}${sep}${esc(shortName(completed))}</span>`);let action="";if(isCompleted(t))action=`<span class="pill">${ui.wall.completed}</span>`;else if(isClaimed(t))action=`<button class="btn small note" data-proof="${t.id}" ${noRole?`disabled title="${ui.common.noCurrentRole}"`:""}>${labels.markDone}</button>`;else action=`<button class="btn small" data-claim="${t.id}" ${noRole?`disabled title="${ui.common.noCurrentRole}"`:""}>${labels.claim}</button><button class="btn small soft" data-transfer="${t.id}" ${!people.length?"disabled":""}>${labels.askHelp}</button>${noRole?`<span class="pill">${ui.common.noCurrentRole}</span>`:""}`;return`<article class="sticky ${cls}" style="--rot:${((i%5)-2)*1.2}deg"><button class="btn small soft sticky-delete" data-delete="${t.id}" aria-label="删帖">×</button><div class="stitle">${esc(t.title)}</div>${content}<div class="meta">${metaChips.join("")}</div><div class="sticky-actions">${action}</div></article>`}).join("")}
+function todayWallHtml(tasks){const ui=uiCopy();if(!people.length)return`<div class="empty">${ui.common.emptyMembers}</div>`;if(!tasks.length)return`<div class="empty">${ui.today.noPending}</div>`;return tasks.map((t,i)=>{const notice=findMember(t.createdById||t.noticeBy),owner=noteAssignee(t),name=owner?by(owner).name:ui.common.noAssignee,content=t.content?`<div class="meta">${esc(t.content)}</div>`:"";return`<article class="sticky today-sticky ${notice&&isProtectedMember(notice)?"focus":""}" data-open-wall="1" style="--rot:${((i%5)-2)*1.2}deg"><div class="stitle">${esc(t.title)}</div>${content}<div class="today-owner"><span class="pill">${fmt(ui.today.suggestPack,{name:owner?memberPill(owner):name})}</span></div></article>`}).join("")}
+function pruneCompleted(){const keep=Date.now()-14*24*60*60*1000;state.tasks=state.tasks.filter(t=>!isCompleted(t)||!t.completedAtMs||t.completedAtMs>=keep)}
+function renderWall(){const ui=uiCopy();pruneCompleted();const active=state.tasks.filter(t=>!isCompleted(t)),pending=active.filter(isPending).length,done=active.filter(isClaimed).length,completed=state.tasks.filter(isCompleted);$("wallSummary").textContent=fmt(ui.wall.activeSummary,{total:active.length,pending,claimed:done});if($("manualSummary"))$("manualSummary").textContent=fmt(ui.wall.doneSummary,{done:completed.length});$("taskWall").innerHTML=wallHtml(active);if($("completedWall"))$("completedWall").innerHTML=wallHtml(completed,ui.wall.emptyDone);$("todayWall").innerHTML=todayWallHtml(state.tasks.filter(isPending).slice(0,2));renderRouteInto("route",active[0]);renderRouteInto("batonRoute")}
+function renderBars(target){const el=$(target),ui=uiCopy();if(!el)return;if(!people.length){el.style.gridTemplateColumns="1fr";el.innerHTML=`<div class="empty">${ui.common.emptyMembers}</div>`;if($("gini"))$("gini").textContent="--";if($("fill"))$("fill").style.width="0%";if($("ledger"))$("ledger").innerHTML=`<div><span>${ui.balance.noLedgerTitle}</span><b>${ui.balance.noLedgerHint}</b></div>`;return}const max=Math.max(...people.map(p=>p.score),1);el.style.gridTemplateColumns="repeat(auto-fit,minmax(120px,1fr))";el.innerHTML=people.map(p=>`<div class="person ${isProtectedMember(p)?"tangning":""}" style="--member-color:${esc(p.color||"#FFD86B")}"><div class="barwrap"><div class="bar" style="height:${Math.max(8,Math.round(p.score/max*46))}px;background:linear-gradient(90deg,rgba(255,255,255,.24) 0 35%,transparent 35%),${esc(p.color||"#FFD86B")}"></div></div>${renderAvatar(p)}<div class="pname">${esc(p.name)}</div><div class="score">${esc(p.relation||p.relationship||ui.common.relationFallback)} · ${p.score} ${ui.common.scoreUnit}</div></div>`).join("");const val=gini(people.map(p=>p.score));if($("gini"))$("gini").textContent=val.toFixed(2)+(val<.32?` · ${ui.balance.stable}`:` · ${ui.balance.tilted}`);if($("fill"))$("fill").style.width=Math.min(100,Math.round(val*100))+"%";if($("ledger"))$("ledger").innerHTML=people.slice().sort((a,b)=>b.score-a.score).map(p=>`<div><span>${esc(p.name)} · ${esc(p.role||p.relationship||ui.common.relationFallback)}</span><b>${p.score} ${ui.common.scoreUnit}</b></div>`).join("")}
+function renderPipe(){const el=$("pipeline");if(!el)return;const labels=currentLang==="en"?{done:"Completed: ",claimed:"Claimed: ",suggest:"Suggested: "}:{done:"已完成：",claimed:"已接：",suggest:"推荐："};el.innerHTML=nodes.map(n=>`<label class="node ${n.owner?"claimed":""} ${n.done?"done":""}"><input class="node-check" type="checkbox" data-node-done="${n.id}" ${n.done?"checked":""}><strong>[${n.id}] ${esc(n.name)}</strong><small>${esc(n.detail)}</small><span class="owner">${n.done?labels.done:n.owner?labels.claimed:labels.suggest}${esc(by(n.owner||n.suggest).name)}</span></label>`).join("")}
+function renderWishPool(){const el=$("wishPool");if(!el)return;el.innerHTML=state.wishes.map(w=>`<div class="list-item"><span class="dot"></span><div><b>${esc(w.person)}</b><br><small>${esc(w.text)}</small></div><button class="btn small soft" type="button" data-wish-edit="${esc(w.id)}">${currentLang==="en"?"Edit":"修改"}</button></div>`).join("")}
+function renderLog(){const el=$("log");if(!el)return;el.innerHTML=state.logs.length?state.logs.map(x=>`<div class="logitem"><span class="time">${esc(x.time)}</span>${esc(x.text)}</div>`).join(""):`<div class="logitem">${currentLang==="en"?"No events yet. Add the first sticky.":"还没有事件。贴第一张便利贴吧。"}</div>`}
+function ensureFamilyEditorDraft(){if(!familyEditorDraft)familyEditorDraft={name:familySpace?.name||"",slogan:familySpace?.slogan||"",members:people.map(p=>({...p}))};return familyEditorDraft}
+function addFamilyInfoMember(){const draft=collectFamilyEditorDraft();const i=draft.members.length,avatarId=nextAvatarId(i,draft.members);draft.members.push({id:`member-${Date.now()}-${i}`,name:"新成员",relation:"家人",relationship:"家人",role:"家人",avatarId,avatar:avatarId,color:colorChoices[i%colorChoices.length],score:0,initialScore:0,sleepGuardProtected:false,wish:"想让家里的天平今天稳一点。"});renderFamilyInfo()}
+function relatedTaskCount(memberId){return state.tasks.filter(t=>[t.assigneeId,t.claimedById,t.createdById,t.completedById,t.owner,t.noticeBy].includes(memberId)).length}
+function requestDeleteFamilyMember(index){const draft=collectFamilyEditorDraft(),member=draft.members[index],copy=uiCopy().modals.deleteMember;if(!member)return;deleteMemberId=member.id;const count=relatedTaskCount(member.id);$("deleteMemberText").textContent=count?fmt(copy.relatedText,{count}):copy.removeText;$("deleteMemberModal").classList.add("show")}
+function closeDeleteMemberModal(){$("deleteMemberModal").classList.remove("show");deleteMemberId=null}
+function confirmDeleteMember(){const draft=collectFamilyEditorDraft();if(!deleteMemberId)return;draft.members=draft.members.filter(m=>m.id!==deleteMemberId);state.tasks.forEach(t=>{if(t.assigneeId===deleteMemberId)t.assigneeId="";if(t.owner===deleteMemberId)t.owner=t.assigneeId||"";if(t.noticeBy===deleteMemberId)t.noticeBy=t.createdById||""});deleteMemberId=null;closeDeleteMemberModal();applyFamilyInfoDraft("成员已更新，相关便利贴已改为未指派。",draft)}
+function renderReview(){const ui=uiCopy();if(!people.length){$("review").innerHTML=`<div class="callout">${ui.protocol.reviewEmpty}</div>`;return}const total=state.tasks.length,done=state.tasks.filter(t=>!isPending(t)).length,protectedOne=protectedMember(),tn=state.tasks.filter(t=>noteClaimedBy(t)===protectedOne.id&&!isPending(t)).length,val=gini(people.map(p=>p.score));$("review").innerHTML=`<div class="callout">${fmt(ui.protocol.reviewSummary,{done,total:total||0})}</div><div>${esc(fmt(tn===0?ui.protocol.reviewSelfZero:ui.protocol.reviewSelfSome,{name:protectedOne.name,count:tn}))}</div><div>${esc(fmt(val<.32?ui.protocol.balanceStable:ui.protocol.balanceTilted,{value:val.toFixed(2)}))}</div>`}
 function autoHospital(){nodes.forEach((n,i)=>setTimeout(()=>{if(!n.owner){n.owner=n.suggest;by(n.owner).score+=3;log(`复诊[${n.id}] ${n.name} 贴给 ${by(n.owner).name}。`);render()}},i*220))}
-function reset(writeLog=true){clearInterval(state.timer);state.timer=null;state.demoIndex=0;state.tasks=[];state.logs=[];[18,6,7,1].forEach((v,i)=>people[i].score=v);nodes.forEach(n=>{n.owner=null;n.done=false});if($("progress"))$("progress").style.width="0%";if($("caption"))$("caption").textContent="准备好了。按“走一遍路演”，30 秒看完整条产品链。";$("devTitle").textContent="唐母（林女士）降压药快见底了";$("devMeta").textContent="推荐：唐小鸭（唐弟） · ETA 明早 9 点前 · memAura 找到上次购药记录";$("nextCard").textContent="唐母（林女士）说“降压药快见底了”。贴贴建议先传给唐小鸭（唐弟），下一棒周勉（丈夫）会自动接住。";if($("batonReason"))$("batonReason").textContent="memAura 找到上次购药记录；XGRIDS 发现唐小鸭（唐弟）明早会经过药盒。";if(writeLog)log("demo 已重置。");render();renderLog()}
-function seed(){reset(false);const a=add(samples.meds);claim(a.id,"brother");const b=add(samples.hospital);b.owner="husband";add(samples.gas);autoHospital();switchSection("today")}
-const steps=[()=>{switchSection("sleep");log("睡眠护栏开启，唐宁端保持静默。");say("夜里了，这件事让明天的人接住。")},()=>{switchSection("capture");add(samples.meds);say("唐小鸭，唐母那边降压药快见底啦，明早顺手下单好不好？")},()=>{switchSection("protocol");log("BatonRouter 推荐唐小鸭（唐弟），周勉（丈夫）作为下一棒，唐宁最后通知。")},()=>{switchSection("wall");const t=state.tasks[0];if(t)claim(t.id,"brother")},()=>{switchSection("care");add(samples.hospital);autoHospital()},()=>{switchSection("protocol");renderReview();log("贴贴生成今日复盘卡：只做减法确认，不要求打字。");say("她不用做更多，全家一起贴。")}];
-function step(){const fn=steps[state.demoIndex];if(!fn){clearInterval(state.timer);state.timer=null;$("caption").textContent="路演链路结束：录入、请帮忙、睡眠护栏、复诊流水线、复盘都跑通了。";$("progress").style.width="100%";switchSection("demo");return}fn();$("caption").textContent=["睡眠护栏先保护唐宁。","录入便利贴生成便利贴。","请帮忙协议解释推荐逻辑。","便利贴被接住，天平变化。","照护项目拆成 6 个节点。","复盘与月度会形成闭环。"][state.demoIndex];$("progress").style.width=Math.round((state.demoIndex+1)/steps.length*100)+"%";state.demoIndex++}
+function reset(writeLog=true){clearInterval(state.timer);state.timer=null;state.demoIndex=0;state.tasks=[];state.logs=[];people.forEach(p=>p.score=Number(p.initialScore)||0);nodes.forEach(n=>{n.owner=null;n.done=false});syncNodesToFamily();if($("progress"))$("progress").style.width="0%";if($("caption"))$("caption").textContent=uiCopy().demo.ready;device(samples.meds);if(writeLog)log(currentLang==="en"?"Demo reset.":"demo 已重置。");render();renderLog()}
+function loadDemoData(showToday=true){const demo=buildDemoFamily();enterFamily(demo,[],demo.currentMemberId||demo.members[0]?.id);reset(false);setQuickDraftDefault(true);const route=state.protocolRoute;const a=add(samples.meds);if(a&&currentLang!=="en")claim(a.id,route[0]||currentMemberId);const b=add(samples.hospital);if(b){b.assigneeId=route[1]||route[0]||currentMemberId;b.owner=b.assigneeId}add(samples.gas);if(currentLang!=="en")autoHospital();if(showToday)switchSection("today");render();return demo}
+function seed(){loadDemoData(true)}
+const steps=[()=>{switchSection("today");log(`睡眠护栏开启，${protectedMember().name}端保持静默。`);say("夜里了，这件事让明天的人接住。")},()=>{switchSection("capture");add(samples.meds);say(`${by(state.protocolRoute[0]).name}，${careMember().name}那边降压药快见底啦，明早顺手下单好不好？`)},()=>{switchSection("protocol");log(`贴贴推荐 ${state.protocolRoute.map(id=>by(id).name).join(" → ")}。`)},()=>{switchSection("wall");const t=state.tasks[0];if(t)claim(t.id,currentMemberId||noteAssignee(t))},()=>{switchSection("today");add(samples.hospital);autoHospital()},()=>{switchSection("protocol");renderReview();log("贴贴生成今日复盘卡：只做减法确认，不要求打字。");say("她不用做更多，全家一起贴。")}];
+function step(){const fn=steps[state.demoIndex],caption=$("caption"),progress=$("progress"),ui=uiCopy();if(!fn){clearInterval(state.timer);state.timer=null;if(caption)caption.textContent=ui.demo.done;if(progress)progress.style.width="100%";switchSection("demo");return}fn();if(caption)caption.textContent=fmt(ui.demo.captions[state.demoIndex],{name:protectedMember().name});if(progress)progress.style.width=Math.round((state.demoIndex+1)/steps.length*100)+"%";state.demoIndex++}
 function demo(){reset(false);switchSection("demo");step();clearInterval(state.timer);state.timer=setInterval(step,4700)}
-function guessCaptureText(kind,fileName=""){const name=fileName.toLowerCase();if(kind==="file"){if(name.includes("复诊")||name.includes("病历"))return"文件里识别到：妈妈周三复诊，需空腹，带医保卡、病历和既往报告。";if(name.includes("药"))return"文件里识别到药盒剩余不足，需要续购降压药。";return"文件里识别到一条家庭事项，请确认标题、时间和接棒人。"}return"妈妈降压药快见底了，明早需要有人下单。"}
-function showCaptureResult(kind,file,text,url){const label={voice:"语音录入",file:"文件上传"}[kind]||"录入";const preview=url?file&&file.type&&file.type.startsWith("video/")?`<video class="upload-preview" src="${url}" controls></video>`:file&&file.type&&file.type.startsWith("image/")?`<img class="upload-preview" src="${url}" alt="上传预览">`:`<div class="upload-zone"><b>${esc(file.name)}</b><span>文件已放进贴贴识别队列。</span></div>`:"";$("captureResult").innerHTML=`<b>${label} · ${file?esc(file.name):"实时听写"}</b>${preview}<textarea class="recognized-text" id="recognizedText">${esc(text)}</textarea><div class="capture-actions"><button class="btn small note" id="createRecognizedTask">生成便利贴</button><button class="btn small soft" id="copyRecognizedText">放到输入框</button></div>`;$("createRecognizedTask").onclick=()=>createTaskFromRecognizedText(kind);$("copyRecognizedText").onclick=()=>{$("quickText").value=$("recognizedText").value};$("quickText").value=text}
-function createTaskFromRecognizedText(kind){const text=($("recognizedText")?.value||$("quickText").value||"").trim();if(!text)return;let p={...samples.meds,title:text,source:kind==="file"?"文件上传":"语音",noticeBy:text.includes("药")?"mom":"tangning"};if(text.includes("复诊")||text.includes("医院")||text.includes("病历"))p={...samples.hospital,title:text,source:p.source};if(text.includes("燃气")||text.includes("年检"))p={...samples.gas,title:text,source:p.source};add(p);switchSection("wall")}
+function guessCaptureText(kind,fileName=""){const name=fileName.toLowerCase(),care=careMember(),ui=uiCopy();if(kind==="file"){if(name.includes("复诊")||name.includes("病历")||name.includes("clinic"))return fmt(ui.capture.recognizedFileClinic,{name:care.name});if(name.includes("药")||name.includes("med"))return ui.capture.recognizedFileMeds;return ui.capture.recognizedFileGeneric}return fmt(ui.capture.voiceDefault,{name:care.name})}
+function showCaptureResult(kind,file,text,url){const ui=uiCopy();const canDraft=text&&![ui.capture.listening,ui.capture.notHeard,ui.capture.unsupported,"正在听你说话……","没有听清楚。你可以再点一次语音录入，或直接输入文字。","当前浏览器不支持语音识别。可以直接在下方输入文字，或换 Chrome/Edge 打开后再试。"].includes(text);if(canDraft){$("quickText").value=text;$("quickText").focus()}}
+function createTaskFromRecognizedText(kind){const ui=uiCopy(),text=($("quickText").value||"").trim();if(!text){log(ui.capture.emptyDraft);$("quickText").focus();return}const source=kind==="file"?"文件上传":kind==="voice"?"语音":"手动",owner=$("quickOwner")?.value||state.protocolRoute[0],noticeBy=text.includes("药")?careMember().id:currentMemberId;let p={...samples.meds,title:text,source,noticeBy,owner};if(text.includes("复诊")||text.includes("医院")||text.includes("病历"))p={...samples.hospital,title:text,source,noticeBy,owner};if(text.includes("燃气")||text.includes("年检"))p={...samples.gas,title:text,source,noticeBy,owner};add(p);switchSection("wall")}
+function memberCardHtml(m,i){const avatar=avatarById(validAvatarId(m.avatarId||m.avatar)),labels=buttonCopy(),ui=uiCopy(),guard=topbarCopy(),sleepOn=!!m.sleepGuardProtected;return`<article class="family-member-card" data-family-member-index="${i}"><div class="family-card-layout"><div class="member-avatar-side"><button class="member-avatar-window" type="button" data-avatar-pick-open="${i}" aria-label="更换${esc(m.name||ui.familyInfo.newMember)}的人物形象"><img src="${esc(getAvatarSrc(avatar.id,"body"))}" data-fallback="${esc(getAvatarFallbackSrc(avatar.id,"body"))}" alt="${esc(avatar.name)}" onerror="this.onerror=null;this.src=this.dataset.fallback"></button><button class="btn small note" type="button" data-avatar-pick-open="${i}">${labels.changeAvatar}</button></div><div class="member-edit-side"><div class="member-card-title"><b data-member-card-name="${i}">${esc(m.name||ui.familyInfo.newMember)}</b><button class="btn small soft" type="button" data-family-member-delete="${i}">${labels.remove}</button></div><div class="member-card-row"><label>${ui.familyInfo.nameField}<input data-member-field="name" value="${esc(m.name||"")}"></label><label>${ui.familyInfo.relationField}<input data-member-field="relation" value="${esc(m.relation||m.relationship||"")}"></label></div><div class="member-edit-actions"><button class="btn small soft sleep-guard-toggle ${sleepOn?"on":""}" type="button" data-sleep-guard-toggle="${i}">${sleepOn?guard.sleepProtected:guard.protectSleep}</button><span class="member-save-tip" data-member-save-tip="${i}"></span><button class="btn small note" type="button" data-family-member-save="${i}">${labels.saveInfo}</button></div></div></div></article>`}
+function renderFamilyInfo(){const section=document.querySelector('[data-section="familyInfo"]');if(!section||!section.classList.contains("section-active"))return;const draft=ensureFamilyEditorDraft();$("familyInfoName").value=draft.name||"";$("familyInfoSlogan").value=draft.slogan||"";$("familyMemberEditor").innerHTML=draft.members.map(memberCardHtml).join("")}
+function collectFamilyEditorDraft(){const draft=ensureFamilyEditorDraft();draft.name=$("familyInfoName").value.trim()||"我们的家庭空间";draft.slogan=$("familyInfoSlogan").value.trim();document.querySelectorAll("[data-family-member-index]").forEach(card=>{const i=Number(card.dataset.familyMemberIndex),m=draft.members[i];if(!m)return;card.querySelectorAll("[data-member-field]").forEach(input=>{m[input.dataset.memberField]=input.value.trim()});m.avatarId=validAvatarId(m.avatarId||m.avatar||nextAvatarId(i,draft.members));m.avatar=m.avatarId;m.sleepGuardProtected=!!m.sleepGuardProtected;m.sleep=!!(m.sleep||m.sleepGuardProtected);m.relation=m.relation||"家人";m.relationship=m.relation;m.role=m.relation;m.name=m.name||"新成员"});return draft}
+function applyFamilyInfoDraft(message,draftOverride=null){const draft=draftOverride||collectFamilyEditorDraft(),nextMembers=normalizeMembers(draft.members);state.tasks=state.tasks.map(normalizeTask);updateFamilySpace({name:draft.name,slogan:draft.slogan,members:nextMembers,protocolRoute:state.protocolRoute,wishes:state.wishes});familyEditorDraft=null;if(message)log(message);render();switchSection("familyInfo")}
+function saveFamilyInfo(){applyFamilyInfoDraft(`家庭信息已保存：${familySpace.name}。`)}
+function updateMemberCardAvatar(index){const draft=ensureFamilyEditorDraft(),member=draft.members[index],card=document.querySelector(`[data-family-member-index="${index}"]`);if(!member||!card)return;const avatar=avatarById(validAvatarId(member.avatarId||member.avatar)),img=card.querySelector(".member-avatar-window img");if(img){img.src=getAvatarSrc(avatar.id,"body");img.dataset.fallback=getAvatarFallbackSrc(avatar.id,"body");img.alt=avatar.name}}
+function updateSetupAvatar(index){const member=memberDraft(index),img=document.querySelector(`[data-setup-avatar-open="${index}"] img`);if(!img)return;const avatar=avatarById(validAvatarId(member.avatarId||member.avatar));img.src=getAvatarSrc(avatar.id,"body");img.dataset.fallback=getAvatarFallbackSrc(avatar.id,"body");img.alt=avatar.name}
+function showMemberSaveTip(index,text=buttonCopy().saved){const labels=buttonCopy(),card=document.querySelector(`[data-family-member-index="${index}"]`),tip=card?.querySelector(`[data-member-save-tip="${index}"]`),btn=card?.querySelector(`[data-family-member-save="${index}"]`);if(tip)tip.textContent=text;if(btn){btn.dataset.originalText=labels.saveInfo;btn.textContent=text}setTimeout(()=>{if(tip)tip.textContent="";if(btn)btn.textContent=buttonCopy().saveInfo},1100)}
+function saveFamilyMemberInfo(index){const draft=collectFamilyEditorDraft(),member=draft.members[index];if(!member)return;const nextMembers=normalizeMembers(draft.members),saved=nextMembers[index];if(!saved)return;updateFamilySpace({name:draft.name,slogan:draft.slogan,members:nextMembers,protocolRoute:state.protocolRoute,wishes:state.wishes});draft.members=nextMembers;renderWall();renderProtocolTimestamp();renderMemberRoster();renderFallbackRules();renderWishPool();renderBars("bars");renderBars("todayBars");renderReview();renderFamilyChrome();renderMemberSelects();const card=document.querySelector(`[data-family-member-index="${index}"]`),title=card?.querySelector(`[data-member-card-name="${index}"]`);if(title)title.textContent=saved.name;updateMemberCardAvatar(index);showMemberSaveTip(index,buttonCopy().saved)}
+function toggleFamilyMemberSleepGuard(index){const draft=collectFamilyEditorDraft(),current=people[index];if(!current)return;const nextMembers=people.map((p,i)=>i===index?{...p,sleepGuardProtected:!p.sleepGuardProtected,sleep:!p.sleepGuardProtected}:p);draft.members[index]={...draft.members[index],sleepGuardProtected:nextMembers[index].sleepGuardProtected,sleep:nextMembers[index].sleep};familyEditorDraft=draft;updateFamilySpace({name:familySpace?.name||draft.name,slogan:familySpace?.slogan||draft.slogan,members:nextMembers,protocolRoute:state.protocolRoute,wishes:state.wishes});render()}
+function openAvatarPicker(index){const draft=collectFamilyEditorDraft(),member=draft.members[index];if(!member)return;avatarPickerMode="family";avatarPickerTargetIndex=index;const current=validAvatarId(member.avatarId||member.avatar);avatarPickerCurrentIndex=Math.max(0,characterAvatars.findIndex(a=>a.id===current));renderAvatarPicker();$("avatarPickerModal").classList.add("show")}
+function openSetupAvatarPicker(index){if(setupDraft.step===3)saveCurrentSetup();const member=memberDraft(index);avatarPickerMode="setup";avatarPickerTargetIndex=index;const current=validAvatarId(member.avatarId||member.avatar);avatarPickerCurrentIndex=Math.max(0,characterAvatars.findIndex(a=>a.id===current));renderAvatarPicker();$("avatarPickerModal").classList.add("show")}
+function renderAvatarPicker(){const avatar=characterAvatars[avatarPickerCurrentIndex]||characterAvatars[0],img=$("avatarPickerPreview"),labels=uiCopy().modals.avatar;img.src=getAvatarSrc(avatar.id,"body");img.dataset.fallback=getAvatarFallbackSrc(avatar.id,"body");img.alt=labels.previewAlt;img.onerror=function(){this.onerror=null;this.src=this.dataset.fallback};$("avatarPickerIndex").textContent=fmt(labels.index,{current:avatarPickerCurrentIndex+1,total:characterAvatars.length})}
+function shiftAvatarPicker(delta){avatarPickerCurrentIndex=(avatarPickerCurrentIndex+delta+characterAvatars.length)%characterAvatars.length;renderAvatarPicker()}
+function closeAvatarPicker(){$("avatarPickerModal").classList.remove("show");avatarPickerTargetIndex=null;avatarPickerMode="family"}
+function confirmAvatarPicker(){if(avatarPickerTargetIndex===null)return closeAvatarPicker();const avatar=characterAvatars[avatarPickerCurrentIndex]||characterAvatars[0];if(avatarPickerMode==="setup"){const member=memberDraft(avatarPickerTargetIndex);member.avatarId=avatar.id;member.avatar=avatar.id;updateSetupAvatar(avatarPickerTargetIndex);return closeAvatarPicker()}const draft=collectFamilyEditorDraft(),member=draft.members[avatarPickerTargetIndex];if(member){member.avatarId=avatar.id;member.avatar=avatar.id;updateMemberCardAvatar(avatarPickerTargetIndex);showMemberSaveTip(avatarPickerTargetIndex,buttonCopy().pendingSave)}closeAvatarPicker()}
 let recognition=null,isRecording=false;
-function toggleVoiceCapture(){const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SpeechRecognition){showCaptureResult("voice",null,"当前浏览器不支持语音识别。可以直接在下方输入文字，或换 Chrome/Edge 打开后再试。","");return}if(isRecording&&recognition){recognition.stop();return}recognition=new SpeechRecognition();recognition.lang="zh-CN";recognition.interimResults=true;recognition.continuous=false;isRecording=true;$("voiceCaptureBtn").classList.add("recording");showCaptureResult("voice",null,"正在听你说话……","");recognition.onresult=e=>{let text="";for(let i=e.resultIndex;i<e.results.length;i++)text+=e.results[i][0].transcript;showCaptureResult("voice",null,text||"正在听你说话……","")};recognition.onerror=()=>showCaptureResult("voice",null,"没有听清楚。你可以再点一次语音录入，或直接输入文字。","");recognition.onend=()=>{isRecording=false;$("voiceCaptureBtn").classList.remove("recording")};recognition.start()}
+function toggleVoiceCapture(){const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition,ui=uiCopy();if(!SpeechRecognition){showCaptureResult("voice",null,ui.capture.unsupported,"");return}if(isRecording&&recognition){recognition.stop();return}recognition=new SpeechRecognition();recognition.lang="zh-CN";recognition.interimResults=true;recognition.continuous=false;isRecording=true;$("voiceCaptureBtn").classList.add("recording");showCaptureResult("voice",null,ui.capture.listening,"");recognition.onresult=e=>{let text="";for(let i=e.resultIndex;i<e.results.length;i++)text+=e.results[i][0].transcript;showCaptureResult("voice",null,text||ui.capture.listening,"")};recognition.onerror=()=>showCaptureResult("voice",null,ui.capture.notHeard,"");recognition.onend=()=>{isRecording=false;$("voiceCaptureBtn").classList.remove("recording")};recognition.start()}
 function handleCaptureFile(kind,input){const file=input.files&&input.files[0];if(!file)return;const url=URL.createObjectURL(file);const text=guessCaptureText(kind,file.name);showCaptureResult(kind,file,text,url);log(`文件已上传：${file.name}`)}
-function openModal(preset){state.modalPreset=preset||null;$("taskTitle").value=preset?.title||"";$("taskSource").value=preset?.source||"手动";$("taskType").value=preset?.type||"执行";$("taskNoticeBy").value=preset?.noticeBy||"tangning";$("modal").classList.add("show");$("taskTitle").focus()}
+function openModal(preset){state.modalPreset=preset||null;renderMemberSelects();$("taskTitle").value=preset?.title||"";$("taskSource").value=preset?.source||"手动";$("taskType").value=preset?.type||"执行";$("taskNoticeBy").value=findMember(preset?.noticeBy)?.id||currentMemberId;$("taskOwner").value=findMember(preset?.owner)?.id||state.protocolRoute[0]||currentMemberId;$("modal").classList.add("show");$("taskTitle").focus()}
 function closeModal(){$("modal").classList.remove("show");state.modalPreset=null}
-function save(){const title=$("taskTitle").value.trim();if(!title)return;add({...state.modalPreset,title,source:$("taskSource").value,type:$("taskType").value,noticeBy:$("taskNoticeBy").value});closeModal()}
+function save(){const title=$("taskTitle").value.trim();if(!title)return;add({...state.modalPreset,title,source:$("taskSource").value,type:$("taskType").value,noticeBy:$("taskNoticeBy").value,owner:$("taskOwner").value});closeModal()}
 function openProtocolModal(){renderProtocolEditor();$("protocolModal").classList.add("show")}
 function closeProtocolModal(){$("protocolModal").classList.remove("show");state.draggingProtocolId=null}
-function renderProtocolEditor(order=state.protocolRoute){const el=$("protocolOrder");if(!el)return;el.innerHTML=order.map((pid,i)=>`<button type="button" class="list-item protocol-person" draggable="true" data-protocol-id="${pid}"><span class="handle">↕</span><div><b>${esc(by(pid).name)}</b><small>第 ${i+1} 顺位</small></div><span class="chip">拖拽</span></button>`).join("");el.querySelectorAll("[data-protocol-id]").forEach(item=>{item.addEventListener("dragstart",e=>{state.draggingProtocolId=item.dataset.protocolId;item.classList.add("dragging");if(e.dataTransfer)e.dataTransfer.effectAllowed="move"});item.addEventListener("dragend",()=>item.classList.remove("dragging"));item.addEventListener("dragover",e=>e.preventDefault());item.addEventListener("drop",e=>{e.preventDefault();const from=state.draggingProtocolId,to=item.dataset.protocolId;if(!from||from===to)return;const ids=[...el.querySelectorAll("[data-protocol-id]")].map(x=>x.dataset.protocolId).filter(x=>x!==from);ids.splice(ids.indexOf(to),0,from);renderProtocolEditor(ids)})})}
-function saveProtocolOrder(){const ids=[...document.querySelectorAll("#protocolOrder [data-protocol-id]")].map(x=>x.dataset.protocolId);if(ids.length)state.protocolRoute=ids;state.tasks.forEach(t=>{if(t.status==="pending"){t.route=[...state.protocolRoute];t.owner=t.route[0]}});state.protocolUpdatedAt=new Date().toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});log(`请帮忙协议已更新：${state.protocolRoute.map(id=>by(id).name).join(" → ")}`);closeProtocolModal();render()}
+function openSwitchFamilyModal(){$("switchFamilyModal").classList.add("show")}
+function closeSwitchFamilyModal(){$("switchFamilyModal").classList.remove("show")}
+function returnHome(){closeSwitchFamilyModal();showWelcome()}
+function openRoleModal(){const el=$("roleChoiceList"),ui=uiCopy();el.innerHTML=people.length?people.map(p=>`<button class="btn soft role-choice" type="button" data-role-pick="${esc(p.id)}">${renderAvatar(p,"avatar-preview")}<span><b>${esc(memberLabel(p))}</b><br><small>${esc(p.role||p.relation||ui.common.relationFallback)}</small></span><span class="chip">${p.id===currentMemberId?ui.protocol.statusCurrent:ui.modals.role.switch}</span></button>`).join(""):`<div class="empty">${ui.common.emptyMembers}</div>`;$("roleModal").classList.add("show")}
+function closeRoleModal(){$("roleModal").classList.remove("show")}
+function pickRole(id){if(!findMember(id))return;setCurrentMemberId(id);log(`当前角色换成 ${by(currentMemberId).name}。`);closeRoleModal();render()}
+function openTransferModal(id){const task=state.tasks.find(t=>t.id===id);if(!task)return;if(!people.length){log("还没有家庭成员，先去家庭信息里添加吧。");switchSection("familyInfo");return}state.transferTaskId=id;fillMemberSelect($("transferMemberSelect"),noteAssignee(task)||state.protocolRoute[0]||currentMemberId||people[0].id);$("transferTaskTitle").value=task.title;$("transferModal").classList.add("show");$("transferMemberSelect").focus()}
+function closeTransferModal(){$("transferModal").classList.remove("show");state.transferTaskId=null}
+function saveTransferChoice(){if(!state.transferTaskId)return;if(!$("transferMemberSelect").value){log(allMembersSleepProtected()?topbarCopy().allSleepProtected:topbarCopy().relayChoiceRequired);return}transfer(state.transferTaskId,$("transferMemberSelect").value);closeTransferModal()}
+function renderProtocolEditor(order=state.protocolRoute){const el=$("protocolOrder"),ui=uiCopy(),labels=ui.modals.protocol;if(!el)return;const validOrder=sanitizeProtocol(order);if(!validOrder.length){el.innerHTML=`<div class="empty">${ui.common.emptyMembers}</div>`;return}el.innerHTML=validOrder.map((pid,i)=>`<button type="button" class="list-item protocol-person" draggable="true" data-protocol-id="${pid}"><span class="handle">↕</span><div><b>${esc(by(pid).name)}</b><small>${esc(fmt(labels.order,{n:i+1}))}</small></div><span class="chip">${esc(labels.drag)}</span></button>`).join("");el.querySelectorAll("[data-protocol-id]").forEach(item=>{item.addEventListener("dragstart",e=>{state.draggingProtocolId=item.dataset.protocolId;item.classList.add("dragging");if(e.dataTransfer)e.dataTransfer.effectAllowed="move"});item.addEventListener("dragend",()=>item.classList.remove("dragging"));item.addEventListener("dragover",e=>e.preventDefault());item.addEventListener("drop",e=>{e.preventDefault();const from=state.draggingProtocolId,to=item.dataset.protocolId;if(!from||from===to)return;const ids=[...el.querySelectorAll("[data-protocol-id]")].map(x=>x.dataset.protocolId).filter(x=>x!==from);ids.splice(ids.indexOf(to),0,from);renderProtocolEditor(ids)})})}
+function saveProtocolOrder(){const ids=[...document.querySelectorAll("#protocolOrder [data-protocol-id]")].map(x=>x.dataset.protocolId);if(ids.length)state.protocolRoute=sanitizeProtocol(ids);state.tasks.forEach(t=>{if(isPending(t)){t.route=[...state.protocolRoute];t.assigneeId=t.route[0]||"";t.owner=t.assigneeId}});syncNodesToFamily();state.protocolUpdatedAt=new Date().toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});log(`请帮忙协议已更新：${state.protocolRoute.map(id=>by(id).name).join(" → ")}`);closeProtocolModal();render()}
 function openWishModal(id){const wish=state.wishes.find(w=>w.id===id);if(!wish)return;state.wishEditingId=id;$("wishPerson").value=wish.person;$("wishText").value=wish.text;$("wishModal").classList.add("show");$("wishText").focus()}
 function closeWishModal(){$("wishModal").classList.remove("show");state.wishEditingId=null}
-function saveWish(){const wish=state.wishes.find(w=>w.id===state.wishEditingId),text=$("wishText").value.trim();if(!wish||!text)return;wish.text=text;log(`心愿池更新：${wish.person} 的心愿被贴好了。`);closeWishModal();renderWishPool()}
+function saveWish(){const wish=state.wishes.find(w=>w.id===state.wishEditingId),text=$("wishText").value.trim();if(!wish||!text)return;wish.text=text;log(`心愿池更新：${wish.person} 的心愿被贴好了。`);closeWishModal();renderWishPool();saveAppData()}
 function openProofModal(id){const task=state.tasks.find(t=>t.id===id);if(!task)return;state.proofTaskId=id;$("proofTaskTitle").value=task.title;$("proofUpload").value="";$("proofNote").value="";$("proofModal").classList.add("show");$("proofUpload").focus()}
 function closeProofModal(){$("proofModal").classList.remove("show");state.proofTaskId=null}
-function saveProof(){const task=state.tasks.find(t=>t.id===state.proofTaskId),file=$("proofUpload").files&&$("proofUpload").files[0],note=($("proofNote").value||"").trim();if(!task)return;task.status="completed";task.proofName=file?file.name:"";task.proofNote=note;task.completedAtMs=Date.now();task.completedAt=new Date().toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});log(`《${task.title}》已确认完成，贴贴收进便利贴手册。`);closeProofModal();render()}
+function saveProof(){const task=state.tasks.find(t=>t.id===state.proofTaskId),file=$("proofUpload").files&&$("proofUpload").files[0],note=($("proofNote").value||"").trim();if(!task)return;if(!findMember(currentMemberId)){log("请先选择当前角色。");return}task.status="done";task.completedById=currentMemberId;task.proofName=file?file.name:"";task.proofNote=note;task.completedAtMs=Date.now();task.completedAt=new Date().toLocaleString("zh-CN",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});log(`《${task.title}》已确认完成，贴贴收进便利贴手册。`);closeProofModal();render()}
 function bind(id,handler){const el=$(id);if(el)el.onclick=handler}
-document.querySelectorAll("[data-target]").forEach(b=>b.onclick=()=>switchSection(b.dataset.target));bind("seedBtn",seed);bind("assignBtn",autoHospital);bind("reviewBtn",()=>{renderReview();log("贴贴生成今日复盘卡。")});bind("parseBtn",()=>{const text=$("quickText").value.trim();if(!text)return;let p={...samples.meds,title:text,source:"语音",noticeBy:text.includes("药")?"mom":"tangning"};if(text.includes("复诊")||text.includes("医院"))p={...samples.hospital,title:text};if(text.includes("燃气")||text.includes("年检"))p={...samples.gas,title:text};add(p);switchSection("wall")});bind("voiceBtn",()=>{state.voice=!state.voice;$("voiceBtn").textContent=state.voice?"贴贴播报 开":"贴贴播报 关";if(state.voice)saySequence(["贴贴播报打开啦啦啦，一天一天贴出全家的心愿，我们开心，我们关心。",$("nextCard").textContent])});bind("updateProtocolBtn",openProtocolModal);bind("closeProtocolBtn",closeProtocolModal);bind("saveProtocolBtn",saveProtocolOrder);bind("closeWishBtn",closeWishModal);bind("saveWishBtn",saveWish);bind("closeProofBtn",closeProofModal);bind("saveProofBtn",saveProof);bind("closeBtn",closeModal);bind("saveBtn",save);
+document.querySelectorAll("[data-target]").forEach(b=>b.onclick=()=>switchSection(b.dataset.target));bind("seedBtn",seed);bind("assignBtn",autoHospital);bind("reviewBtn",()=>{renderReview();log("贴贴生成今日复盘卡。")});bind("parseBtn",()=>createTaskFromRecognizedText("text"));bind("voiceBtn",()=>{state.voice=!state.voice;renderTopbarCopy();if(state.voice)saySequence(["贴贴播报打开啦啦啦，一天一天贴出全家的心愿，我们开心，我们关心。",$("nextCard").textContent])});bind("updateProtocolBtn",openProtocolModal);bind("closeProtocolBtn",closeProtocolModal);bind("saveProtocolBtn",saveProtocolOrder);bind("closeWishBtn",closeWishModal);bind("saveWishBtn",saveWish);bind("closeProofBtn",closeProofModal);bind("saveProofBtn",saveProof);bind("closeBtn",closeModal);bind("saveBtn",save);
+bind("createFamilyBtn",startCreateFamily);bind("enterDemoHomeBtn",()=>{const demo=loadDemoData(false);log(currentLang==="en"?"Sticky set up the demo house.":"贴贴把 Demo 小家贴好了。")});bind("closeTransferBtn",closeTransferModal);bind("saveTransferBtn",saveTransferChoice);bind("switchFamilyBtn",openSwitchFamilyModal);bind("closeSwitchFamilyBtn",closeSwitchFamilyModal);bind("returnHomeBtn",returnHome);bind("currentRoleBtn",openRoleModal);bind("languageBtn",toggleLanguage);bind("welcomeLanguageBtn",toggleLanguage);bind("closeRoleBtn",closeRoleModal);bind("addFamilyMemberBtn",addFamilyInfoMember);bind("saveFamilyInfoBtn",saveFamilyInfo);bind("closeDeleteMemberBtn",closeDeleteMemberModal);bind("confirmDeleteMemberBtn",confirmDeleteMember);bind("closeAvatarPickerBtn",closeAvatarPicker);bind("confirmAvatarPickerBtn",confirmAvatarPicker);bind("avatarPrevBtn",()=>shiftAvatarPicker(-1));bind("avatarNextBtn",()=>shiftAvatarPicker(1));
 document.querySelectorAll("[data-cap]").forEach(b=>b.onclick=()=>{const t=b.dataset.cap;if(t==="voice")toggleVoiceCapture();if(t==="file")$("fileUpload").click()});$("fileUpload").onchange=e=>handleCaptureFile("file",e.target);document.querySelectorAll("[data-sample]").forEach(b=>b.onclick=()=>add(samples[b.dataset.sample]));
-document.body.onclick=e=>{const c=e.target.closest("[data-claim]"),tr=e.target.closest("[data-transfer]"),del=e.target.closest("[data-delete]"),wish=e.target.closest("[data-wish-edit]"),proof=e.target.closest("[data-proof]"),node=e.target.closest("[data-node-done]"),openWall=e.target.closest("[data-open-wall]");if(openWall){switchSection("wall");return}if(c){const t=state.tasks.find(x=>x.id===c.dataset.claim);claim(t.id,t.owner||t.route[0])}if(tr)transfer(tr.dataset.transfer);if(del)deleteTask(del.dataset.delete);if(wish)openWishModal(wish.dataset.wishEdit);if(proof)openProofModal(proof.dataset.proof);if(node){const n=nodes.find(x=>String(x.id)===node.dataset.nodeDone);if(n){n.done=node.checked;if(node.checked&&!n.owner)n.owner=n.suggest;log(`复诊[${n.id}] ${n.name} ${n.done?"打钩完成":"取消完成"}。`);renderPipe()}}};$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};$("protocolModal").onclick=e=>{if(e.target===$("protocolModal"))closeProtocolModal()};$("wishModal").onclick=e=>{if(e.target===$("wishModal"))closeWishModal()};$("proofModal").onclick=e=>{if(e.target===$("proofModal"))closeProofModal()};document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeProtocolModal();closeWishModal();closeProofModal()}});
-reset(false);log("贴贴上线，产品工作台 demo 已就绪。");
+document.body.onclick=e=>{const c=e.target.closest("[data-claim]"),tr=e.target.closest("[data-transfer]"),del=e.target.closest("[data-delete]"),wish=e.target.closest("[data-wish-edit]"),proof=e.target.closest("[data-proof]"),node=e.target.closest("[data-node-done]"),openWall=e.target.closest("[data-open-wall]"),role=e.target.closest("[data-role-pick]"),memberDel=e.target.closest("[data-family-member-delete]"),avatarOpen=e.target.closest("[data-avatar-pick-open]"),setupAvatarOpen=e.target.closest("[data-setup-avatar-open]"),memberSave=e.target.closest("[data-family-member-save]"),sleepGuardToggle=e.target.closest("[data-sleep-guard-toggle]");if(openWall){switchSection("wall");return}if(c){const t=state.tasks.find(x=>x.id===c.dataset.claim);if(t)claim(t.id,currentMemberId)}if(tr)openTransferModal(tr.dataset.transfer);if(del)deleteTask(del.dataset.delete);if(wish)openWishModal(wish.dataset.wishEdit);if(proof)openProofModal(proof.dataset.proof);if(role)pickRole(role.dataset.rolePick);if(memberDel)requestDeleteFamilyMember(Number(memberDel.dataset.familyMemberDelete));if(avatarOpen)openAvatarPicker(Number(avatarOpen.dataset.avatarPickOpen));if(setupAvatarOpen)openSetupAvatarPicker(Number(setupAvatarOpen.dataset.setupAvatarOpen));if(memberSave)saveFamilyMemberInfo(Number(memberSave.dataset.familyMemberSave));if(sleepGuardToggle)toggleFamilyMemberSleepGuard(Number(sleepGuardToggle.dataset.sleepGuardToggle));if(node){const n=nodes.find(x=>String(x.id)===node.dataset.nodeDone);if(n){n.done=node.checked;if(node.checked&&!n.owner)n.owner=n.suggest;log(`复诊[${n.id}] ${n.name} ${n.done?"打钩完成":"取消完成"}。`);renderPipe();render()}}};$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};$("protocolModal").onclick=e=>{if(e.target===$("protocolModal"))closeProtocolModal()};$("transferModal").onclick=e=>{if(e.target===$("transferModal"))closeTransferModal()};$("switchFamilyModal").onclick=e=>{if(e.target===$("switchFamilyModal"))closeSwitchFamilyModal()};$("roleModal").onclick=e=>{if(e.target===$("roleModal"))closeRoleModal()};$("deleteMemberModal").onclick=e=>{if(e.target===$("deleteMemberModal"))closeDeleteMemberModal()};$("avatarPickerModal").onclick=e=>{if(e.target===$("avatarPickerModal"))closeAvatarPicker()};$("wishModal").onclick=e=>{if(e.target===$("wishModal"))closeWishModal()};$("proofModal").onclick=e=>{if(e.target===$("proofModal"))closeProofModal()};document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeProtocolModal();closeTransferModal();closeSwitchFamilyModal();closeRoleModal();closeDeleteMemberModal();closeAvatarPicker();closeWishModal();closeProofModal()}});
+initApp();
 </script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-check.js",
+    "preview": "node scripts/preview-server.js",
+    "generate:heads": "node scripts/generate-character-heads.js"
+  }
+}

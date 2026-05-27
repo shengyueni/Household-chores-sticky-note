@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-check.js",
+    "preview": "node scripts/preview-server.js",
+    "process:characters": "node scripts/remove-character-bg.js",
+    "generate:heads": "node scripts/generate-character-heads.js"
+  }
+}
