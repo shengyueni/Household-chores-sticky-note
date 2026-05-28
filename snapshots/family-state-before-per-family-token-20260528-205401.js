@@ -1,11 +1,7 @@
-const { randomBytes } = require("crypto");
 const { createClient } = require("@supabase/supabase-js");
 
 const DEFAULT_SPACE_ID = process.env.DEFAULT_FAMILY_SPACE_ID || "default-home";
-const FAMILY_TOKEN_HEADER = "x-family-token";
-const LEGACY_TOKEN_HEADER = "x-family-space-token";
-const MAX_MEMBERS = 12;
-const MAX_NOTES = 200;
+const TOKEN_HEADER = "x-family-space-token";
 
 function sendJson(res, status, body) {
   res.statusCode = status;
@@ -16,14 +12,6 @@ function sendJson(res, status, body) {
 function unauthorized(message = "Unauthorized family space token.") {
   const error = new Error(message);
   error.statusCode = 401;
-  error.code = "INVALID_FAMILY_TOKEN";
-  return error;
-}
-
-function apiError(statusCode, code, message) {
-  const error = new Error(message);
-  error.statusCode = statusCode;
-  error.code = code;
   return error;
 }
 
@@ -195,102 +183,46 @@ function isMissingColumnError(error) {
 }
 
 function tokenFromRequest(req) {
-  const value = req.headers[FAMILY_TOKEN_HEADER] || req.headers[LEGACY_TOKEN_HEADER];
+  const value = req.headers[TOKEN_HEADER];
   return Array.isArray(value) ? (value[0] || "").trim() : String(value || "").trim();
-}
-
-function urlFromRequest(req) {
-  return new URL(req.url || "/api/family-state", "http://localhost");
-}
-
-function familySpaceIdFromRequest(req) {
-  const url = urlFromRequest(req);
-  const headerValue = req.headers["x-family-space-id"];
-  return (
-    url.searchParams.get("familySpaceId") ||
-    (Array.isArray(headerValue) ? headerValue[0] : headerValue) ||
-    ""
-  ).trim();
-}
-
-function normalizeCloudToken(token, required = true) {
-  const value = String(token || "").trim();
-  if (!value && required) {
-    throw apiError(400, "INVALID_CLOUD_TOKEN", "cloudToken is required.");
-  }
-  if (value && (value.length < 8 || value.length > 32)) {
-    throw apiError(400, "INVALID_CLOUD_TOKEN", "cloudToken must be 8-32 characters.");
-  }
-  if (/\s/.test(value)) {
-    throw apiError(400, "INVALID_CLOUD_TOKEN", "cloudToken must not contain spaces.");
-  }
-  return value;
-}
-
-function normalizeFamilyName(name) {
-  const value = String(name || "").trim();
-  if (!value || value.length > 30) {
-    throw apiError(400, "INVALID_FAMILY_NAME", "familyName must be 1-30 characters.");
-  }
-  return value;
-}
-
-function generateCloudToken() {
-  return randomBytes(12).toString("base64url").slice(0, 16);
 }
 
 async function findFamilySpaceByToken(supabase, token) {
   if (!token) return null;
-  const { data, error } = await supabase
-    .from("family_spaces")
-    .select("*")
-    .eq("cloud_token", token)
-    .maybeSingle();
+  for (const column of ["cloud_token", "access_token"]) {
+    const { data, error } = await supabase
+      .from("family_spaces")
+      .select("*")
+      .eq(column, token)
+      .maybeSingle();
 
-  if (error) {
-    if (isMissingColumnError(error)) {
-      throw apiError(500, "MISSING_CLOUD_TOKEN_COLUMN", "family_spaces.cloud_token is required.");
+    if (error) {
+      if (isMissingColumnError(error)) continue;
+      throw error;
     }
-    throw error;
+
+    if (data) return data;
   }
-  return data || null;
+  return null;
 }
 
-async function ensureCloudTokenAvailable(supabase, cloudToken, exceptFamilySpaceId = "") {
-  const existing = await findFamilySpaceByToken(supabase, cloudToken);
-  if (existing && existing.id !== exceptFamilySpaceId) {
-    throw apiError(409, "DUPLICATE_FAMILY_TOKEN", "cloudToken is already used by another family.");
-  }
-}
-
-async function resolveFamilySpaceTarget(supabase, req) {
-  const familySpaceId = familySpaceIdFromRequest(req);
+async function resolveFamilySpaceTarget(supabase, req, bodyFamilySpace = null) {
   const token = tokenFromRequest(req);
+  const expected = process.env.FAMILY_SPACE_TOKEN;
+  const tokenSpace = await findFamilySpaceByToken(supabase, token);
 
-  if (!familySpaceId || !token) {
-    const expected = process.env.FAMILY_SPACE_TOKEN;
-    if (expected && token && token === expected) {
-      return { id: familySpaceId || DEFAULT_SPACE_ID, token, existingSpace: null, legacy: true };
+  if (tokenSpace) return { id: tokenSpace.id, token, existingSpace: tokenSpace };
+  if (expected) {
+    if (token === expected) return { id: DEFAULT_SPACE_ID, token, existingSpace: null };
+    if (req.method === "PUT" && token && bodyFamilySpace && bodyFamilySpace.id) {
+      return { id: bodyFamilySpace.id, token, existingSpace: null };
     }
-    throw unauthorized("familySpaceId and cloudToken are required.");
+    throw unauthorized();
   }
+  if (req.method === "GET" && token) throw unauthorized();
 
-  const { data, error } = await supabase
-    .from("family_spaces")
-    .select("*")
-    .eq("id", familySpaceId)
-    .eq("cloud_token", token)
-    .maybeSingle();
-
-  if (error) {
-    if (isMissingColumnError(error)) {
-      throw apiError(500, "MISSING_CLOUD_TOKEN_COLUMN", "family_spaces.cloud_token is required.");
-    }
-    throw error;
-  }
-
-  if (!data) throw unauthorized();
-  return { id: data.id, token, existingSpace: data, legacy: false };
+  const fallbackId = bodyFamilySpace && bodyFamilySpace.id ? bodyFamilySpace.id : DEFAULT_SPACE_ID;
+  return { id: fallbackId, token, existingSpace: null };
 }
 
 function noteToRow(note, familySpaceId, memberIds) {
@@ -354,50 +286,26 @@ async function deleteRowsNotInPayload(supabase, tableName, familySpaceId, keepId
 }
 
 async function upsertFamilySpaceRow(supabase, spaceRow, token) {
-  const row = token ? { ...spaceRow, cloud_token: token } : spaceRow;
-  const { error } = await supabase
-    .from("family_spaces")
-    .upsert(row, { onConflict: "id" });
+  const variants = token
+    ? [
+        { ...spaceRow, cloud_token: token },
+        { ...spaceRow, access_token: token },
+        spaceRow
+      ]
+    : [spaceRow];
 
-  if (error) {
-    if (isMissingColumnError(error)) {
-      throw apiError(500, "MISSING_CLOUD_TOKEN_COLUMN", "family_spaces.cloud_token is required.");
-    }
-    throw error;
+  let lastError = null;
+  for (const row of variants) {
+    const { error } = await supabase
+      .from("family_spaces")
+      .upsert(row, { onConflict: "id" });
+
+    if (!error) return;
+    lastError = error;
+    if (!isMissingColumnError(error)) throw error;
   }
-}
 
-async function loadFamilySnapshot(supabase, space) {
-  const [{ data: members, error: membersError }, { data: notes, error: notesError }] =
-    await Promise.all([
-      supabase
-        .from("family_members")
-        .select("*")
-        .eq("family_space_id", space.id)
-        .is("deleted_at", null)
-        .order("sort_order", { ascending: true })
-        .order("created_at", { ascending: true }),
-      supabase
-        .from("sticky_notes")
-        .select("*")
-        .eq("family_space_id", space.id)
-        .is("deleted_at", null)
-        .order("created_at", { ascending: true })
-    ]);
-
-  if (membersError) throw membersError;
-  if (notesError) throw notesError;
-
-  const frontMembers = (members || []).map(memberFromRow);
-  const stickyNotes = (notes || []).map(noteFromRow);
-
-  return {
-    familySpace: familySpaceFromRow(space, frontMembers),
-    members: frontMembers,
-    stickyNotes,
-    cloudRevision: space.cloud_revision || 0,
-    serverUpdatedAt: space.updated_at || null
-  };
+  if (lastError) throw lastError;
 }
 
 async function handleGet(req, res) {
@@ -413,83 +321,43 @@ async function handleGet(req, res) {
       .maybeSingle();
 
   if (spaceError) throw spaceError;
-  if (!space) throw unauthorized();
-
-  return sendJson(res, 200, await loadFamilySnapshot(supabase, space));
-}
-
-async function handlePost(req, res) {
-  const body = await readBody(req);
-  const supabase = getSupabase();
-
-  if (body && body.action === "createFamily") {
-    const familyName = normalizeFamilyName(body.familyName);
-    let cloudToken = normalizeCloudToken(body.cloudToken || "", false);
-    if (!cloudToken) {
-      do {
-        cloudToken = generateCloudToken();
-      } while (await findFamilySpaceByToken(supabase, cloudToken));
-    } else {
-      await ensureCloudTokenAvailable(supabase, cloudToken);
-    }
-
-    const now = new Date().toISOString();
-    const familySpaceId = `family-${Date.now().toString(36)}-${randomBytes(4).toString("hex")}`;
-    const familySpace = {
-      id: familySpaceId,
-      name: familyName,
-      slogan: "",
-      members: [],
-      protocolRoute: [],
-      wishes: [],
-      currentMemberId: "",
-      createdAt: now,
-      updatedAt: now,
-      version: 1
-    };
-    const spaceRow = {
-      id: familySpaceId,
-      name: familyName,
-      slogan: null,
-      current_member_id: null,
-      protocol_route: [],
-      wishes: [],
-      version: 1,
-      cloud_revision: 1,
-      payload: familySpace,
-      updated_at: now
-    };
-
-    await upsertFamilySpaceRow(supabase, spaceRow, cloudToken);
-
+  if (!space) {
     return sendJson(res, 200, {
-      ok: true,
-      familySpaceId,
-      familyName,
-      cloudToken,
-      familySpace,
-      members: [],
+      familySpace: null,
       stickyNotes: [],
-      cloudRevision: 1,
-      serverUpdatedAt: now
+      cloudRevision: 0,
+      serverUpdatedAt: null
     });
   }
 
-  if (body && body.action === "joinFamily") {
-    const cloudToken = normalizeCloudToken(body.cloudToken);
-    const space = await findFamilySpaceByToken(supabase, cloudToken);
-    if (!space) throw unauthorized();
-    const snapshot = await loadFamilySnapshot(supabase, space);
-    return sendJson(res, 200, {
-      ok: true,
-      familySpaceId: space.id,
-      familyName: space.name,
-      cloudToken,
-      ...snapshot
-    });
-  }
+  const [{ data: members, error: membersError }, { data: notes, error: notesError }] =
+    await Promise.all([
+      supabase
+        .from("family_members")
+        .select("*")
+        .eq("family_space_id", target.id)
+        .is("deleted_at", null)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true }),
+      supabase
+        .from("sticky_notes")
+        .select("*")
+        .eq("family_space_id", target.id)
+        .is("deleted_at", null)
+        .order("created_at", { ascending: true })
+    ]);
 
-  return sendJson(res, 400, { ok: false, code: "INVALID_ACTION", error: "Unsupported action." });
+  if (membersError) throw membersError;
+  if (notesError) throw notesError;
+
+  const frontMembers = (members || []).map(memberFromRow);
+
+  return sendJson(res, 200, {
+    familySpace: familySpaceFromRow(space, frontMembers),
+    stickyNotes: (notes || []).map(noteFromRow),
+    cloudRevision: space.cloud_revision || 0,
+    serverUpdatedAt: space.updated_at || null
+  });
 }
 
 async function handlePut(req, res) {
@@ -510,7 +378,7 @@ async function handlePut(req, res) {
   }
 
   const supabase = getSupabase();
-  const target = await resolveFamilySpaceTarget(supabase, req);
+  const target = await resolveFamilySpaceTarget(supabase, req, familySpace);
   const now = new Date().toISOString();
 
   const { data: current, error: currentError } = await supabase
@@ -525,20 +393,7 @@ async function handlePut(req, res) {
   const members = (Array.isArray(familySpace.members) ? familySpace.members : [])
     .filter((member) => member && member.id);
   const stickyNotes = rawStickyNotes.filter((note) => note && note.id);
-  if (members.length > MAX_MEMBERS) {
-    throw apiError(400, "TOO_MANY_MEMBERS", `A family can have at most ${MAX_MEMBERS} members.`);
-  }
-  if (stickyNotes.length > MAX_NOTES) {
-    throw apiError(400, "TOO_MANY_NOTES", `A family can have at most ${MAX_NOTES} sticky notes.`);
-  }
   const memberIds = new Set(members.map((member) => member && member.id).filter(Boolean));
-  const nextCloudToken = body.cloudToken || familySpace.cloudToken;
-  const normalizedNextToken = nextCloudToken
-    ? normalizeCloudToken(nextCloudToken)
-    : target.token;
-  if (normalizedNextToken !== target.token) {
-    await ensureCloudTokenAvailable(supabase, normalizedNextToken, target.id);
-  }
 
   const spaceRow = {
     id: target.id,
@@ -553,7 +408,7 @@ async function handlePut(req, res) {
     updated_at: now
   };
 
-  await upsertFamilySpaceRow(supabase, spaceRow, normalizedNextToken);
+  await upsertFamilySpaceRow(supabase, spaceRow, target.token);
 
   if (members.length) {
     const { error: memberUpsertError } = await supabase
@@ -601,21 +456,16 @@ async function handlePut(req, res) {
 
   const { data: saved, error: savedError } = await supabase
     .from("family_spaces")
-    .select("*")
+    .select("cloud_revision, updated_at")
     .eq("id", target.id)
     .single();
 
   if (savedError) throw savedError;
 
-  const snapshot = await loadFamilySnapshot(supabase, saved);
   return sendJson(res, 200, {
     ok: true,
     cloudRevision: saved.cloud_revision,
-    serverUpdatedAt: saved.updated_at,
-    familySpaceId: target.id,
-    familyName: spaceRow.name,
-    cloudToken: normalizedNextToken,
-    ...snapshot
+    serverUpdatedAt: saved.updated_at
   });
 }
 
@@ -625,25 +475,20 @@ module.exports = async function familyState(req, res) {
       return await handleGet(req, res);
     }
 
-    if (req.method === "POST") {
-      return await handlePost(req, res);
-    }
-
     if (req.method === "PUT") {
       return await handlePut(req, res);
     }
 
-    res.setHeader("Allow", "GET, POST, PUT");
+    res.setHeader("Allow", "GET, PUT");
     return sendJson(res, 405, { ok: false, error: "Method not allowed." });
   } catch (error) {
     const status = error && error.statusCode
       ? error.statusCode
-      : (req.method === "PUT" || req.method === "POST") && error instanceof SyntaxError
+      : req.method === "PUT" && error instanceof SyntaxError
         ? 400
         : 500;
     return sendJson(res, status, {
       ok: false,
-      code: error && error.code ? error.code : "SERVER_ERROR",
       error: error && error.message ? error.message : "Unexpected server error."
     });
   }
