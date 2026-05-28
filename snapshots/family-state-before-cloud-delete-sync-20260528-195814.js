@@ -214,30 +214,6 @@ function noteToRow(note, familySpaceId, memberIds) {
   };
 }
 
-async function deleteRowsNotInPayload(supabase, tableName, familySpaceId, keepIds) {
-  const keep = new Set(keepIds.filter(Boolean));
-  const { data: existingRows, error: selectError } = await supabase
-    .from(tableName)
-    .select("id")
-    .eq("family_space_id", familySpaceId);
-
-  if (selectError) throw selectError;
-
-  const idsToDelete = (existingRows || [])
-    .map((row) => row.id)
-    .filter((id) => id && !keep.has(id));
-
-  if (!idsToDelete.length) return;
-
-  const { error: deleteError } = await supabase
-    .from(tableName)
-    .delete()
-    .eq("family_space_id", familySpaceId)
-    .in("id", idsToDelete);
-
-  if (deleteError) throw deleteError;
-}
-
 async function handleGet(req, res) {
   const supabase = getSupabase();
 
@@ -290,11 +266,7 @@ async function handleGet(req, res) {
 async function handlePut(req, res) {
   const body = await readBody(req);
   const familySpace = body && body.familySpace;
-  const rawStickyNotes = Array.isArray(body && body.stickyNotes)
-    ? body.stickyNotes
-    : Array.isArray(body && body.sticky_notes)
-      ? body.sticky_notes
-      : [];
+  const stickyNotes = Array.isArray(body && body.stickyNotes) ? body.stickyNotes : [];
 
   if (!familySpace || typeof familySpace !== "object") {
     return sendJson(res, 400, { ok: false, error: "Invalid request body: familySpace is required." });
@@ -316,9 +288,7 @@ async function handlePut(req, res) {
   if (currentError) throw currentError;
 
   const nextRevision = Number(current && current.cloud_revision ? current.cloud_revision : 0) + 1;
-  const members = (Array.isArray(familySpace.members) ? familySpace.members : [])
-    .filter((member) => member && member.id);
-  const stickyNotes = rawStickyNotes.filter((note) => note && note.id);
+  const members = Array.isArray(familySpace.members) ? familySpace.members : [];
   const memberIds = new Set(members.map((member) => member && member.id).filter(Boolean));
 
   const spaceRow = {
@@ -369,20 +339,6 @@ async function handlePut(req, res) {
 
     if (notesUpsertError) throw notesUpsertError;
   }
-
-  await deleteRowsNotInPayload(
-    supabase,
-    "sticky_notes",
-    DEFAULT_SPACE_ID,
-    stickyNotes.map((note) => note.id)
-  );
-
-  await deleteRowsNotInPayload(
-    supabase,
-    "family_members",
-    DEFAULT_SPACE_ID,
-    members.map((member) => member.id)
-  );
 
   const { data: saved, error: savedError } = await supabase
     .from("family_spaces")
