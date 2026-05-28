@@ -2,6 +2,11 @@
 
 ## 2026-05-27 Codex
 
+- Ensured saving a cloud token can seed an empty cloud space from the current local family, while existing cloud data still hard-replaces local state.
+- Simplified the sync chip into four localized states: saved locally, synced to cloud, cloud sync failed, and token error.
+- Hardened cloud snapshot restore so successful GET clears local family/current/sticky storage and memory before writing only cloud data.
+- Added an immediate cloud sync action that GETs `/api/family-state`, hard-replaces local state on success, and shows token or retry errors in the sync chip.
+- Added a family settings entry for saving the cloud sync token to localStorage and retrying cloud snapshot sync without adding accounts or auth.
 - Fixed cloud snapshot restore to hard-replace local family and sticky data before rendering, preventing stale local stickies from mixing with cloud state.
 - Added local-first frontend cloud sync through `/api/family-state`, with background GET/PUT, debounced saves, offline metadata, and a compact sync status chip.
 - Added `/api/family-state` Vercel Function for Supabase-backed family snapshot GET/PUT, keeping the current frontend untouched.
