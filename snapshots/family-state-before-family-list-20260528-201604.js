@@ -1,7 +1,6 @@
 const { createClient } = require("@supabase/supabase-js");
 
 const DEFAULT_SPACE_ID = process.env.DEFAULT_FAMILY_SPACE_ID || "default-home";
-const TOKEN_HEADER = "x-family-space-token";
 
 function sendJson(res, status, body) {
   res.statusCode = status;
@@ -9,10 +8,15 @@ function sendJson(res, status, body) {
   res.end(JSON.stringify(body));
 }
 
-function unauthorized(message = "Unauthorized family space token.") {
-  const error = new Error(message);
-  error.statusCode = 401;
-  return error;
+function checkToken(req, res) {
+  const expected = process.env.FAMILY_SPACE_TOKEN;
+  if (!expected) return true;
+
+  const actual = req.headers["x-family-space-token"];
+  if (actual === expected) return true;
+
+  sendJson(res, 401, { ok: false, error: "Unauthorized family space token." });
+  return false;
 }
 
 function getSupabase() {
@@ -174,57 +178,6 @@ function existingMemberId(id, memberIds) {
   return id && memberIds.has(id) ? id : null;
 }
 
-function isMissingColumnError(error) {
-  return error && (
-    error.code === "42703" ||
-    /column .* does not exist/i.test(error.message || "") ||
-    /Could not find .* column/i.test(error.message || "")
-  );
-}
-
-function tokenFromRequest(req) {
-  const value = req.headers[TOKEN_HEADER];
-  return Array.isArray(value) ? (value[0] || "").trim() : String(value || "").trim();
-}
-
-async function findFamilySpaceByToken(supabase, token) {
-  if (!token) return null;
-  for (const column of ["cloud_token", "access_token"]) {
-    const { data, error } = await supabase
-      .from("family_spaces")
-      .select("*")
-      .eq(column, token)
-      .maybeSingle();
-
-    if (error) {
-      if (isMissingColumnError(error)) continue;
-      throw error;
-    }
-
-    if (data) return data;
-  }
-  return null;
-}
-
-async function resolveFamilySpaceTarget(supabase, req, bodyFamilySpace = null) {
-  const token = tokenFromRequest(req);
-  const expected = process.env.FAMILY_SPACE_TOKEN;
-  const tokenSpace = await findFamilySpaceByToken(supabase, token);
-
-  if (tokenSpace) return { id: tokenSpace.id, token, existingSpace: tokenSpace };
-  if (expected) {
-    if (token === expected) return { id: DEFAULT_SPACE_ID, token, existingSpace: null };
-    if (req.method === "PUT" && token && bodyFamilySpace && bodyFamilySpace.id) {
-      return { id: bodyFamilySpace.id, token, existingSpace: null };
-    }
-    throw unauthorized();
-  }
-  if (req.method === "GET" && token) throw unauthorized();
-
-  const fallbackId = bodyFamilySpace && bodyFamilySpace.id ? bodyFamilySpace.id : DEFAULT_SPACE_ID;
-  return { id: fallbackId, token, existingSpace: null };
-}
-
 function noteToRow(note, familySpaceId, memberIds) {
   const createdById = existingMemberId(note.createdById || note.noticeBy, memberIds);
   const noticeById = existingMemberId(note.noticeBy || note.createdById, memberIds);
@@ -285,40 +238,14 @@ async function deleteRowsNotInPayload(supabase, tableName, familySpaceId, keepId
   if (deleteError) throw deleteError;
 }
 
-async function upsertFamilySpaceRow(supabase, spaceRow, token) {
-  const variants = token
-    ? [
-        { ...spaceRow, cloud_token: token },
-        { ...spaceRow, access_token: token },
-        spaceRow
-      ]
-    : [spaceRow];
-
-  let lastError = null;
-  for (const row of variants) {
-    const { error } = await supabase
-      .from("family_spaces")
-      .upsert(row, { onConflict: "id" });
-
-    if (!error) return;
-    lastError = error;
-    if (!isMissingColumnError(error)) throw error;
-  }
-
-  if (lastError) throw lastError;
-}
-
 async function handleGet(req, res) {
   const supabase = getSupabase();
-  const target = await resolveFamilySpaceTarget(supabase, req);
 
-  const { data: space, error: spaceError } = target.existingSpace
-    ? { data: target.existingSpace, error: null }
-    : await supabase
-      .from("family_spaces")
-      .select("*")
-      .eq("id", target.id)
-      .maybeSingle();
+  const { data: space, error: spaceError } = await supabase
+    .from("family_spaces")
+    .select("*")
+    .eq("id", DEFAULT_SPACE_ID)
+    .maybeSingle();
 
   if (spaceError) throw spaceError;
   if (!space) {
@@ -335,14 +262,14 @@ async function handleGet(req, res) {
       supabase
         .from("family_members")
         .select("*")
-        .eq("family_space_id", target.id)
+        .eq("family_space_id", DEFAULT_SPACE_ID)
         .is("deleted_at", null)
         .order("sort_order", { ascending: true })
         .order("created_at", { ascending: true }),
       supabase
         .from("sticky_notes")
         .select("*")
-        .eq("family_space_id", target.id)
+        .eq("family_space_id", DEFAULT_SPACE_ID)
         .is("deleted_at", null)
         .order("created_at", { ascending: true })
     ]);
@@ -378,13 +305,12 @@ async function handlePut(req, res) {
   }
 
   const supabase = getSupabase();
-  const target = await resolveFamilySpaceTarget(supabase, req, familySpace);
   const now = new Date().toISOString();
 
   const { data: current, error: currentError } = await supabase
     .from("family_spaces")
     .select("cloud_revision")
-    .eq("id", target.id)
+    .eq("id", DEFAULT_SPACE_ID)
     .maybeSingle();
 
   if (currentError) throw currentError;
@@ -396,7 +322,7 @@ async function handlePut(req, res) {
   const memberIds = new Set(members.map((member) => member && member.id).filter(Boolean));
 
   const spaceRow = {
-    id: target.id,
+    id: DEFAULT_SPACE_ID,
     name: familySpace.name || "我们的家庭空间",
     slogan: familySpace.slogan || null,
     current_member_id: null,
@@ -408,12 +334,16 @@ async function handlePut(req, res) {
     updated_at: now
   };
 
-  await upsertFamilySpaceRow(supabase, spaceRow, target.token);
+  const { error: spaceUpsertError } = await supabase
+    .from("family_spaces")
+    .upsert(spaceRow, { onConflict: "id" });
+
+  if (spaceUpsertError) throw spaceUpsertError;
 
   if (members.length) {
     const { error: memberUpsertError } = await supabase
       .from("family_members")
-      .upsert(members.map((member, index) => memberToRow(member, target.id, index)), {
+      .upsert(members.map((member, index) => memberToRow(member, DEFAULT_SPACE_ID, index)), {
         onConflict: "id"
       });
 
@@ -425,7 +355,7 @@ async function handlePut(req, res) {
     const { error: currentMemberError } = await supabase
       .from("family_spaces")
       .update({ current_member_id: currentMemberId })
-      .eq("id", target.id);
+      .eq("id", DEFAULT_SPACE_ID);
 
     if (currentMemberError) throw currentMemberError;
   }
@@ -433,7 +363,7 @@ async function handlePut(req, res) {
   if (stickyNotes.length) {
     const { error: notesUpsertError } = await supabase
       .from("sticky_notes")
-      .upsert(stickyNotes.map((note) => noteToRow(note, target.id, memberIds)), {
+      .upsert(stickyNotes.map((note) => noteToRow(note, DEFAULT_SPACE_ID, memberIds)), {
         onConflict: "id"
       });
 
@@ -443,21 +373,21 @@ async function handlePut(req, res) {
   await deleteRowsNotInPayload(
     supabase,
     "sticky_notes",
-    target.id,
+    DEFAULT_SPACE_ID,
     stickyNotes.map((note) => note.id)
   );
 
   await deleteRowsNotInPayload(
     supabase,
     "family_members",
-    target.id,
+    DEFAULT_SPACE_ID,
     members.map((member) => member.id)
   );
 
   const { data: saved, error: savedError } = await supabase
     .from("family_spaces")
     .select("cloud_revision, updated_at")
-    .eq("id", target.id)
+    .eq("id", DEFAULT_SPACE_ID)
     .single();
 
   if (savedError) throw savedError;
@@ -470,6 +400,8 @@ async function handlePut(req, res) {
 }
 
 module.exports = async function familyState(req, res) {
+  if (!checkToken(req, res)) return;
+
   try {
     if (req.method === "GET") {
       return await handleGet(req, res);
@@ -482,11 +414,7 @@ module.exports = async function familyState(req, res) {
     res.setHeader("Allow", "GET, PUT");
     return sendJson(res, 405, { ok: false, error: "Method not allowed." });
   } catch (error) {
-    const status = error && error.statusCode
-      ? error.statusCode
-      : req.method === "PUT" && error instanceof SyntaxError
-        ? 400
-        : 500;
+    const status = req.method === "PUT" && error instanceof SyntaxError ? 400 : 500;
     return sendJson(res, status, {
       ok: false,
       error: error && error.message ? error.message : "Unexpected server error."
